@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Patient Dashboard | Dermacare</title>
+
+
+    <!-- BOOTSTRAP ICONS -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    >
+
+
+    <!-- DASHBOARD CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/dashboard.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- MOBILE MENU BUTTON -->
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+    >
+
+        <i class="bi bi-list"></i>
+
+    </button>
+
+
+
+    <!-- MAIN CONTAINER -->
+
+    <div class="container">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+
+            <!-- LOGO -->
+
+            <div class="logo">
+                <span>Dermacare</span>
+            </div>
+
+
+
+            <!-- MENU TITLE -->
+
+            <div class="menu-title">
+                MAIN
+            </div>
+
+
+
+            <!-- NAVIGATION -->
+
+            <nav>
+
+                <ul>
+
+                    <li class="active">
+
+                        <a href="dashboard.html">
+
+                            <i class="bi bi-grid-1x2-fill"></i>
+
+                            <span>Dashboard</span>
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="appointment-history.html">
+
+                            <i class="bi bi-calendar-check-fill"></i>
+
+                            <span>Appointment History</span>
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="prescriptions.html">
+
+                            <i class="bi bi-file-earmark-medical-fill"></i>
+
+                            <span>Prescriptions</span>
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="profile.html">
+
+                            <i class="bi bi-person-circle"></i>
+
+                            <span>My Profile</span>
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </nav>
+
+
+
+            <!-- LOGOUT -->
+
+            <div class="logout">
+
+                <a href="#" id="logoutLink">
+
+                    <i class="bi bi-box-arrow-right"></i>
+
+                    <span>Logout</span>
+
+                </a>
+
+            </div>
+
+
+        </aside>
+
+
+
+        <!-- OVERLAY -->
+
+        <div
+            class="overlay"
+            id="overlay"
+        ></div>
+
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="content">
+
+
+            <!-- =================================================
+                 TOP BAR WITH NOTIFICATION BELL
+            ================================================== -->
+
+            <div class="dashboard-topbar">
+
+                <a
+                    href="notifications.html"
+                    class="notification-bell"
+                    id="notificationBell"
+                    aria-label="Open notifications"
+                    title="Notifications"
+                >
+
+                    <i class="bi bi-bell-fill"></i>
+
+                    <span
+                        class="notification-count hidden"
+                        id="notificationCount"
+                    ></span>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- WELCOME CARD -->
+
+            <section class="welcome-card">
+
+                <div>
+
+                    <h1>
+
+                        Welcome,
+
+                        <span id="welcomeName">
+                            Patient
+                        </span>
+
+                        👋
+
+                    </h1>
+
+
+                    <p>
+
+                        Book your dermatologist appointment online
+                        with experienced doctors.
+
+                    </p>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- SECTION TITLE -->
+
+            <div class="section-header">
+
+                <h2>
+                    Featured Dermatologists
+                </h2>
+
+            </div>
+
+
+
+            <!-- DOCTOR CONTAINER -->
+
+            <div
+                class="doctor-container"
+                id="doctorContainer"
+            >
+
+                <!-- Doctors from MongoDB will appear here. -->
+
+            </div>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="js/patient.js"></script>
+
+
+</body>
+
+</html>

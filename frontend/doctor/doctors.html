@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- =======================================================
+         DERMCARE - VIEW DOCTORS HOME PAGE
+         PURPOSE: Public page to display all doctors
+    ======================================================== -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Doctors - Dermacare</title>
+
+    <!-- BOOTSTRAP ICONS ONLY -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="css/doctors.css">
+</head>
+
+<body>
+
+<!-- =======================================================
+     HEADER SECTION
+======================================================= -->
+
+<header class="header">
+
+    <div class="container">
+
+        <!-- DESKTOP LOGO -->
+        <a href="../index.html" class="logo">
+            Dermacare
+        </a>
+
+        <!-- DESKTOP NAVIGATION -->
+        <nav class="desktop-nav">
+            <ul>
+                <li>
+                    <a href="../index.html">
+                        <i class="bi bi-house-door"></i>
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../about.html">
+                        <i class="bi bi-info-circle"></i>
+                        About Us
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../services.html">
+                        <i class="bi bi-heart-pulse"></i>
+                        Services
+                    </a>
+                </li>
+
+                <li>
+                    <a href="doctors.html" class="active">
+                        <i class="bi bi-person-badge"></i>
+                        Doctors
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../contact.html">
+                        <i class="bi bi-telephone"></i>
+                        Contact
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- MOBILE MENU BUTTON -->
+        <button
+            type="button"
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open menu"
+            aria-expanded="false"
+        >
+            <i class="bi bi-list"></i>
+        </button>
+
+        <!-- =================================================
+             MOBILE SIDEBAR
+             MATCHES THE INDEX.HTML STRUCTURE
+        ================================================== -->
+
+        <aside class="mobile-sidebar" id="mobileSidebar">
+
+            <!-- MOBILE SIDEBAR LOGO -->
+            <div class="mobile-sidebar-logo">
+                <div class="mobile-logo">
+                    Dermacare
+                </div>
+            </div>
+
+            <!-- MOBILE NAVIGATION -->
+            <nav class="mobile-nav">
+                <ul>
+
+                    <li>
+                        <a href="../index.html">
+                            <i class="bi bi-house-door"></i>
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="../about.html">
+                            <i class="bi bi-info-circle"></i>
+                            About Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="../services.html">
+                            <i class="bi bi-heart-pulse"></i>
+                            Services
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="doctors.html" class="active">
+                            <i class="bi bi-person-badge"></i>
+                            Doctors
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="../contact.html">
+                            <i class="bi bi-telephone"></i>
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+                <!-- MOBILE LOGIN AND REGISTER BUTTONS -->
+                <div class="mobile-auth-buttons">
+
+                    <a href="../login.html" class="mobile-login-btn">
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        Login
+                    </a>
+
+                    <a href="../register.html" class="mobile-register-btn">
+                        <i class="bi bi-person-plus"></i>
+                        Register
+                    </a>
+
+                </div>
+            </nav>
+
+        </aside>
+
+        <!-- SIDEBAR OVERLAY -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- DESKTOP LOGIN AND REGISTER BUTTONS -->
+        <div class="header-buttons">
+
+            <a href="../login.html" class="login-btn">
+                <i class="bi bi-box-arrow-in-right"></i>
+                Login
+            </a>
+
+            <a href="../register.html" class="register-btn">
+                <i class="bi bi-person-plus"></i>
+                Register
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =======================================================
+     HERO SECTION
+======================================================= -->
+
+<section class="doctors-hero">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <span class="section-label">
+                <i class="bi bi-person-badge"></i>
+                DERMATOLOGY SPECIALISTS
+            </span>
+
+            <h1>
+                Our Doctors
+            </h1>
+
+            <p>
+                Meet our experienced dermatologists and choose
+                the right doctor for your skin care needs.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     DOCTORS SECTION
+======================================================= -->
+
+<section class="doctors-section">
+
+    <div class="container">
+
+        <!-- DOCTORS ARE LOADED BY JAVASCRIPT -->
+        <div class="doctors-container" id="doctorsContainer">
+
+            <div class="loading-message" id="loadingMessage">
+                <i class="bi bi-hourglass-split"></i>
+
+                <p>
+                    Loading doctors...
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     BOOK APPOINTMENT BANNER
+======================================================= -->
+
+<section class="appointment-banner">
+
+    <div class="container banner-container">
+
+        <div class="banner-content">
+
+            <span class="banner-tag">
+                <i class="bi bi-calendar-heart"></i>
+                BOOK YOUR VISIT TODAY
+            </span>
+
+            <h2>
+                Find The Right Dermatologist
+                <br>
+                For Your Skin Care
+            </h2>
+
+            <p>
+                Choose an experienced dermatologist and
+                schedule your consultation through Dermacare.
+            </p>
+
+            <a href="../login.html" class="banner-btn">
+                <i class="bi bi-calendar-check"></i>
+                Book Appointment
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     FOOTER SECTION
+======================================================= -->
+
+<footer id="footer">
+
+    <div class="container footer-container">
+
+        <!-- CLINIC TIMINGS -->
+        <div class="footer-box">
+
+            <h3>
+                <i class="bi bi-clock"></i>
+                Clinic Timings
+            </h3>
+
+            <p>
+                <strong>Monday - Saturday</strong>
+            </p>
+
+            <p>
+                <i class="bi bi-clock"></i>
+                10:00 AM - 9:00 PM
+            </p>
+
+            <br>
+
+            <p>
+                <strong>Sunday</strong>
+            </p>
+
+            <p>
+                <i class="bi bi-clock"></i>
+                12:00 PM - 8:00 PM
+            </p>
+
+        </div>
+
+        <!-- STAFF PORTAL -->
+        <div class="footer-box">
+
+            <h3>
+                <i class="bi bi-shield-lock"></i>
+                Staff Portal
+            </h3>
+
+            <a href="../doctor/doctor-login.html">
+                <i class="bi bi-person-badge"></i>
+                Doctor Portal Login
+            </a>
+
+            <a href="../admin-login.html">
+                <i class="bi bi-person-gear"></i>
+                Receptionist Portal Login
+            </a>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <p class="copyright">
+        © 2026 Dermacare Skin & Hair Clinic |
+        All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<!-- =======================================================
+     VIEW DOCTORS JAVASCRIPT
+======================================================= -->
+
+<script src="js/doctors.js"></script>
+
+</body>
+</html>

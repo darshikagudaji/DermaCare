@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Doctor History | Dermacare</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    >
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/history.css">
+</head>
+
+<body>
+
+    <!-- Mobile Menu -->
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open menu"
+    >
+        <i class="bi bi-list"></i>
+    </button>
+
+    <div class="container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="logo">
+                <span>Dermacare</span>
+            </div>
+
+            <div class="doctor-role">
+                <i class="bi bi-person-badge-fill"></i>
+                <span>Doctor</span>
+            </div>
+
+            <div class="menu-title">MAIN</div>
+
+            <nav>
+                <ul>
+                    <li>
+                        <a href="dashboard.html">
+                            <i class="bi bi-grid-1x2-fill"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="today-appointments.html">
+                            <i class="bi bi-calendar-day-fill"></i>
+                            <span>Today's Appointments</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="upcoming-appointments.html">
+                            <i class="bi bi-calendar-check-fill"></i>
+                            <span>Upcoming Appointments</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="working-hours.html">
+                            <i class="bi bi-clock-fill"></i>
+                            <span>Working Hours and Leave Date</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="prescription-form.html">
+                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <span>Prescriptions</span>
+                        </a>
+                    </li>
+
+                    <li class="active">
+                        <a href="history.html">
+                            <i class="bi bi-clock-history"></i>
+                            <span>History</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="profile.html">
+                            <i class="bi bi-person-circle"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="logout">
+                <a href="#" id="logoutLink">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+
+        </aside>
+
+        <div class="overlay" id="overlay"></div>
+
+        <!-- MAIN CONTENT -->
+        <main class="content history-content">
+
+            <!-- PAGE HEADING -->
+            <section class="history-welcome">
+                <p class="history-small-title">DOCTOR PANEL</p>
+
+                <h1>
+                    My History
+                    <i class="bi bi-clock-history"></i>
+                </h1>
+
+                <p>
+                    View your completed appointments and saved prescriptions.
+                </p>
+            </section>
+
+            <!-- =========================================
+                 HISTORY HOME: TWO CLICKABLE CARDS
+            ========================================== -->
+
+            <section id="historyHome" class="history-home">
+
+                <!-- COMPLETED APPOINTMENTS CARD -->
+                <button
+                    type="button"
+                    class="history-card completed-card"
+                    id="openCompleted"
+                >
+                    <span class="history-card-icon">
+                        <i class="bi bi-calendar2-check-fill"></i>
+                    </span>
+
+                    <span class="history-card-title">
+                        Completed Appointments
+                    </span>
+
+                    <span class="history-card-description">
+                        View all patients whose appointments you have completed,
+                        including patients without prescriptions.
+                    </span>
+
+                    <span class="history-card-bottom">
+                        <span class="history-card-count" id="completedCount">0</span>
+
+                        <span class="history-card-link">
+                            View Appointments
+                            <i class="bi bi-arrow-right"></i>
+                        </span>
+                    </span>
+                </button>
+
+                <!-- PRESCRIPTIONS CARD -->
+                <button
+                    type="button"
+                    class="history-card prescriptions-card"
+                    id="openPrescriptions"
+                >
+                    <span class="history-card-icon">
+                        <i class="bi bi-file-earmark-medical-fill"></i>
+                    </span>
+
+                    <span class="history-card-title">
+                        Prescriptions Given
+                    </span>
+
+                    <span class="history-card-description">
+                        View prescriptions you have saved and access
+                        their View, Download, and Print options.
+                    </span>
+
+                    <span class="history-card-bottom">
+                        <span class="history-card-count" id="prescriptionCount">0</span>
+
+                        <span class="history-card-link">
+                            View Prescriptions
+                            <i class="bi bi-arrow-right"></i>
+                        </span>
+                    </span>
+                </button>
+
+            </section>
+
+            <!-- =========================================
+                 COMPLETED APPOINTMENTS LIST
+                 Hidden until its card is clicked
+            ========================================== -->
+
+            <section id="completedView" class="history-list-view" hidden>
+
+                <div class="history-list-header">
+
+                    <button
+                        type="button"
+                        class="history-back-btn"
+                        id="backFromCompleted"
+                    >
+                        <i class="bi bi-arrow-left"></i>
+                        Back to History
+                    </button>
+
+                    <div class="history-list-title">
+                        <h2>
+                            <i class="bi bi-calendar2-check-fill"></i>
+                            Completed Appointments
+                        </h2>
+
+                        <p>
+                            All completed appointments belonging to you.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="history-table-container">
+
+                    <table class="history-table">
+
+                        <thead>
+                            <tr>
+                                <th>Patient Name</th>
+                                <th>Appointment Date</th>
+                                <th>Time</th>
+                                <th>Mode</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="completedAppointmentsBody">
+                            <tr>
+                                <td colspan="5" class="history-message">
+                                    Loading completed appointments...
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+            <!-- =========================================
+                 PRESCRIPTIONS LIST
+                 Hidden until its card is clicked
+            ========================================== -->
+
+            <section id="prescriptionsView" class="history-list-view" hidden>
+
+                <div class="history-list-header">
+
+                    <button
+                        type="button"
+                        class="history-back-btn"
+                        id="backFromPrescriptions"
+                    >
+                        <i class="bi bi-arrow-left"></i>
+                        Back to History
+                    </button>
+
+                    <div class="history-list-title">
+                        <h2>
+                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            Prescriptions Given
+                        </h2>
+
+                        <p>
+                            All prescriptions saved by you.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="history-table-container">
+
+                    <table class="history-table">
+
+                        <thead>
+                            <tr>
+                                <th>Patient Name</th>
+                                <th>Appointment Date</th>
+                                <th>Prescription Date</th>
+                                <th>Follow-up Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="prescriptionsBody">
+                            <tr>
+                                <td colspan="5" class="history-message">
+                                    Loading prescriptions...
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+            <!-- PRESCRIPTION VIEW MODAL WILL BE ADDED BY JAVASCRIPT -->
+
+            <div
+                class="history-notice"
+                id="historyNotice"
+                role="status"
+                aria-live="polite"
+                hidden
+            ></div>
+
+        </main>
+
+    </div>
+
+    <script src="js/history.js"></script>
+
+</body>
+</html>

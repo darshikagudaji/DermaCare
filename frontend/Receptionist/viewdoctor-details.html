@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- =====================================================
+         DERMCARE - VIEW DOCTOR DETAILS
+         FILE: receptionist/viewdoctor-details.html
+         PURPOSE:
+         Display complete information of one selected doctor
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Doctor Details - Dermacare</title>
+
+
+    <!-- =====================================================
+         BOOTSTRAP ICONS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+
+    <!-- =====================================================
+         VIEW DOCTOR DETAILS CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/viewdoctor-details.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         MOBILE HAMBURGER
+    ====================================================== -->
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open Menu"
+    >
+
+        <i class="bi bi-list"></i>
+
+    </button>
+
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+
+        <!-- =================================================
+             SIDEBAR LOGO
+        ================================================== -->
+
+        <div class="sidebar-logo">
+
+            <div class="logo-text">
+                DermaCare
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             RECEPTIONIST PROFILE
+        ================================================== -->
+
+        <div class="receptionist-profile">
+
+            <div class="receptionist-icon">
+
+                <i class="bi bi-person-fill"></i>
+
+            </div>
+
+
+            <div class="receptionist-info">
+
+                <span class="receptionist-name">
+                    Receptionist
+                </span>
+
+                <span class="receptionist-role">
+                    Clinic Staff
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             SIDEBAR MENU
+        ================================================== -->
+
+        <nav class="sidebar-menu">
+
+
+            <!-- Dashboard -->
+
+            <a
+                href="receptionist-dashboard.html"
+            >
+
+                <i class="bi bi-grid-1x2-fill"></i>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+
+            <!-- Add Doctor -->
+
+            <a
+                href="add-doctor.html"
+            >
+
+                <i class="bi bi-person-plus-fill"></i>
+
+                <span>
+                    Add Doctor
+                </span>
+
+            </a>
+
+
+
+            <!-- Manage Doctors -->
+
+            <a
+                href="manage-doctors.html"
+                class="active"
+            >
+
+                <i  class="bi bi-person-badge-fill"></i>
+
+                <span>
+                    Manage Doctors
+                </span>
+
+            </a>
+
+
+
+            <!-- Today's Appointments -->
+
+            <a
+                href="todays-appointments.html"
+            >
+
+                <i class="bi bi-calendar-check-fill"></i>
+
+                <span>
+                    Today's Appointments
+                </span>
+
+            </a>
+
+
+
+            <!-- Upcoming Appointments -->
+
+            <a
+                href="upcoming-appointments.html"
+            >
+
+                <i class="bi bi-calendar-event-fill"></i>
+
+                <span>
+                    Upcoming Appointments
+                </span>
+
+            </a>
+
+
+
+            <!-- Leave Date -->
+
+            <a
+                href="leave-dateAppointment.html"
+            >
+
+                <i class="bi bi-calendar-x-fill"></i>
+
+                <span>
+                    Leave Date Appointments
+                </span>
+
+            </a>
+
+
+
+            <!-- Walk-in -->
+
+            <a
+                href="walk-in.html"
+            >
+
+                <i class="bi bi-person-walking"></i>
+
+                <span>
+                    Walk-in
+                </span>
+
+            </a>
+
+
+
+            <!-- History -->
+
+            <a
+                href="history.html"
+            >
+
+                <i class="bi bi-clock-history"></i>
+
+                <span>
+                    History
+                </span>
+
+            </a>
+
+
+
+            <!-- Logout -->
+
+            <a
+                href="#"
+                class="logout-link"
+                id="logoutButton"
+            >
+
+                <i class="bi bi-box-arrow-right"></i>
+
+                <span>
+                    Logout
+                </span>
+
+            </a>
+
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MOBILE OVERLAY
+    ====================================================== -->
+
+    <div
+        class="overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <div class="page-header">
+
+            <div>
+
+                <h1>
+                    Doctor Details
+                </h1>
+
+                <p>
+                    View complete information about the selected doctor.
+                </p>
+
+            </div>
+
+
+            <a
+                href="manage-doctors.html"
+                class="back-button"
+            >
+
+                <i class="bi bi-arrow-left"></i>
+
+                Back to Doctors
+
+            </a>
+
+        </div>
+
+
+
+        <!-- =================================================
+             LOADING MESSAGE
+        ================================================== -->
+
+        <div
+            class="loading-message"
+            id="loadingMessage"
+        >
+
+            <i class="bi bi-arrow-repeat"></i>
+
+            <span>
+                Loading doctor details...
+            </span>
+
+        </div>
+
+
+
+        <!-- =================================================
+             ERROR MESSAGE
+        ================================================== -->
+
+        <div
+            class="error-message"
+            id="errorMessage"
+        >
+
+            <i class="bi bi-exclamation-circle-fill"></i>
+
+            <span id="errorMessageText">
+                Unable to load doctor details.
+            </span>
+
+        </div>
+
+
+
+        <!-- =================================================
+             DOCTOR DETAILS CARD
+        ================================================== -->
+
+        <section
+            class="view-doctor-card"
+            id="doctorDetailsContainer"
+        >
+
+
+            <!-- =================================================
+                 CARD TITLE
+            ================================================== -->
+
+            <div class="card-title">
+
+                <div class="title-icon">
+
+                    <i class="bi bi-person-vcard-fill"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Doctor Information
+                    </h2>
+
+                    <p>
+                        Complete details of the selected doctor.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 DOCTOR PROFILE
+            ================================================== -->
+
+            <div class="doctor-profile-section">
+
+
+                <!-- Doctor Image -->
+
+                <div class="doctor-image-wrapper">
+
+                    <img
+                        id="doctorImage"
+                        src=""
+                        alt="Doctor Profile"
+                    >
+
+                    <div
+                        class="doctor-default-image"
+                        id="doctorDefaultImage"
+                    >
+
+                        <i class="bi bi-person-fill"></i>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Doctor Main Details -->
+
+                <div class="doctor-main-info">
+
+                    <div class="doctor-name-row">
+
+                        <h2 id="doctorName">
+                            Doctor Name
+                        </h2>
+
+                        <span
+                            id="availabilityBadge"
+                            class="availability-badge"
+                        >
+                            Available
+                        </span>
+
+                    </div>
+
+
+                    <p
+                        id="doctorSpecialization"
+                        class="doctor-specialization"
+                    >
+                        Specialization
+                    </p>
+
+
+                    <p
+                        id="doctorQualification"
+                        class="doctor-qualification"
+                    >
+                        Qualification
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 BASIC INFORMATION
+            ================================================== -->
+
+            <div class="information-section">
+
+                <div class="section-label">
+
+                    <i class="bi bi-person-vcard-fill"></i>
+
+                    Doctor Information
+
+                </div>
+
+
+                <p class="section-description">
+                    Basic information and consultation details.
+                </p>
+
+
+                <div class="information-grid">
+
+
+                    <!-- Experience -->
+
+                    <div class="info-item">
+
+                        <div class="info-icon">
+
+                            <i class="bi bi-award-fill"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="info-label">
+                                Experience
+                            </span>
+
+                            <strong id="doctorExperience">
+                                -
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Consultation Fee -->
+
+                    <div class="info-item">
+
+                        <div class="info-icon">
+
+                            <i class="bi bi-currency-rupee"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="info-label">
+                                Consultation Fee
+                            </span>
+
+                            <strong id="doctorFee">
+                                -
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Gender -->
+
+                    <div class="info-item">
+
+                        <div class="info-icon">
+
+                            <i class="bi bi-person-fill"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="info-label">
+                                Gender
+                            </span>
+
+                            <strong id="doctorGender">
+                                -
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Mobile Number -->
+
+                    <div class="info-item">
+
+                        <div class="info-icon">
+
+                            <i class="bi bi-telephone-fill"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="info-label">
+                                Mobile Number
+                            </span>
+
+                            <strong id="doctorMobile">
+                                -
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Email -->
+
+                    <div class="info-item info-item-wide">
+
+                        <div class="info-icon">
+
+                            <i class="bi bi-envelope-fill"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="info-label">
+                                Email Address
+                            </span>
+
+                            <strong id="doctorEmail">
+                                -
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 WORKING DAYS
+            ================================================== -->
+
+            <div class="information-section">
+
+                <div class="section-label">
+
+                    <i class="bi bi-calendar-week-fill"></i>
+
+                    Working Days
+
+                </div>
+
+
+                <p class="section-description">
+                    Days on which the doctor is available at the clinic.
+                </p>
+
+
+                <div
+                    class="working-days"
+                    id="workingDays"
+                ></div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 WORKING HOURS
+            ================================================== -->
+
+            <div class="information-section">
+
+                <div class="section-label">
+
+                    <i class="bi bi-clock-fill"></i>
+
+                    Working Hours
+
+                </div>
+
+
+                <p class="section-description">
+                    Doctor's configured working hours.
+                </p>
+
+
+                <div
+                    class="working-hours"
+                    id="workingHours"
+                ></div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ABOUT DOCTOR
+            ================================================== -->
+
+            <div class="information-section">
+
+                <div class="section-label">
+
+                    <i class="bi bi-file-person-fill"></i>
+
+                    About Doctor
+
+                </div>
+
+
+                <p class="section-description">
+                    Professional information about the doctor.
+                </p>
+
+
+                <p
+                    class="about-doctor"
+                    id="aboutDoctor"
+                >
+                    -
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 CARD ACTIONS
+            ================================================== -->
+
+            <div class="form-actions">
+
+                <a
+                    href="manage-doctors.html"
+                    class="cancel-button"
+                >
+
+                    <i class="bi bi-arrow-left"></i>
+
+                    Back to Doctors
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="save-button"
+                    id="editDoctorButton"
+                >
+
+                    <i class="bi bi-pencil-fill"></i>
+
+                    Edit Doctor
+
+                </a>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/viewdoctor-details.js"></script>
+
+
+</body>
+
+</html>

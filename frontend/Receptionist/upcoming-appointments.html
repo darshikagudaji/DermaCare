@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <!-- =====================================================
+         BASIC DOCUMENT SETTINGS
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        DermCare - Upcoming Appointments
+    </title>
+
+
+    <!-- =====================================================
+         BOOTSTRAP ICONS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+
+    <!-- =====================================================
+         UPCOMING APPOINTMENTS CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/upcoming-appointments.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         MOBILE HAMBURGER MENU
+    ====================================================== -->
+
+    <button
+        type="button"
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+    >
+
+        <i class="bi bi-list"></i>
+
+    </button>
+
+
+    <!-- =====================================================
+         MOBILE SIDEBAR OVERLAY
+    ====================================================== -->
+
+    <div
+        class="overlay"
+        id="overlay"
+    ></div>
+
+
+    <!-- =====================================================
+         RECEPTIONIST SIDEBAR
+    ====================================================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+
+    <!-- MOBILE SIDEBAR X CLOSE BUTTON -->
+<button
+    type="button"
+    class="close-sidebar-btn"
+    id="closeSidebarBtn"
+    aria-label="Close sidebar"
+>
+    <i class="bi bi-x-lg"></i>
+</button>
+
+
+        <!-- =================================================
+             DERMCARE LOGO
+        ================================================== -->
+
+        <div class="sidebar-logo">
+
+            <span class="logo-text">
+                DermaCare
+            </span>
+
+        </div>
+
+
+        <!-- =================================================
+             RECEPTIONIST PROFILE
+        ================================================== -->
+
+        <div class="receptionist-profile">
+
+
+            <!-- PROFILE ICON -->
+
+            <div class="receptionist-icon">
+
+                <i class="bi bi-person-fill"></i>
+
+            </div>
+
+
+            <!-- PROFILE INFORMATION -->
+
+            <div class="receptionist-info">
+
+                <span
+                    class="receptionist-name"
+                    id="receptionistName"
+                >
+                    Receptionist
+                </span>
+
+
+                <span class="receptionist-role">
+
+                    Clinic Staff
+
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             SIDEBAR MENU
+        ================================================== -->
+
+        <nav class="sidebar-menu">
+
+
+            <!-- =============================================
+                 DASHBOARD
+            ============================================== -->
+
+            <a href="receptionist-dashboard.html">
+
+                <i class="bi bi-grid-1x2-fill"></i>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <!-- =============================================
+                 ADD DOCTOR
+            ============================================== -->
+
+            <a href="add-doctor.html">
+
+                <i class="bi bi-person-plus-fill"></i>
+
+                <span>
+                    Add Doctor
+                </span>
+
+            </a>
+
+
+            <!-- =============================================
+                 MANAGE DOCTORS
+            ============================================== -->
+
+            <a href="manage-doctors.html">
+
+                <i class="bi bi-person-badge-fill"></i>
+
+                <span>
+                    Manage Doctors
+                </span>
+
+            </a>
+
+
+            <!-- =============================================
+                 TODAY'S APPOINTMENTS
+            ============================================== -->
+
+            <a href="todays-appointments.html">
+
+                <i class="bi bi-calendar-check-fill"></i>
+
+                <span>
+                    Today's Appointments
+                </span>
+
+            </a>
+
+
+            <!-- =============================================
+                 UPCOMING APPOINTMENTS
+            ============================================== -->
+
+            <a
+                href="upcoming-appointments.html"
+                class="active"
+            >
+
+                <i class="bi bi-calendar-event-fill"></i>
+
+                <span>
+                    Upcoming Appointments
+                </span>
+
+            </a>
+
+
+            <!-- =============================================
+                 LEAVE DATE APPOINTMENTS
+            ============================================== -->
+
+            <a href="leave-dateAppointment.html">
+
+                <i class="bi bi-calendar-x-fill"></i>
+
+                <span>
+                    Leave Date Appointments
+                </span>
+
+            </a>
+
+
+            <!-- =============================================
+                 WALK-IN
+            ============================================== -->
+
+            <a href="walk-in.html">
+
+                <i class="bi bi-person-walking"></i>
+
+                <span>
+                    Walk-in
+                </span>
+
+            </a>
+
+
+            <!-- =============================================
+                 HISTORY
+            ============================================== -->
+
+            <a href="history.html">
+
+                <i class="bi bi-clock-history"></i>
+
+                <span>
+                    History
+                </span>
+
+            </a>
+
+
+            <!-- =============================================
+                 LOGOUT
+            ============================================== -->
+
+            <a
+                href="login.html"
+                class="logout-link"
+                id="logoutLink"
+            >
+
+                <i class="bi bi-box-arrow-right"></i>
+
+                <span>
+                    Logout
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <section class="page-header">
+
+
+            <!-- PAGE TITLE -->
+
+            <div class="page-title-section">
+
+
+                <span class="page-label">
+
+                    Appointment Management
+
+                </span>
+
+
+                <h1>
+
+                    Upcoming Appointments
+
+                </h1>
+
+
+                <p>
+
+                    View and manage patient appointments
+                    scheduled for upcoming dates.
+
+                </p>
+
+
+            </div>
+
+
+            <!-- UPCOMING DATE -->
+
+            <div class="current-date-card">
+
+
+                <i class="bi bi-calendar3"></i>
+
+
+                <div>
+
+
+                    <span>
+
+                        Upcoming Schedule
+
+                    </span>
+
+
+                    <strong
+                        id="currentDate"
+                    >
+
+                        Loading...
+
+                    </strong>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             APPOINTMENTS SUMMARY
+        ================================================== -->
+
+        <section class="summary-grid">
+
+
+            <!-- TOTAL UPCOMING -->
+
+            <div class="summary-card total-card">
+
+
+                <div class="summary-icon">
+
+                    <i class="bi bi-calendar-event-fill"></i>
+
+                </div>
+
+
+                <div class="summary-content">
+
+
+                    <span>
+
+                        Total Upcoming
+
+                    </span>
+
+
+                    <h2
+                        id="totalAppointments"
+                    >
+
+                        0
+
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- BOOKED -->
+
+            <div class="summary-card booked-card">
+
+
+                <div class="summary-icon">
+
+                    <i class="bi bi-calendar-plus-fill"></i>
+
+                </div>
+
+
+                <div class="summary-content">
+
+
+                    <span>
+
+                        Booked
+
+                    </span>
+
+
+                    <h2
+                        id="bookedAppointments"
+                    >
+
+                        0
+
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- CONFIRMED -->
+
+            <div class="summary-card arrived-card">
+
+
+                <div class="summary-icon">
+
+                    <i class="bi bi-calendar-check-fill"></i>
+
+                </div>
+
+
+                <div class="summary-content">
+
+
+                    <span>
+
+                        Confirmed
+
+                    </span>
+
+
+                    <h2
+                        id="confirmedAppointments"
+                    >
+
+                        0
+
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- CANCELLED -->
+
+            <div class="summary-card cancelled-card">
+
+
+                <div class="summary-icon">
+
+                    <i class="bi bi-calendar-x-fill"></i>
+
+                </div>
+
+
+                <div class="summary-content">
+
+
+                    <span>
+
+                        Cancelled
+
+                    </span>
+
+
+                    <h2
+                        id="cancelledAppointments"
+                    >
+
+                        0
+
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             UPCOMING APPOINTMENTS TABLE
+        ================================================== -->
+
+        <section class="appointments-section">
+
+
+            <!-- =============================================
+                 SECTION HEADER
+            ============================================== -->
+
+            <div class="section-header">
+
+
+                <div>
+
+
+                    <h2>
+
+                        Upcoming Appointment List
+
+                    </h2>
+
+
+                    <p>
+
+                        All appointments scheduled after today.
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =============================================
+                 TABLE CONTAINER
+            ============================================== -->
+
+            <div class="table-container">
+
+
+                <table>
+
+
+                    <!-- TABLE HEADER -->
+
+                    <thead>
+
+                        <tr>
+
+
+                            <th>
+
+                                Patient
+
+                            </th>
+
+
+                            <th>
+
+                                Doctor
+
+                            </th>
+
+
+                            <th>
+
+                                Date
+
+                            </th>
+
+
+                            <th>
+
+                                Time
+
+                            </th>
+
+
+                            <th>
+
+                                Type
+
+                            </th>
+
+
+                            <th>
+
+                                Status
+
+                            </th>
+
+
+                            <th>
+
+                                Action
+
+                            </th>
+
+
+                        </tr>
+
+                    </thead>
+
+
+                    <!-- =========================================
+                         TABLE BODY
+
+                         JAVASCRIPT WILL INSERT UPCOMING
+                         APPOINTMENTS HERE.
+                    ========================================== -->
+
+                    <tbody
+                        id="upcomingAppointmentsBody"
+                    >
+
+
+                        <!-- LOADING MESSAGE -->
+
+                        <tr>
+
+
+                            <td
+                                colspan="7"
+                                class="loading-row"
+                            >
+
+                                Loading upcoming appointments...
+
+                            </td>
+
+
+                        </tr>
+
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         UPCOMING APPOINTMENTS JAVASCRIPT
+    ====================================================== -->
+
+    <script
+        src="js/upcoming-appointments.js"
+    ></script>
+
+
+</body>
+
+</html>

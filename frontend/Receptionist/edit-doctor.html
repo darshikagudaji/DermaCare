@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <!-- =======================================================
+         BASIC DOCUMENT SETTINGS
+    ======================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+
+    <!-- =======================================================
+         PAGE TITLE
+    ======================================================== -->
+
+    <title>DermCare - Edit Doctor</title>
+
+
+    <!-- =======================================================
+         BOOTSTRAP ICONS
+    ======================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+
+    <!-- =======================================================
+         PAGE CSS
+    ======================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/edit-doctor.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =======================================================
+         MOBILE HAMBURGER BUTTON
+    ======================================================== -->
+
+    <button
+        type="button"
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+
+        <i class="bi bi-list"></i>
+
+    </button>
+
+
+
+    <!-- =======================================================
+         MOBILE OVERLAY
+    ======================================================== -->
+
+    <div
+        class="overlay"
+        id="overlay"
+    ></div>
+
+
+
+    <!-- =======================================================
+         RECEPTIONIST SIDEBAR
+    ======================================================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+
+        <!-- ===================================================
+             LOGO
+        ==================================================== -->
+
+        <div class="sidebar-logo">
+
+            <div class="logo-text">
+
+                DermaCare
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ===================================================
+             RECEPTIONIST PROFILE
+        ==================================================== -->
+
+        <div class="receptionist-profile">
+
+
+            <div class="receptionist-icon">
+
+                <i class="bi bi-person-fill"></i>
+
+            </div>
+
+
+            <div class="receptionist-info">
+
+                <span class="receptionist-name">
+
+                    Receptionist
+
+                </span>
+
+
+                <span class="receptionist-role">
+
+                    Clinic Staff
+
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ===================================================
+             SIDEBAR MENU
+        ==================================================== -->
+
+        <nav class="sidebar-menu">
+
+
+            <!-- DASHBOARD -->
+
+            <a href="receptionist-dashboard.html">
+
+                <i class="bi bi-grid-1x2-fill"></i>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+
+            <!-- ADD DOCTOR -->
+
+            <a href="add-doctor.html">
+
+                <i class="bi bi-person-plus-fill"></i>
+
+                <span>
+                    Add Doctor
+                </span>
+
+            </a>
+
+
+
+            <!-- DOCTORS -->
+
+            <a
+                href="manage-doctors.html"
+                class="active"
+            >
+
+                <i class="bi bi-person-badge-fill"></i>
+
+                <span>
+                    Manage Doctors
+                </span>
+
+            </a>
+
+
+
+            <!-- TODAY'S APPOINTMENTS -->
+
+            <a href="todays-appointments.html">
+
+                <i class="bi bi-calendar-check-fill"></i>
+
+                <span>
+                    Today's Appointments
+                </span>
+
+            </a>
+
+
+
+            <!-- UPCOMING APPOINTMENTS -->
+
+            <a href="upcoming-appointments.html">
+
+                <i class="bi bi-calendar-event-fill"></i>
+
+                <span>
+                    Upcoming Appointments
+                </span>
+
+            </a>
+
+
+
+            <!-- LEAVE DATE APPOINTMENTS -->
+
+            <a
+                href="leave-dateAppointment.html"
+                class="nav-item"
+            >
+
+                <i class="bi bi-calendar-x-fill"></i>
+
+                <span>
+                    Leave Date Appointments
+                </span>
+
+            </a>
+
+
+
+            <!-- WALK-IN -->
+
+            <a href="walk-in.html">
+
+                <i class="bi bi-person-walking"></i>
+
+                <span>
+                    Walk-in
+                </span>
+
+            </a>
+
+
+
+            <!-- HISTORY -->
+
+            <a href="history.html">
+
+                <i class="bi bi-clock-history"></i>
+
+                <span>
+                    History
+                </span>
+
+            </a>
+
+
+
+            <!-- LOGOUT -->
+
+            <a
+                href="../login.html"
+                class="logout-link"
+            >
+
+                <i class="bi bi-box-arrow-right"></i>
+
+                <span>
+                    Logout
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+    </aside>
+
+
+
+    <!-- =======================================================
+         MAIN CONTENT
+    ======================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- ===================================================
+             PAGE HEADER
+        ==================================================== -->
+
+        <div class="page-header">
+
+
+            <div>
+
+                <h1>
+                    Edit Doctor
+                </h1>
+
+
+                <p>
+                    Update the doctor's profile and clinic information.
+                </p>
+
+            </div>
+
+
+
+            <!-- BACK BUTTON -->
+
+            <a
+                href="manage-doctors.html"
+                class="back-button"
+            >
+
+                <i class="bi bi-arrow-left"></i>
+
+                Back to Doctors
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- ===================================================
+             SUCCESS TOAST
+        ==================================================== -->
+
+        <div
+            class="success-message"
+            id="successMessage"
+        >
+
+            <i class="bi bi-check-circle-fill"></i>
+
+            <span id="successMessageText">
+
+                Doctor updated successfully.
+
+            </span>
+
+
+            <button
+                type="button"
+                class="toast-close-button"
+                id="successToastClose"
+                aria-label="Close notification"
+            >
+
+                <i class="bi bi-x-lg"></i>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- ===================================================
+             ERROR TOAST
+        ==================================================== -->
+
+        <div
+            class="error-message"
+            id="errorMessage"
+        >
+
+            <i class="bi bi-exclamation-circle-fill"></i>
+
+            <span id="errorMessageText">
+
+                Something went wrong.
+
+            </span>
+
+
+            <button
+                type="button"
+                class="toast-close-button"
+                id="errorToastClose"
+                aria-label="Close notification"
+            >
+
+                <i class="bi bi-x-lg"></i>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- ===================================================
+             LOADING MESSAGE
+        ==================================================== -->
+
+        <div
+            class="loading-message"
+            id="loadingMessage"
+        >
+
+            <i class="bi bi-arrow-repeat"></i>
+
+            <p>
+
+                Loading doctor information...
+
+            </p>
+
+        </div>
+
+
+
+        <!-- ===================================================
+             EDIT DOCTOR CARD
+        ==================================================== -->
+
+        <section
+            class="edit-doctor-card"
+            id="editDoctorCard"
+        >
+
+
+            <!-- ===================================================
+                 CARD TITLE
+            ==================================================== -->
+
+            <div class="card-title">
+
+
+                <div class="title-icon">
+
+                    <i class="bi bi-person-gear"></i>
+
+                </div>
+
+
+
+                <div>
+
+                    <h2>
+
+                        Doctor Information
+
+                    </h2>
+
+
+                    <p>
+
+                        Update the information below and save your changes.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ===================================================
+                 EDIT DOCTOR FORM
+            ==================================================== -->
+
+            <form
+                id="editDoctorForm"
+                enctype="multipart/form-data"
+            >
+
+
+                <!-- ===================================================
+                     DOCTOR IMAGE
+                ==================================================== -->
+
+                <div class="doctor-image-edit-section">
+
+
+                    <div class="doctor-image-preview-wrapper">
+
+
+                        <img
+                            id="doctorImagePreview"
+                            class="doctor-image-preview"
+                            src=""
+                            alt="Doctor Profile"
+                        >
+
+
+
+                        <div
+                            class="doctor-default-image"
+                            id="doctorDefaultImage"
+                        >
+
+                            <i class="bi bi-person"></i>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="doctor-image-content">
+
+
+                        <h3>
+
+                            Doctor Profile Image
+
+                        </h3>
+
+
+                        <p>
+
+                            Upload a new profile image if required.
+
+                        </p>
+
+
+
+                        <input
+                            type="file"
+                            id="doctorImage"
+                            name="DoctorImage"
+                            accept="image/*"
+                            hidden
+                        >
+
+
+
+                        <label
+                            for="doctorImage"
+                            class="change-image-button"
+                        >
+
+                            <i class="bi bi-camera-fill"></i>
+
+                            Change Image
+
+                        </label>
+
+
+
+                        <small>
+
+                            Supported formats: JPG, JPEG and PNG.
+
+                        </small>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ===================================================
+                     FORM GRID
+                ==================================================== -->
+
+                <div class="form-grid">
+
+
+                    <!-- FULL NAME -->
+
+                    <div class="form-group">
+
+                        <label for="fullName">
+
+                            Full Name
+
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-person-fill"></i>
+
+
+                            <input
+                                type="text"
+                                id="fullName"
+                                name="FullName"
+                                placeholder="Enter doctor's full name"
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+
+                            Email Address
+
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-envelope-fill"></i>
+
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="Email"
+                                placeholder="Enter email address"
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- MOBILE -->
+
+                    <div class="form-group">
+
+                        <label for="mobileNo">
+
+                            Mobile Number
+
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-telephone-fill"></i>
+
+
+                            <input
+                                type="tel"
+                                id="mobileNo"
+                                name="MobileNo"
+                                placeholder="Enter mobile number"
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- GENDER -->
+
+                    <div class="form-group">
+
+                        <label for="gender">
+
+                            Gender
+
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-gender-ambiguous"></i>
+
+
+                            <select
+                                id="gender"
+                                name="Gender"
+                            >
+
+                                <option value="">
+
+                                    Select Gender
+
+                                </option>
+
+
+                                <option value="Male">
+
+                                    Male
+
+                                </option>
+
+
+                                <option value="Female">
+
+                                    Female
+
+                                </option>
+
+
+                                <option value="Other">
+
+                                    Other
+
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- SPECIALIZATION -->
+
+                    <div class="form-group">
+
+                        <label for="specialization">
+
+                            Specialization
+
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-heart-pulse-fill"></i>
+
+
+                            <input
+                                type="text"
+                                id="specialization"
+                                name="Specialization"
+                                placeholder="Enter specialization"
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- QUALIFICATION -->
+
+                    <div class="form-group">
+
+                        <label for="qualification">
+
+                            Qualification
+
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-mortarboard-fill"></i>
+
+
+                            <input
+                                type="text"
+                                id="qualification"
+                                name="Qualification"
+                                placeholder="Example: MBBS, MD"
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- EXPERIENCE -->
+
+                    <div class="form-group">
+
+                        <label for="experience">
+
+                            Experience (Years)
+
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-briefcase-fill"></i>
+
+
+                            <input
+                                type="number"
+                                id="experience"
+                                name="Experience"
+                                min="0"
+                                placeholder="Enter years of experience"
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- CONSULTATION FEE -->
+
+                    <div class="form-group">
+
+                        <label for="consultationFee">
+
+                            Consultation Fee (₹)
+
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-currency-rupee"></i>
+
+
+                            <input
+                                type="number"
+                                id="consultationFee"
+                                name="ConsultationFee"
+                                min="0"
+                                placeholder="Enter consultation fee"
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- AVAILABILITY -->
+
+                    <div class="form-group">
+
+                        <label for="availability">
+
+                            Availability Status
+
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-check-circle-fill"></i>
+
+
+                            <select
+                                id="availability"
+                                name="Availability"
+                            >
+
+                                <option value="Available">
+
+                                    Available
+
+                                </option>
+
+
+                                <option value="Not Available">
+
+                                    Not Available
+
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group password-readonly-group">
+
+
+                        <label for="doctorPassword">
+
+                            Password
+
+                        </label>
+
+
+                        <div class="input-wrapper password-readonly-wrapper">
+
+                            <i class="bi bi-lock-fill"></i>
+
+
+                            <input
+                                type="password"
+                                id="doctorPassword"
+                                value="••••••••••••"
+                                readonly
+                                tabindex="-1"
+                                aria-label="Doctor password is hidden and cannot be edited"
+                            >
+
+                        </div>
+
+
+                        <small class="password-note">
+
+                            <i class="bi bi-shield-lock-fill"></i>
+
+                            The doctor's password is hidden and can only
+                            be changed by the doctor.
+
+                        </small>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ===================================================
+                     WORKING DAYS
+                ==================================================== -->
+
+                <div class="working-days-section">
+
+
+                    <div class="section-label">
+
+                        <i class="bi bi-calendar-week"></i>
+
+                        Working Days
+
+                    </div>
+
+
+                    <p class="section-description">
+
+                        Select the days when this doctor is available
+                        at the clinic.
+
+                    </p>
+
+
+
+                    <div class="working-days-checkboxes">
+
+
+                        <label class="day-checkbox">
+
+                            <input
+                                type="checkbox"
+                                name="WorkingDays"
+                                value="Monday"
+                            >
+
+                            <span>Monday</span>
+
+                        </label>
+
+
+                        <label class="day-checkbox">
+
+                            <input
+                                type="checkbox"
+                                name="WorkingDays"
+                                value="Tuesday"
+                            >
+
+                            <span>Tuesday</span>
+
+                        </label>
+
+
+                        <label class="day-checkbox">
+
+                            <input
+                                type="checkbox"
+                                name="WorkingDays"
+                                value="Wednesday"
+                            >
+
+                            <span>Wednesday</span>
+
+                        </label>
+
+
+                        <label class="day-checkbox">
+
+                            <input
+                                type="checkbox"
+                                name="WorkingDays"
+                                value="Thursday"
+                            >
+
+                            <span>Thursday</span>
+
+                        </label>
+
+
+                        <label class="day-checkbox">
+
+                            <input
+                                type="checkbox"
+                                name="WorkingDays"
+                                value="Friday"
+                            >
+
+                            <span>Friday</span>
+
+                        </label>
+
+
+                        <label class="day-checkbox">
+
+                            <input
+                                type="checkbox"
+                                name="WorkingDays"
+                                value="Saturday"
+                            >
+
+                            <span>Saturday</span>
+
+                        </label>
+
+
+                        <label class="day-checkbox">
+
+                            <input
+                                type="checkbox"
+                                name="WorkingDays"
+                                value="Sunday"
+                            >
+
+                            <span>Sunday</span>
+
+                        </label>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ===================================================
+                     ABOUT DOCTOR
+                ==================================================== -->
+
+                <div class="form-group about-doctor-group">
+
+
+                    <label for="aboutDoctor">
+
+                        About Doctor
+
+                    </label>
+
+
+                    <textarea
+                        id="aboutDoctor"
+                        name="AboutDoctor"
+                        rows="5"
+                        placeholder="Write a short description about the doctor..."
+                    ></textarea>
+
+
+                </div>
+
+
+
+                <!-- ===================================================
+                     FORM ACTIONS
+                ==================================================== -->
+
+                <div class="form-actions">
+
+
+                    <!-- CANCEL -->
+
+                    <a
+                        href="manage-doctors.html"
+                        class="cancel-button"
+                    >
+
+                        <i class="bi bi-x-circle"></i>
+
+                        Cancel
+
+                    </a>
+
+
+
+                    <!-- SAVE CHANGES -->
+
+                    <button
+                        type="submit"
+                        class="save-button"
+                        id="saveDoctorButton"
+                    >
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        Save Changes
+
+                    </button>
+
+
+                </div>
+
+
+            </form>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =======================================================
+         PAGE JAVASCRIPT
+    ======================================================== -->
+
+    <script src="js/edit-doctor.js"></script>
+
+
+</body>
+
+</html>

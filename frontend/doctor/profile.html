@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <!-- =====================================================
+         META TAGS
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+
+    <!-- =====================================================
+         PAGE TITLE
+    ====================================================== -->
+
+    <title>My Profile - Dermacare</title>
+
+
+    <!-- =====================================================
+         BOOTSTRAP ICONS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    >
+
+
+    <!-- =====================================================
+         PROFILE CSS
+         File: doctor/css/profile.css
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="./css/profile.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         PROFILE SUCCESS / ERROR TOAST
+    ====================================================== -->
+
+    <div
+        class="doctor-success-toast"
+        id="messageBox"
+        role="alert"
+        aria-live="polite"
+        style="display: none;"
+    >
+
+        <div class="doctor-toast-icon">
+
+            <i
+                class="bi bi-check-lg"
+                id="toastIcon"
+            ></i>
+
+        </div>
+
+
+        <div
+            class="doctor-toast-message"
+            id="toastMessage"
+        >
+
+            Profile updated successfully.
+
+        </div>
+
+
+        <button
+            type="button"
+            class="doctor-toast-close"
+            id="toastCloseButton"
+            aria-label="Close notification"
+        >
+
+            &times;
+
+        </button>
+
+
+        <div
+            class="doctor-toast-progress"
+            id="toastProgress"
+        ></div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MOBILE MENU BUTTON
+    ====================================================== -->
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open menu"
+    >
+
+        <i class="bi bi-list"></i>
+
+    </button>
+
+
+
+    <!-- =====================================================
+         MAIN CONTAINER
+    ====================================================== -->
+
+    <div class="container">
+
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside
+            class="sidebar"
+            id="sidebar"
+        >
+
+
+            <!-- LOGO -->
+
+            <div class="logo">
+
+                <span>
+                    Dermacare
+                </span>
+
+            </div>
+
+
+            <!-- DOCTOR ROLE -->
+
+            <div class="doctor-role">
+
+                <i class="bi bi-person-badge-fill"></i>
+
+                <span>
+                    Doctor
+                </span>
+
+            </div>
+
+
+            <!-- MENU TITLE -->
+
+            <div class="menu-title">
+
+                MAIN
+
+            </div>
+
+
+            <!-- SIDEBAR NAVIGATION -->
+
+            <nav>
+
+                <ul>
+
+
+                    <li>
+
+                        <a href="dashboard.html">
+
+                            <i class="bi bi-grid-1x2-fill"></i>
+
+                            <span>
+                                Dashboard
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="today-appointments.html">
+
+                            <i class="bi bi-calendar-day-fill"></i>
+
+                            <span>
+                                Today's Appointments
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="upcoming-appointments.html">
+
+                            <i class="bi bi-calendar-check-fill"></i>
+
+                            <span>
+                                Upcoming Appointments
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="working-hours.html">
+
+                            <i class="bi bi-clock-fill"></i>
+
+                            <span>
+                                Working Hours and Leave Date
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="prescription-form.html">
+
+                            <i class="bi bi-file-earmark-medical-fill"></i>
+
+                            <span>
+                                Prescriptions
+                            </span>
+
+                        </a>
+
+                    </li>
+
+                    <!-- =========================================
+                         HISTORY
+                    ========================================== -->
+
+                    <li>
+
+                        <a href="history.html">
+
+                            <i class="bi bi-clock-history"></i>
+
+                            <span>
+                                History
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- ACTIVE PROFILE MENU -->
+
+                    <li class="active">
+
+                        <a href="profile.html">
+
+                            <i class="bi bi-person-circle"></i>
+
+                            <span>
+                                Profile
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+                </ul>
+
+            </nav>
+
+
+            <!-- LOGOUT -->
+
+            <div class="logout">
+
+                <a
+                    href="#"
+                    id="logoutLink"
+                >
+
+                    <i class="bi bi-box-arrow-right"></i>
+
+                    <span>
+                        Logout
+                    </span>
+
+                </a>
+
+            </div>
+
+
+        </aside>
+
+
+
+        <!-- =====================================================
+             SIDEBAR OVERLAY
+        ====================================================== -->
+
+        <div
+            class="overlay"
+            id="overlay"
+        ></div>
+
+
+
+        <!-- =====================================================
+             MAIN CONTENT
+        ====================================================== -->
+
+        <main class="content">
+
+
+            <section class="profile-page">
+
+
+                <!-- =================================================
+                     MY PROFILE TITLE CARD
+                ================================================== -->
+
+                <div class="my-profile-card">
+
+
+                    <div class="my-profile-icon">
+
+                        <i class="bi bi-person-circle"></i>
+
+                    </div>
+
+
+                    <div class="my-profile-text">
+
+                        <h1>
+                            My Profile
+                        </h1>
+
+                        <p>
+                            Manage your personal and professional information
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     PROFILE HEADER CARD
+                ================================================== -->
+
+                <div class="profile-header-card">
+
+
+                    <!-- PROFILE IMAGE -->
+
+                    <div class="profile-image-section">
+
+                        <div class="profile-image-wrapper">
+
+
+                            <img
+                                id="profileImage"
+                                src="../images/default-doctor.png"
+                                alt="Doctor Profile"
+                            >
+
+
+                            <label
+                                for="profileImageInput"
+                                class="image-edit-button"
+                                title="Change profile photo"
+                            >
+
+                                <i class="bi bi-camera-fill"></i>
+
+                            </label>
+
+
+                            <input
+                                type="file"
+                                id="profileImageInput"
+                                accept="image/*"
+                                hidden
+                            >
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PROFILE INFORMATION -->
+
+                    <div class="profile-header-info">
+
+
+                        <h2 id="profileDoctorName">
+
+                            Doctor
+
+                        </h2>
+
+
+                        <p id="profileSpecialization">
+
+                            Dermatologist
+
+                        </p>
+
+
+                        <div class="profile-status">
+
+                            <span class="status-dot"></span>
+
+                            <span>
+                                Doctor Profile
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- EDIT PROFILE BUTTON -->
+
+                    <button
+                        type="button"
+                        class="edit-profile-button"
+                        id="editProfileButton"
+                    >
+
+                        <i class="bi bi-pencil"></i>
+
+                        <span>
+                            Edit Profile
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     PERSONAL & PROFESSIONAL INFORMATION
+                ================================================== -->
+
+                <form
+                    id="profileForm"
+                    novalidate
+                >
+
+
+                    <div class="profile-card">
+
+
+                        <!-- CARD HEADING -->
+
+                        <div class="card-heading">
+
+
+                            <div class="card-heading-icon">
+
+                                <i class="bi bi-person-vcard"></i>
+
+                            </div>
+
+
+                            <div>
+
+                                <h2>
+                                    Personal & Professional Information
+                                </h2>
+
+                                <p>
+                                    View and update your professional information
+                                </p>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- FORM GRID -->
+
+                        <div class="form-grid">
+
+
+                            <!-- FULL NAME -->
+
+                            <div class="form-group">
+
+                                <label for="fullName">
+                                    Full Name
+                                </label>
+
+
+                                <div class="input-wrapper">
+
+                                    <i class="bi bi-person"></i>
+
+                                    <input
+                                        type="text"
+                                        id="fullName"
+                                        name="fullName"
+                                        placeholder="Enter full name"
+                                        disabled
+                                    >
+
+                                </div>
+
+
+                                <small
+                                    class="field-error"
+                                    id="fullNameError"
+                                ></small>
+
+                            </div>
+
+
+
+                            <!-- EMAIL -->
+
+                            <div class="form-group">
+
+                                <label for="email">
+                                    Email Address
+                                </label>
+
+
+                                <div class="input-wrapper">
+
+                                    <i class="bi bi-envelope"></i>
+
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        placeholder="Enter email address"
+                                        disabled
+                                    >
+
+                                </div>
+
+
+                                <small
+                                    class="field-error"
+                                    id="emailError"
+                                ></small>
+
+                            </div>
+
+
+
+                            <!-- MOBILE NUMBER -->
+
+                            <div class="form-group">
+
+                                <label for="mobileNo">
+                                    Mobile Number
+                                </label>
+
+
+                                <div class="input-wrapper">
+
+                                    <i class="bi bi-phone"></i>
+
+                                    <input
+                                        type="tel"
+                                        id="mobileNo"
+                                        name="mobileNo"
+                                        maxlength="10"
+                                        inputmode="numeric"
+                                        placeholder="Enter 10-digit mobile number"
+                                        disabled
+                                    >
+
+                                </div>
+
+
+                                <small
+                                    class="field-error"
+                                    id="mobileNoError"
+                                ></small>
+
+                            </div>
+
+
+
+                            <!-- GENDER -->
+
+                            <div class="form-group">
+
+                                <label for="gender">
+                                    Gender
+                                </label>
+
+
+                                <div class="input-wrapper">
+
+                                    <i class="bi bi-gender-ambiguous"></i>
+
+                                    <select
+                                        id="gender"
+                                        name="gender"
+                                        disabled
+                                    >
+
+                                        <option value="">
+                                            Select gender
+                                        </option>
+
+                                        <option value="Male">
+                                            Male
+                                        </option>
+
+                                        <option value="Female">
+                                            Female
+                                        </option>
+
+                                        <option value="Other">
+                                            Other
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <small
+                                    class="field-error"
+                                    id="genderError"
+                                ></small>
+
+                            </div>
+
+
+
+                            <!-- QUALIFICATION -->
+
+                            <div class="form-group">
+
+                                <label for="qualification">
+                                    Qualification
+                                </label>
+
+
+                                <div class="input-wrapper">
+
+                                    <i class="bi bi-mortarboard"></i>
+
+                                    <input
+                                        type="text"
+                                        id="qualification"
+                                        name="qualification"
+                                        placeholder="e.g. MBBS, MD Dermatology"
+                                        disabled
+                                    >
+
+                                </div>
+
+
+                                <small
+                                    class="field-error"
+                                    id="qualificationError"
+                                ></small>
+
+                            </div>
+
+
+
+                            <!-- SPECIALIZATION -->
+
+                            <div class="form-group">
+
+                                <label for="specialization">
+                                    Specialization
+                                </label>
+
+
+                                <div class="input-wrapper">
+
+                                    <i class="bi bi-hospital"></i>
+
+                                    <input
+                                        type="text"
+                                        id="specialization"
+                                        name="specialization"
+                                        placeholder="Enter specialization"
+                                        disabled
+                                    >
+
+                                </div>
+
+
+                                <small
+                                    class="field-error"
+                                    id="specializationError"
+                                ></small>
+
+                            </div>
+
+
+
+                            <!-- EXPERIENCE -->
+
+                            <div class="form-group">
+
+                                <label for="experience">
+                                    Experience
+                                </label>
+
+
+                                <div class="input-wrapper">
+
+                                    <i class="bi bi-award"></i>
+
+                                    <input
+                                        type="number"
+                                        id="experience"
+                                        name="experience"
+                                        min="0"
+                                        max="80"
+                                        placeholder="Years of experience"
+                                        disabled
+                                    >
+
+
+                                    <span class="input-suffix">
+
+                                        Years
+
+                                    </span>
+
+
+                                </div>
+
+
+                                <small
+                                    class="field-error"
+                                    id="experienceError"
+                                ></small>
+
+                            </div>
+
+
+
+                            <!-- CONSULTATION FEE -->
+
+                            <div class="form-group">
+
+                                <label for="consultationFee">
+                                    Consultation Fee
+                                </label>
+
+
+                                <div class="input-wrapper">
+
+                                    <i class="bi bi-currency-rupee"></i>
+
+                                    <input
+                                        type="number"
+                                        id="consultationFee"
+                                        name="consultationFee"
+                                        min="1"
+                                        placeholder="Enter consultation fee"
+                                        disabled
+                                    >
+
+                                </div>
+
+
+                                <small
+                                    class="field-error"
+                                    id="consultationFeeError"
+                                ></small>
+
+                            </div>
+
+
+
+                            <!-- =================================================
+                                 WORKING DAYS - EDITABLE
+                            ================================================== -->
+
+                            <div class="form-group full-width">
+
+
+                                <label>
+                                    Working Days
+                                </label>
+
+
+                                <div
+                                    class="working-days-display"
+                                    id="workingDays"
+                                >
+
+
+                                    <label class="working-day-option">
+
+                                        <input
+                                            type="checkbox"
+                                            name="workingDays"
+                                            value="Monday"
+                                            disabled
+                                        >
+
+                                        <span>
+                                            Monday
+                                        </span>
+
+                                    </label>
+
+
+                                    <label class="working-day-option">
+
+                                        <input
+                                            type="checkbox"
+                                            name="workingDays"
+                                            value="Tuesday"
+                                            disabled
+                                        >
+
+                                        <span>
+                                            Tuesday
+                                        </span>
+
+                                    </label>
+
+
+                                    <label class="working-day-option">
+
+                                        <input
+                                            type="checkbox"
+                                            name="workingDays"
+                                            value="Wednesday"
+                                            disabled
+                                        >
+
+                                        <span>
+                                            Wednesday
+                                        </span>
+
+                                    </label>
+
+
+                                    <label class="working-day-option">
+
+                                        <input
+                                            type="checkbox"
+                                            name="workingDays"
+                                            value="Thursday"
+                                            disabled
+                                        >
+
+                                        <span>
+                                            Thursday
+                                        </span>
+
+                                    </label>
+
+
+                                    <label class="working-day-option">
+
+                                        <input
+                                            type="checkbox"
+                                            name="workingDays"
+                                            value="Friday"
+                                            disabled
+                                        >
+
+                                        <span>
+                                            Friday
+                                        </span>
+
+                                    </label>
+
+
+                                    <label class="working-day-option">
+
+                                        <input
+                                            type="checkbox"
+                                            name="workingDays"
+                                            value="Saturday"
+                                            disabled
+                                        >
+
+                                        <span>
+                                            Saturday
+                                        </span>
+
+                                    </label>
+
+
+                                    <label class="working-day-option">
+
+                                        <input
+                                            type="checkbox"
+                                            name="workingDays"
+                                            value="Sunday"
+                                            disabled
+                                        >
+
+                                        <span>
+                                            Sunday
+                                        </span>
+
+                                    </label>
+
+
+                                </div>
+
+
+                                <small
+                                    class="field-error"
+                                    id="workingDaysError"
+                                ></small>
+
+
+                            </div>
+
+
+
+                            <!-- ABOUT DOCTOR -->
+
+                            <div class="form-group full-width">
+
+                                <label for="aboutDoctor">
+                                    About Doctor
+                                </label>
+
+
+                                <div class="textarea-wrapper">
+
+                                    <i class="bi bi-file-person"></i>
+
+                                    <textarea
+                                        id="aboutDoctor"
+                                        name="aboutDoctor"
+                                        rows="5"
+                                        placeholder="Write something about yourself..."
+                                        disabled
+                                    ></textarea>
+
+                                </div>
+
+
+                                <small
+                                    class="field-error"
+                                    id="aboutDoctorError"
+                                ></small>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- FORM ACTIONS -->
+
+                        <div
+                            class="form-actions"
+                            id="formActions"
+                            style="display: none;"
+                        >
+
+
+                            <button
+                                type="button"
+                                class="cancel-button"
+                                id="cancelButton"
+                            >
+
+                                <i class="bi bi-x-lg"></i>
+
+                                <span>
+                                    Cancel
+                                </span>
+
+                            </button>
+
+
+
+                            <button
+                                type="submit"
+                                class="save-button"
+                                id="saveButton"
+                            >
+
+                                <i class="bi bi-check-lg"></i>
+
+                                <span>
+                                    Save Changes
+                                </span>
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </form>
+
+
+
+                <!-- =================================================
+                     CHANGE PASSWORD
+                ================================================== -->
+
+                <div class="profile-card password-card">
+
+
+                    <div class="card-heading">
+
+
+                        <div class="card-heading-icon">
+
+                            <i class="bi bi-shield-lock"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h2>
+                                Change Password
+                            </h2>
+
+                            <p>
+                                Keep your account secure
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <form
+                        id="passwordForm"
+                        novalidate
+                    >
+
+
+                        <div class="password-grid">
+
+
+                            <!-- CURRENT PASSWORD -->
+
+                            <div class="form-group">
+
+                                <label for="currentPassword">
+                                    Current Password
+                                </label>
+
+
+                                <div class="input-wrapper">
+
+                                    <i class="bi bi-lock"></i>
+
+                                    <input
+                                        type="password"
+                                        id="currentPassword"
+                                        placeholder="Enter current password"
+                                    >
+
+
+                                    <button
+                                        type="button"
+                                        class="password-toggle"
+                                        data-target="currentPassword"
+                                    >
+
+                                        <i class="bi bi-eye"></i>
+
+                                    </button>
+
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- NEW PASSWORD -->
+
+                            <div class="form-group">
+
+                                <label for="newPassword">
+                                    New Password
+                                </label>
+
+
+                                <div class="input-wrapper">
+
+                                    <i class="bi bi-lock-fill"></i>
+
+                                    <input
+                                        type="password"
+                                        id="newPassword"
+                                        placeholder="Enter new password"
+                                    >
+
+
+                                    <button
+                                        type="button"
+                                        class="password-toggle"
+                                        data-target="newPassword"
+                                    >
+
+                                        <i class="bi bi-eye"></i>
+
+                                    </button>
+
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- CONFIRM PASSWORD -->
+
+                            <div class="form-group">
+
+                                <label for="confirmPassword">
+                                    Confirm New Password
+                                </label>
+
+
+                                <div class="input-wrapper">
+
+                                    <i class="bi bi-lock-fill"></i>
+
+                                    <input
+                                        type="password"
+                                        id="confirmPassword"
+                                        placeholder="Confirm new password"
+                                    >
+
+
+                                    <button
+                                        type="button"
+                                        class="password-toggle"
+                                        data-target="confirmPassword"
+                                    >
+
+                                        <i class="bi bi-eye"></i>
+
+                                    </button>
+
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- PASSWORD ACTION -->
+
+                        <div class="password-actions">
+
+                            <button
+                                type="submit"
+                                class="change-password-button"
+                            >
+
+                                <i class="bi bi-key"></i>
+
+                                <span>
+                                    Change Password
+                                </span>
+
+                            </button>
+
+                        </div>
+
+
+                    </form>
+
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         PROFILE JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/profile.js"></script>
+
+
+</body>
+
+</html>

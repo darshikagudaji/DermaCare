@@ -1,0 +1,727 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <!-- =====================================================
+         BASIC DOCUMENT SETTINGS
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        DermCare - Receptionist Dashboard
+    </title>
+
+
+    <!-- =====================================================
+         BOOTSTRAP ICONS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+
+    <!-- =====================================================
+         RECEPTIONIST DASHBOARD CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/receptionist-dashboard.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         MOBILE HAMBURGER MENU
+    ====================================================== -->
+
+    <button
+        type="button"
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+    >
+
+        <!-- HAMBURGER ICON CHANGES TO X USING JAVASCRIPT -->
+
+        <i class="bi bi-list"></i>
+
+    </button>
+
+
+    <!-- =====================================================
+         MOBILE SIDEBAR OVERLAY
+    ====================================================== -->
+
+    <div
+        class="overlay"
+        id="overlay"
+    ></div>
+
+
+    <!-- =====================================================
+         RECEPTIONIST SIDEBAR
+    ====================================================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+
+        <!-- =================================================
+             DERMCARE LOGO
+        ================================================== -->
+
+        <div class="sidebar-logo">
+
+            <span class="logo-text">
+                DermaCare
+            </span>
+
+        </div>
+
+
+        <!-- =================================================
+             RECEPTIONIST PROFILE
+        ================================================== -->
+
+        <div class="receptionist-profile">
+
+
+            <!-- PROFILE ICON -->
+
+            <div class="receptionist-icon">
+
+                <i class="bi bi-person-fill"></i>
+
+            </div>
+
+
+            <!-- PROFILE INFORMATION -->
+
+            <div class="receptionist-info">
+
+                <span
+                    class="receptionist-name"
+                    id="receptionistName"
+                >
+                    Receptionist
+                </span>
+
+
+                <span class="receptionist-role">
+
+                    Clinic Staff
+
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             SIDEBAR MENU
+        ================================================== -->
+
+        <nav class="sidebar-menu">
+
+
+            <!-- =============================================
+                 DASHBOARD
+            ============================================== -->
+
+            <a
+                href="receptionist-dashboard.html"
+                class="active"
+            >
+
+                <i class="bi bi-grid-1x2-fill"></i>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <!-- =============================================
+                 ADD DOCTOR
+            ============================================== -->
+
+            <a href="add-doctor.html">
+
+                <i class="bi bi-person-plus-fill"></i>
+
+                <span>
+                    Add Doctor
+                </span>
+
+            </a>
+
+
+            <!-- =============================================
+                 MANAGE DOCTORS
+            ============================================== -->
+
+            <a href="manage-doctors.html">
+
+                <i class="bi bi-person-badge-fill"></i>
+
+                <span>
+                    Manage Doctors
+                </span>
+
+            </a>
+
+
+            <!-- =============================================
+                 TODAY'S APPOINTMENTS
+            ============================================== -->
+
+            <a href="todays-appointments.html">
+
+                <i class="bi bi-calendar-check-fill"></i>
+
+                <span>
+                    Today's Appointments
+                </span>
+
+            </a>
+
+
+            <!-- =============================================
+                 UPCOMING APPOINTMENTS
+            ============================================== -->
+
+            <a href="upcoming-appointments.html">
+
+                <i class="bi bi-calendar-event-fill"></i>
+
+                <span>
+                    Upcoming Appointments
+                </span>
+
+            </a>
+
+
+            <!-- =============================================
+                 LEAVE DATE APPOINTMENTS
+            ============================================== -->
+
+            <a href="leave-dateAppointment.html">
+
+                <i class="bi bi-calendar-x-fill"></i>
+
+                <span>
+                    Leave Date Appointments
+                </span>
+
+            </a>
+
+
+            <!-- =============================================
+                 WALK-IN
+            ============================================== -->
+
+            <a href="walk-in.html">
+
+                <i class="bi bi-person-walking"></i>
+
+                <span>
+                    Walk-in
+                </span>
+
+            </a>
+
+
+            <!-- =============================================
+                 HISTORY
+            ============================================== -->
+
+            <a href="history.html">
+
+                <i class="bi bi-clock-history"></i>
+
+                <span>
+                    History
+                </span>
+
+            </a>
+
+
+            <!-- =============================================
+                 LOGOUT
+            ============================================== -->
+
+            <a
+                href="receptionist-login.html"
+                class="logout-link"
+                id="logoutLink"
+            >
+
+                <i class="bi bi-box-arrow-right"></i>
+
+                <span>
+                    Logout
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <section class="page-header">
+
+
+            <!-- WELCOME TEXT -->
+
+            <div class="welcome-section">
+
+
+                <span class="welcome-text">
+
+                    Welcome back
+
+                </span>
+
+
+                <h1>
+
+                    Receptionist Dashboard
+
+                </h1>
+
+
+                <p>
+
+                    Manage doctors, patients and appointments
+                    from one place.
+
+                </p>
+
+
+            </div>
+
+
+            <!-- CURRENT DATE -->
+
+            <div class="current-date-card">
+
+
+                <i class="bi bi-calendar3"></i>
+
+
+                <div>
+
+
+                    <span>
+
+                        Today
+
+                    </span>
+
+
+                    <strong id="currentDate">
+
+                        Loading...
+
+                    </strong>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             DASHBOARD SUMMARY CARDS
+        ================================================== -->
+
+        <section class="summary-grid">
+
+
+            <!-- =============================================
+                 TOTAL DOCTORS
+            ============================================== -->
+
+            <div class="summary-card doctors-card">
+
+
+                <div class="summary-icon">
+
+                    <i class="bi bi-person-badge-fill"></i>
+
+                </div>
+
+
+                <div class="summary-content">
+
+
+                    <span>
+
+                        Total Doctors
+
+                    </span>
+
+
+                    <h2 id="totalDoctors">
+
+                        0
+
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =============================================
+                 TOTAL PATIENTS
+            ============================================== -->
+
+            <div class="summary-card patients-card">
+
+
+                <div class="summary-icon">
+
+                    <i class="bi bi-people-fill"></i>
+
+                </div>
+
+
+                <div class="summary-content">
+
+
+                    <span>
+
+                        Total Patients
+
+                    </span>
+
+
+                    <h2 id="totalPatients">
+
+                        0
+
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =============================================
+                 TODAY'S APPOINTMENTS
+            ============================================== -->
+
+            <div class="summary-card today-card">
+
+
+                <div class="summary-icon">
+
+                    <i class="bi bi-calendar-check-fill"></i>
+
+                </div>
+
+
+                <div class="summary-content">
+
+
+                    <span>
+
+                        Today's Appointments
+
+                    </span>
+
+
+                    <h2 id="todaysAppointments">
+
+                        0
+
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =============================================
+                 UPCOMING APPOINTMENTS
+            ============================================== -->
+
+            <div class="summary-card upcoming-card">
+
+
+                <div class="summary-icon">
+
+                    <i class="bi bi-calendar-event-fill"></i>
+
+                </div>
+
+
+                <div class="summary-content">
+
+
+                    <span>
+
+                        Upcoming Appointments
+
+                    </span>
+
+
+                    <h2 id="upcomingAppointments">
+
+                        0
+
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =============================================
+                 CANCELLED APPOINTMENTS
+
+                 NOTE:
+                 THIS IS ONLY A DASHBOARD COUNT CARD.
+
+                 THERE IS NO SEPARATE CANCELLED
+                 APPOINTMENTS PAGE IN THE SIDEBAR.
+            ============================================== -->
+
+            <div class="summary-card cancelled-card">
+
+
+                <div class="summary-icon">
+
+                    <i class="bi bi-calendar-x-fill"></i>
+
+                </div>
+
+
+                <div class="summary-content">
+
+
+                    <span>
+
+                        Cancelled Appointments
+
+                    </span>
+
+
+                    <h2 id="cancelledAppointments">
+
+                        0
+
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             RECENT APPOINTMENTS
+        ================================================== -->
+
+        <section class="appointments-section">
+
+
+            <!-- =============================================
+                 SECTION HEADER
+            ============================================== -->
+
+            <div class="section-header">
+
+
+                <div>
+
+
+                    <h2>
+
+                        Recent Appointments
+
+                    </h2>
+
+
+                    <p>
+
+                        Latest appointment activity at DermCare.
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =============================================
+                 APPOINTMENTS TABLE
+            ============================================== -->
+
+            <div class="table-container">
+
+
+                <table>
+
+
+                    <!-- TABLE HEADER -->
+
+                    <thead>
+
+                        <tr>
+
+
+                            <th>
+
+                                Patient
+
+                            </th>
+
+
+                            <th>
+
+                                Doctor
+
+                            </th>
+
+
+                            <th>
+
+                                Date
+
+                            </th>
+
+
+                            <th>
+
+                                Time
+
+                            </th>
+
+
+                            <th>
+
+                                Type
+
+                            </th>
+
+
+                            <th>
+
+                                Status
+
+                            </th>
+
+
+                        </tr>
+
+                    </thead>
+
+
+                    <!-- TABLE BODY -->
+
+                    <tbody
+                        id="recentAppointmentsBody"
+                    >
+
+
+                        <!-- LOADING MESSAGE -->
+
+                        <tr>
+
+
+                            <td
+                                colspan="6"
+                                class="loading-row"
+                            >
+
+                                Loading appointments...
+
+                            </td>
+
+
+                        </tr>
+
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         RECEPTIONIST DASHBOARD JAVASCRIPT
+    ====================================================== -->
+
+    <script
+        src="js/receptionist-dashboard.js"
+    ></script>
+
+
+</body>
+
+</html>

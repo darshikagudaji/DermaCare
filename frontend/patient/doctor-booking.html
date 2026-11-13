@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <!-- =====================================================
+         META TAGS
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+
+
+    <!-- =====================================================
+         TITLE
+    ====================================================== -->
+
+    <title>Book Appointment | Dermacare</title>
+
+
+
+    <!-- =====================================================
+         BOOTSTRAP ICONS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    >
+
+
+
+    <!-- =====================================================
+         CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/doctor-booking.css"
+    >
+
+
+</head>
+
+
+
+<body>
+
+
+
+    <!-- =====================================================
+         MOBILE HAMBURGER MENU
+    ====================================================== -->
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+    >
+
+        <i class="bi bi-list"></i>
+
+    </button>
+
+
+
+
+
+    <!-- =====================================================
+         MAIN CONTAINER
+    ====================================================== -->
+
+    <div class="container">
+
+
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside class="sidebar">
+
+
+
+            <!-- =============================================
+                 LOGO
+            ============================================== -->
+
+            <div class="logo">
+
+                <span>Dermacare</span>
+
+            </div>
+
+
+
+
+
+            <!-- =============================================
+                 MENU TITLE
+            ============================================== -->
+
+            <div class="menu-title">
+
+                MAIN
+
+            </div>
+
+
+
+
+
+            <!-- =============================================
+                 NAVIGATION
+            ============================================== -->
+
+            <nav>
+
+                <ul>
+
+
+
+                    <!-- =====================================
+                         DASHBOARD
+                    ====================================== -->
+
+                    <li>
+
+                        <a href="dashboard.html">
+
+                            <i class="bi bi-grid-1x2-fill"></i>
+
+                            <span>
+                                Dashboard
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+
+
+
+                    <!-- =====================================
+                         BOOK APPOINTMENT
+                    ====================================== -->
+
+                    <li class="active">
+
+                        <a href="doctor-booking.html">
+
+                            <i class="bi bi-person-badge-fill"></i>
+
+                            <span>
+                                Book Appointment
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+
+
+
+                    <!-- =====================================
+                         APPOINTMENT HISTORY
+                    ====================================== -->
+
+                    <li>
+
+                        <a href="appointment-history.html">
+
+                            <i class="bi bi-calendar-check-fill"></i>
+
+                            <span>
+                                Appointment History
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+
+
+
+                    <!-- =====================================
+                         PRESCRIPTIONS
+                    ====================================== -->
+
+                    <li>
+
+                        <a href="prescriptions.html">
+
+                            <i class="bi bi-file-earmark-medical-fill"></i>
+
+                            <span>
+                                Prescriptions
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+
+
+
+                    <!-- =====================================
+                         MY PROFILE
+                    ====================================== -->
+
+                    <li>
+
+                        <a href="profile.html">
+
+                            <i class="bi bi-person-circle"></i>
+
+                            <span>
+                                My Profile
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+
+                </ul>
+
+            </nav>
+
+
+
+
+
+            <!-- =============================================
+                 LOGOUT
+            ============================================== -->
+
+            <div class="logout">
+
+                <a
+                    href="#"
+                    id="logoutLink"
+                >
+
+                    <i class="bi bi-box-arrow-right"></i>
+
+                    <span>
+                        Logout
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+        </aside>
+
+
+
+
+
+        <!-- =================================================
+             MOBILE OVERLAY
+        ================================================== -->
+
+        <div
+            class="overlay"
+            id="overlay"
+        ></div>
+
+
+
+
+
+        <!-- =================================================
+             MAIN CONTENT
+        ================================================== -->
+
+        <main class="content">
+
+
+
+            <!-- =============================================
+                 BACK BUTTON
+            ============================================== -->
+
+            <div class="top-bar">
+
+                <a
+                    href="dashboard.html"
+                    class="back-btn"
+                    id="backToDashboard"
+                >
+
+                    <i class="bi bi-arrow-left"></i>
+
+                    <span>
+                        Back to Dashboard
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+
+
+            <!-- =============================================
+                 APPOINTMENT MESSAGE / TOAST
+            ============================================== -->
+
+            <div
+                id="appointmentMessage"
+                class="appointment-message"
+                style="display: none;"
+            >
+            </div>
+
+
+
+
+
+            <!-- =================================================
+                 DOCTOR PROFILE CARD
+            ================================================== -->
+
+            <section
+                class="doctor-profile-card"
+                id="doctorProfileCard"
+            >
+
+
+
+                <!-- =========================================
+                     DOCTOR IMAGE
+                ========================================== -->
+
+                <div class="doctor-image">
+
+                    <img
+                        id="doctorImage"
+                        src="../Images/doctor1.png"
+                        alt="Doctor"
+                    >
+
+                </div>
+
+
+
+
+
+                <!-- =========================================
+                     DOCTOR INFORMATION
+                ========================================== -->
+
+                <div class="doctor-details">
+
+
+
+                    <!-- =====================================
+                         DOCTOR NAME
+                    ====================================== -->
+
+                    <h1 id="doctorName">
+
+                        Loading doctor...
+
+                    </h1>
+
+
+
+
+
+                    <!-- =====================================
+                         QUALIFICATION
+                    ====================================== -->
+
+                    <h3 id="doctorQualification">
+
+                        Loading...
+
+                    </h3>
+
+
+
+
+
+                    <!-- =====================================
+                         SPECIALIZATION
+                    ====================================== -->
+
+                    <p
+                        class="specialization"
+                        id="doctorSpecialization"
+                    >
+
+                        Loading...
+
+                    </p>
+
+
+
+
+
+                    <!-- =====================================
+                         DOCTOR INFORMATION GRID
+                    ====================================== -->
+
+                    <div class="doctor-info-grid">
+
+
+
+                        <!-- EXPERIENCE -->
+
+                        <div>
+
+                            <strong>
+                                Experience
+                            </strong>
+
+                            <p id="doctorExperience">
+                                -
+                            </p>
+
+                        </div>
+
+
+
+
+
+                        <!-- CONSULTATION FEE -->
+
+                        <div>
+
+                            <strong>
+                                Consultation Fee
+                            </strong>
+
+                            <p id="doctorFee">
+                                -
+                            </p>
+
+                        </div>
+
+
+
+
+
+                        <!-- WORKING DAYS -->
+
+                        <div>
+
+                            <strong>
+                                Working Days
+                            </strong>
+
+                            <p id="doctorWorkingDays">
+                                -
+                            </p>
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+                    <!-- =====================================
+                         ABOUT DOCTOR
+                    ====================================== -->
+
+                    <div class="about-doctor">
+
+                        <h2>
+                            About Doctor
+                        </h2>
+
+                        <p id="doctorAbout">
+
+                            Doctor information will be displayed here.
+
+                        </p>
+
+                    </div>
+
+
+
+                </div>
+
+
+
+            </section>
+
+
+
+
+
+            <!-- =================================================
+                 BOOK / RESCHEDULE APPOINTMENT CARD
+            ================================================== -->
+
+            <section
+                class="booking-card"
+                id="bookingCard"
+            >
+
+
+
+                <!-- =============================================
+                     BOOKING TITLE
+                ============================================== -->
+
+                <h2
+                    id="bookingTitle"
+                >
+
+                    Select Appointment Date
+
+                </h2>
+
+
+
+
+
+                <!-- =============================================
+                     DATE SECTION
+                ============================================== -->
+
+                <div
+                    class="date-buttons"
+                    id="dateButtons"
+                >
+
+                    <p
+                        id="dateMessage"
+                        class="date-message"
+                    >
+
+                        Loading available appointment dates...
+
+                    </p>
+
+                </div>
+
+
+
+
+
+                <!-- =============================================
+                     TIME SLOT SECTION
+                ============================================== -->
+
+                <div class="slot-section">
+
+
+
+                    <h2>
+
+                        Available Time Slots
+
+                    </h2>
+
+
+
+
+
+                    <div
+                        class="time-slots"
+                        id="timeSlots"
+                    >
+
+                        <p
+                            id="slotMessage"
+                            class="slot-message"
+                        >
+
+                            Select an appointment date to view
+                            available time slots.
+
+                        </p>
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+                <!-- =================================================
+                     PATIENT APPOINTMENT INFORMATION
+                ================================================== -->
+
+                <div
+                    class="patient-appointment-details"
+                    id="patientAppointmentDetails"
+                >
+
+
+                    <!-- =============================================
+                         SECTION TITLE
+                    ============================================== -->
+
+                    <div class="patient-details-heading">
+
+                        <h2>
+
+                            Appointment Details
+
+                        </h2>
+
+                        <p>
+
+                            Please provide some information about
+                            your visit before booking your appointment.
+
+                        </p>
+
+                    </div>
+
+
+
+
+
+                    <!-- =============================================
+                         REASON FOR VISIT
+                    ============================================== -->
+
+                    <div class="appointment-form-group">
+
+                        <label
+                            for="reasonForVisit"
+                        >
+
+                            Reason for Visit
+                            <span>*</span>
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="reasonForVisit"
+                            name="reasonForVisit"
+                            placeholder="e.g. Acne, hair fall, skin rash, pigmentation"
+                            maxlength="200"
+                            autocomplete="off"
+                        >
+
+
+                        <small
+                            class="field-error"
+                            id="reasonForVisitError"
+                        ></small>
+
+                    </div>
+
+
+
+
+
+                    <!-- =============================================
+                         SYMPTOMS
+                    ============================================== -->
+
+                    <div class="appointment-form-group">
+
+                        <label
+                            for="symptoms"
+                        >
+
+                            Symptoms / Problem Description
+
+                        </label>
+
+
+                        <textarea
+                            id="symptoms"
+                            name="symptoms"
+                            rows="4"
+                            maxlength="1000"
+                            placeholder="Describe your symptoms or skin/hair problem..."
+                        ></textarea>
+
+
+                        <small
+                            class="field-error"
+                            id="symptomsError"
+                        ></small>
+
+                    </div>
+
+
+
+
+
+                    <!-- =============================================
+                         ALLERGIES
+                    ============================================== -->
+
+                    <div class="appointment-form-group">
+
+                        <label
+                            for="allergies"
+                        >
+
+                            Allergies
+                            <span>*</span>
+
+                        </label>
+
+
+                        <select
+                            id="allergies"
+                            name="allergies"
+                        >
+
+                            <option value="No known allergies">
+                                No known allergies
+                            </option>
+
+                            <option value="Medicine Allergy">
+                                Medicine Allergy
+                            </option>
+
+                            <option value="Food Allergy">
+                                Food Allergy
+                            </option>
+
+                            <option value="Skin/Product Allergy">
+                                Skin/Product Allergy
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+
+                        <small
+                            class="field-error"
+                            id="allergiesError"
+                        ></small>
+
+                    </div>
+
+
+
+
+
+                    <!-- =============================================
+                         ALLERGY DETAILS
+                    ============================================== -->
+
+                    <div
+                        class="appointment-form-group"
+                        id="allergyDetailsGroup"
+                        style="display: none;"
+                    >
+
+                        <label
+                            for="allergyDetails"
+                        >
+
+                            Allergy Details
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="allergyDetails"
+                            name="allergyDetails"
+                            placeholder="Please specify your allergy"
+                            maxlength="300"
+                            autocomplete="off"
+                        >
+
+
+                        <small
+                            class="field-error"
+                            id="allergyDetailsError"
+                        ></small>
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+                <!-- =================================================
+                     APPOINTMENT ACTION BUTTONS
+                ================================================== -->
+
+                <div
+                    class="appointment-action-buttons"
+                    id="appointmentActionButtons"
+                >
+
+
+
+                    <!-- =========================================
+                         BOOK / CONFIRM RESCHEDULE BUTTON
+                    ========================================== -->
+
+                    <button
+                        class="book-btn"
+                        id="bookAppointmentBtn"
+                        type="button"
+                        disabled
+                    >
+
+                        <i
+                            class="bi bi-calendar-check-fill"
+                            id="appointmentButtonIcon"
+                        ></i>
+
+
+
+                        <span
+                            id="appointmentButtonText"
+                        >
+
+                            Book Appointment
+
+                        </span>
+
+                    </button>
+
+
+
+
+
+                    <!-- =========================================
+                         CANCEL RESCHEDULE BUTTON
+                    ========================================== -->
+
+                    <button
+                        class="cancel-reschedule-btn"
+                        id="cancelRescheduleBtn"
+                        type="button"
+                        style="display: none;"
+                    >
+
+                        <i class="bi bi-x-circle"></i>
+
+                        <span>
+
+                            Cancel Reschedule
+
+                        </span>
+
+                    </button>
+
+
+
+                </div>
+
+
+
+            </section>
+
+
+
+        </main>
+
+
+
+    </div>
+
+
+
+
+
+    <!-- =====================================================
+         CANCEL RESCHEDULE CONFIRMATION MODAL
+
+         Custom DermCare popup.
+         This replaces the browser/Google confirmation popup.
+    ====================================================== -->
+
+    <div
+        class="reschedule-modal-overlay"
+        id="cancelRescheduleModal"
+        style="display: none;"
+    >
+
+
+        <!-- =================================================
+             MODAL BOX
+        ================================================== -->
+
+        <div
+            class="reschedule-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="cancelRescheduleModalTitle"
+        >
+
+
+            <!-- =============================================
+                 WARNING ICON
+            ============================================== -->
+
+            <div class="reschedule-modal-icon">
+
+                <i class="bi bi-exclamation-circle-fill"></i>
+
+            </div>
+
+
+
+            <!-- =============================================
+                 TITLE
+            ============================================== -->
+
+            <h2
+                id="cancelRescheduleModalTitle"
+            >
+
+                Cancel Reschedule?
+
+            </h2>
+
+
+
+            <!-- =============================================
+                 MESSAGE
+            ============================================== -->
+
+            <p>
+
+                Are you sure you want to cancel rescheduling
+                this appointment? Your current appointment
+                will remain unchanged.
+
+            </p>
+
+
+
+            <!-- =============================================
+                 ACTION BUTTONS
+            ============================================== -->
+
+            <div class="reschedule-modal-actions">
+
+
+                <!-- NO / CLOSE -->
+
+                <button
+                    type="button"
+                    class="modal-no-btn"
+                    id="closeCancelRescheduleModal"
+                >
+
+                    No, Continue Rescheduling
+
+                </button>
+
+
+
+                <!-- YES / CANCEL RESCHEDULE -->
+
+                <button
+                    type="button"
+                    class="modal-yes-btn"
+                    id="confirmCancelReschedule"
+                >
+
+                    Yes, Cancel
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/doctor-booking.js"></script>
+
+
+</body>
+
+</html>

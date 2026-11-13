@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DermCare - Create Prescription</title>
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    >
+
+    <!-- Prescription Page CSS -->
+    <link rel="stylesheet" href="css/prescription-form.css">
+</head>
+
+<body>
+
+    <!-- Mobile Menu Button -->
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open menu"
+        aria-controls="sidebar"
+        aria-expanded="false"
+    >
+        <i class="bi bi-list"></i>
+    </button>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- Doctor Sidebar -->
+        <aside class="sidebar" id="sidebar">
+
+            <!-- Logo -->
+            <div class="logo">
+                <span>Dermacare</span>
+            </div>
+
+            <!-- Doctor Role -->
+            <div class="doctor-role">
+                <i class="bi bi-person-badge-fill"></i>
+                <span>Doctor</span>
+            </div>
+
+            <!-- Menu Heading -->
+            <div class="menu-title">
+                MAIN
+            </div>
+
+            <!-- Sidebar Navigation -->
+            <nav>
+                <ul>
+
+                    <li>
+                        <a href="dashboard.html">
+                            <i class="bi bi-grid-1x2-fill"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="today-appointments.html">
+                            <i class="bi bi-calendar-day-fill"></i>
+                            <span>Today's Appointments</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="upcoming-appointments.html">
+                            <i class="bi bi-calendar-check-fill"></i>
+                            <span>Upcoming Appointments</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="working-hours.html">
+                            <i class="bi bi-clock-fill"></i>
+                            <span>Working Hours and Leave Date</span>
+                        </a>
+                    </li>
+
+                    <li class="active">
+                        <a href="prescription-form.html" aria-current="page">
+                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <span>Prescriptions</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="history.html">
+                            <i class="bi bi-clock-history"></i>
+                            <span>History</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="profile.html">
+                            <i class="bi bi-person-circle"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+
+            <!-- Logout -->
+            <div class="logout">
+                <a href="#" id="logoutLink">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+
+        </aside>
+
+        <!-- Sidebar Overlay -->
+        <div class="overlay" id="overlay"></div>
+
+        <!-- Main Content -->
+        <main class="content">
+
+            <div class="prescription-page">
+
+                <!-- Page Header -->
+                <header class="page-header">
+                    <div>
+                        <h1>
+                            <i class="bi bi-prescription2"></i>
+                            Create Prescription
+                        </h1>
+
+                        <p>
+                            Prepare and save the patient's medical prescription.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="back-btn"
+                        id="backBtn"
+                    >
+                        <i class="bi bi-arrow-left"></i>
+                        Back
+                    </button>
+                </header>
+
+                <!-- Success/Error Message -->
+                <div
+                    id="messageBox"
+                    class="message-box"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+
+                <!-- Prescription Form -->
+                <form id="prescriptionForm">
+
+                    <!-- Patient Information -->
+                    <section class="form-section">
+
+                        <h2>
+                            <i class="bi bi-person-circle"></i>
+                            Patient Information
+                        </h2>
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label for="patientName">Patient Name</label>
+                                <input
+                                    type="text"
+                                    id="patientName"
+                                    readonly
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="patientEmail">Email</label>
+                                <input
+                                    type="text"
+                                    id="patientEmail"
+                                    readonly
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="patientMobile">Mobile Number</label>
+                                <input
+                                    type="text"
+                                    id="patientMobile"
+                                    readonly
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="appointmentDate">Appointment Date</label>
+                                <input
+                                    type="text"
+                                    id="appointmentDate"
+                                    readonly
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="appointmentTime">Appointment Time</label>
+                                <input
+                                    type="text"
+                                    id="appointmentTime"
+                                    readonly
+                                >
+                            </div>
+
+                        </div>
+                    </section>
+
+                    <!-- Consultation Details -->
+                    <section class="form-section">
+
+                        <h2>
+                            <i class="bi bi-clipboard2-pulse"></i>
+                            Consultation Details
+                        </h2>
+
+                        <div class="form-group">
+                            <label for="diagnosis">Diagnosis *</label>
+                            <textarea
+                                id="diagnosis"
+                                rows="3"
+                                required
+                                placeholder="Enter the doctor's diagnosis"
+                            ></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="clinicalNotes">Clinical Notes</label>
+                            <textarea
+                                id="clinicalNotes"
+                                rows="3"
+                                placeholder="Enter additional consultation notes"
+                            ></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="advice">Advice to Patient</label>
+                            <textarea
+                                id="advice"
+                                rows="3"
+                                placeholder="Enter skincare advice or other instructions"
+                            ></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="followUpDate">Follow-up Date</label>
+                            <input
+                                type="date"
+                                id="followUpDate"
+                            >
+                        </div>
+
+                    </section>
+
+                    <!-- Prescribed Medicines -->
+                    <section class="form-section">
+
+                        <div class="section-heading">
+                            <h2>
+                                <i class="bi bi-capsule"></i>
+                                Prescribed Medicines
+                            </h2>
+
+                            <button
+                                type="button"
+                                id="addMedicineBtn"
+                                class="secondary-btn"
+                            >
+                                <i class="bi bi-plus-lg"></i>
+                                Add Medicine
+                            </button>
+                        </div>
+
+                        <div id="medicinesContainer"></div>
+
+                        <p class="helper-text">
+                            Add each medicine with its dosage, frequency,
+                            duration, and instructions.
+                        </p>
+
+                    </section>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+
+                        <!-- Cancel -->
+                        <button
+                            type="button"
+                            id="cancelBtn"
+                            class="cancel-btn"
+                        >
+                            <i class="bi bi-x-circle"></i>
+                            Cancel
+                        </button>
+
+                        <!-- Print: Enabled after successful save -->
+                        <button
+                            type="button"
+                            id="printPrescriptionBtn"
+                            class="print-btn"
+                            title="Save the prescription before printing."
+                        >
+                            <i class="bi bi-printer"></i>
+                            Print Prescription
+                        </button>
+
+                        <!-- Save -->
+                        <button
+                            type="submit"
+                            id="savePrescriptionBtn"
+                            class="save-btn"
+                        >
+                            <i class="bi bi-check-circle"></i>
+                            Save Prescription
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- Prescription JavaScript -->
+    <script src="js/prescription-form.js"></script>
+
+</body>
+</html>

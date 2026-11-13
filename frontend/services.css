@@ -1,0 +1,792 @@
+
+/* =======================================================
+   DERMACARE SERVICES PAGE
+   Blue, white and lime theme
+   Consistent with the About Us page
+======================================================= */
+
+/* SERVICES HERO */
+
+.services-hero {
+    padding: 65px 0;
+    background: #F5FAFF;
+}
+
+.services-hero-container {
+    display: grid;
+    grid-template-columns: 1fr 0.85fr;
+    align-items: center;
+    gap: 50px;
+}
+
+.services-tag,
+.detail-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 30px;
+    background: #EAF4FF;
+    color: #1769D5;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.services-hero-content h1 {
+    color: #1D3557;
+    font-size: 42px;
+    line-height: 1.3;
+    margin-bottom: 20px;
+}
+
+.services-hero-content h1 span {
+    color: #1769D5;
+}
+
+.services-hero-content > p {
+    color: #5B6573;
+    font-size: 15px;
+    line-height: 1.9;
+    margin-bottom: 25px;
+}
+
+.services-hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.services-primary-btn,
+.services-secondary-btn,
+.detail-book-btn,
+.services-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 12px 22px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.services-primary-btn {
+    color: white;
+    background: #1769D5;
+}
+
+.services-primary-btn:hover {
+    background: #1055B5;
+    transform: translateY(-2px);
+}
+
+.services-secondary-btn {
+    color: #1769D5;
+    background: white;
+    border: 1px solid #1769D5;
+}
+
+.services-secondary-btn:hover {
+    color: white;
+    background: #1769D5;
+}
+
+.services-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px;
+    margin-top: 25px;
+}
+
+.services-highlights div {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #43536A;
+    font-size: 13px;
+}
+
+.services-highlights i {
+    color: #1769D5;
+    font-size: 17px;
+}
+
+/* HERO IMAGE - SLIGHTLY SMALLER */
+
+.services-hero-image {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    justify-self: center;
+    padding-bottom: 20px;
+}
+
+.services-hero-image > img {
+    display: block;
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(23, 105, 213, 0.13);
+}
+
+.hero-image-caption {
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 15px 18px;
+    border-radius: 13px;
+    background: white;
+    box-shadow: 0 5px 22px rgba(0, 0, 0, 0.1);
+}
+
+.hero-image-caption > i {
+    color: #1769D5;
+    font-size: 29px;
+}
+
+.hero-image-caption h3 {
+    color: #1D3557;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.hero-image-caption p {
+    color: #687386;
+    font-size: 13px;
+}
+
+/* SECTION HEADINGS */
+
+.services-overview,
+.treatment-approach,
+.why-dermacare,
+.services-faq {
+    padding: 75px 0;
+    background: white;
+}
+
+.services-section-heading {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 40px;
+}
+
+.services-section-heading > span {
+    color: #1769D5;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.services-section-heading h2 {
+    color: #1D3557;
+    font-size: 35px;
+    margin: 12px 0;
+}
+
+.services-section-heading p {
+    color: #687386;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* SERVICE CARDS */
+
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.service-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: white;
+    border: 1px solid #E6EDF7;
+    border-radius: 19px;
+    box-shadow: 0 8px 25px rgba(29, 53, 87, 0.08);
+    color: inherit;
+    text-decoration: none;
+    transition: 0.3s;
+    min-width: 0;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 13px 30px rgba(23, 105, 213, 0.13);
+}
+
+.service-card-image {
+    overflow: hidden;
+    background: #F5FAFF;
+}
+
+.service-card-image img {
+    display: block;
+    width: 100%;
+    height: 205px;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.service-card:hover .service-card-image img {
+    transform: scale(1.04);
+}
+
+.service-card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    text-align: center;
+    padding: 24px 18px;
+}
+
+.service-card-content h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #1D3557;
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+
+.service-card-content h3 i {
+    color: #1769D5;
+    font-size: 20px;
+}
+
+.service-card-content > p {
+    color: #606B7A;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 22px;
+}
+
+.service-read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 10px;
+    color: #1769D5;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.service-read-more i {
+    transition: transform 0.3s;
+}
+
+.service-card:hover .service-read-more i {
+    transform: translateX(4px);
+}
+
+/* SERVICE DETAIL SECTIONS */
+
+.service-detail-section {
+    padding: 75px 0;
+    background: white;
+    scroll-margin-top: 90px;
+}
+
+.service-detail-alt {
+    background: #F5FAFF;
+}
+
+.service-detail-container {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    align-items: center;
+    gap: 55px;
+}
+
+.service-detail-alt .service-detail-container {
+    grid-template-columns: 1.15fr 0.85fr;
+}
+
+.service-detail-image {
+    width: 100%;
+    max-width: 430px;
+    justify-self: center;
+}
+
+.service-detail-image img {
+    display: block;
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 19px;
+    box-shadow: 0 10px 28px rgba(29, 53, 87, 0.1);
+}
+
+.service-detail-content h2 {
+    color: #1D3557;
+    font-size: 33px;
+    line-height: 1.3;
+    margin: 4px 0 17px;
+}
+
+.service-detail-content > p {
+    color: #606B7A;
+    font-size: 15px;
+    line-height: 1.9;
+    margin-bottom: 17px;
+}
+
+.service-detail-content h3 {
+    color: #1D3557;
+    font-size: 18px;
+    margin: 20px 0 12px;
+}
+
+.service-check-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px;
+}
+
+.service-check-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: #43536A;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 9px;
+}
+
+.service-check-list i {
+    color: #1769D5;
+    font-size: 17px;
+    margin-top: 2px;
+}
+
+.detail-book-btn {
+    margin-top: 8px;
+    color: white;
+    background: #1769D5;
+}
+
+.detail-book-btn:hover {
+    background: #1055B5;
+    transform: translateY(-2px);
+}
+
+/* OUR APPROACH */
+
+.treatment-approach {
+    background: #F5FAFF;
+}
+
+.approach-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.approach-card {
+    position: relative;
+    padding: 28px 22px;
+    background: white;
+    border: 1px solid #E5EDF8;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(29, 53, 87, 0.05);
+    transition: 0.3s;
+}
+
+.approach-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(23, 105, 213, 0.1);
+}
+
+.approach-number {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    color: #DCEBFF;
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.approach-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 20px;
+    border-radius: 14px;
+    background: #EAF4FF;
+    color: #1769D5;
+    font-size: 24px;
+}
+
+.approach-card h3 {
+    color: #1D3557;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.approach-card p {
+    color: #687386;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* WHY DERMACARE */
+
+.why-dermacare {
+    background: white;
+}
+
+.why-services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.why-service-card {
+    padding: 27px 22px;
+    background: white;
+    border: 1px solid #E5EDF8;
+    border-radius: 16px;
+    box-shadow: 0 5px 18px rgba(29, 53, 87, 0.05);
+    transition: 0.3s;
+}
+
+.why-service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(23, 105, 213, 0.1);
+}
+
+.why-service-card > i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 18px;
+    border-radius: 14px;
+    background: #EAF4FF;
+    color: #1769D5;
+    font-size: 25px;
+}
+
+.why-service-card h3 {
+    color: #1D3557;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.why-service-card p {
+    color: #687386;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* FREQUENTLY ASKED QUESTIONS */
+
+.services-faq {
+    background: #F5FAFF;
+}
+
+.faq-list {
+    max-width: 850px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.faq-item {
+    padding: 20px 23px;
+    background: white;
+    border: 1px solid #E2EAF5;
+    border-radius: 13px;
+    box-shadow: 0 4px 14px rgba(29, 53, 87, 0.04);
+}
+
+.faq-item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    color: #1D3557;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary i {
+    flex-shrink: 0;
+    color: #1769D5;
+    transition: transform 0.3s;
+}
+
+.faq-item[open] summary i {
+    transform: rotate(45deg);
+}
+
+.faq-item > p {
+    color: #687386;
+    font-size: 14px;
+    line-height: 1.9;
+    padding-top: 15px;
+}
+
+/* APPOINTMENT CTA */
+
+.services-cta {
+    padding: 70px 20px;
+    text-align: center;
+    background: #1769D5;
+    color: white;
+}
+
+.services-cta-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.services-cta-icon {
+    color: #C8F078;
+    font-size: 38px;
+}
+
+.services-cta h2 {
+    color: white;
+    font-size: 34px;
+    line-height: 1.4;
+    margin: 15px 0;
+}
+
+.services-cta p {
+    max-width: 650px;
+    margin: 0 auto 26px;
+    color: #E8F4FF;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.services-cta-btn {
+    color: #1769D5;
+    background: white;
+}
+
+.services-cta-btn:hover {
+    background: #F2F9D8;
+    transform: translateY(-2px);
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+    .services-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .approach-grid,
+    .why-services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .services-hero-container {
+        gap: 30px;
+    }
+
+    .services-hero-content h1 {
+        font-size: 36px;
+    }
+
+    .service-detail-container,
+    .service-detail-alt .service-detail-container {
+        gap: 35px;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+    .services-hero,
+    .services-overview,
+    .service-detail-section,
+    .treatment-approach,
+    .why-dermacare,
+    .services-faq {
+        padding: 50px 0;
+    }
+
+    .services-hero-container,
+    .service-detail-container,
+    .service-detail-alt .service-detail-container {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .services-hero-content {
+        text-align: center;
+    }
+
+    .services-hero-content h1 {
+        font-size: 32px;
+    }
+
+    .services-hero-buttons {
+        justify-content: center;
+    }
+
+    .services-highlights {
+        justify-content: center;
+    }
+
+    .services-hero-image {
+        max-width: 440px;
+    }
+
+    .services-hero-image > img {
+        height: 290px;
+    }
+
+    .services-section-heading h2 {
+        font-size: 29px;
+    }
+
+    .services-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px;
+    }
+
+    .service-card-image img {
+        height: 165px;
+    }
+
+    .service-card-content {
+        padding: 20px 13px;
+    }
+
+    .service-card-content h3 {
+        font-size: 17px;
+        gap: 7px;
+    }
+
+    .service-card-content > p {
+        font-size: 13px;
+    }
+
+    .service-detail-image {
+        max-width: 480px;
+    }
+
+    .service-detail-image img {
+        height: 290px;
+    }
+
+    .service-detail-content h2 {
+        font-size: 29px;
+    }
+
+    .approach-grid,
+    .why-services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px;
+    }
+
+    .approach-card,
+    .why-service-card {
+        padding: 22px 17px;
+    }
+
+    .services-cta h2 {
+        font-size: 29px;
+    }
+}
+
+/* SMALL MOBILE */
+
+@media (max-width: 480px) {
+    .services-hero-content h1 {
+        font-size: 29px;
+    }
+
+    .services-hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .services-primary-btn,
+    .services-secondary-btn {
+        width: 100%;
+    }
+
+    .services-highlights {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        margin-left: 12px;
+    }
+
+    .services-hero-image > img {
+        height: 245px;
+    }
+
+    .hero-image-caption {
+        left: 8px;
+        right: 8px;
+        padding: 12px;
+    }
+
+    .services-container {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card-image img {
+        height: 210px;
+    }
+
+    .service-card-content {
+        padding: 23px 20px;
+    }
+
+    .service-detail-image img {
+        height: 245px;
+    }
+
+    .approach-grid,
+    .why-services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .faq-item {
+        padding: 17px;
+    }
+
+    .faq-item summary {
+        font-size: 14px;
+    }
+
+    .services-cta h2 {
+        font-size: 26px;
+    }
+
+    .services-primary-btn,
+    .services-secondary-btn,
+    .detail-book-btn,
+    .services-cta-btn {
+        padding: 12px 17px;
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- =====================================================
+         META TAGS
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Receptionist Portal Login | DermCare</title>
+
+
+    <!-- =====================================================
+         BOOTSTRAP ICONS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    >
+
+
+    <!-- =====================================================
+         LOGIN CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/receptionist-login.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         LOGIN CONTAINER
+    ====================================================== -->
+
+    <div class="login-container">
+
+
+        <!-- =================================================
+             LOGIN CARD
+        ================================================== -->
+
+        <div class="login-card">
+
+
+            <!-- =============================================
+                 DERMCARE TEXT LOGO
+            ============================================== -->
+
+            <div class="login-logo">
+
+                <span>Dermacare</span>
+
+            </div>
+
+
+            <!-- =============================================
+                 PAGE TITLE
+            ============================================== -->
+
+            <div class="login-title">
+
+                <h1>
+                    Receptionist Portal Login
+                </h1>
+
+                <p>
+                    Login to access your Receptionist Dashboard
+                </p>
+
+            </div>
+
+
+            <!-- =============================================
+                 LOGIN FORM
+            ============================================== -->
+
+            <form id="receptionistLoginForm">
+
+
+                <!-- =========================================
+                     EMAIL
+                ========================================== -->
+
+                <div class="form-group">
+
+                    <label for="receptionistEmail">
+                        Email Address
+                    </label>
+
+                    <div class="input-group">
+
+                        <i class="bi bi-envelope"></i>
+
+                        <input
+                            type="email"
+                            id="receptionistEmail"
+                            name="email"
+                            placeholder="Enter your email"
+                            autocomplete="username"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     PASSWORD
+                ========================================== -->
+
+                <div class="form-group">
+
+                    <label for="receptionistPassword">
+                        Password
+                    </label>
+
+                    <div class="input-group">
+
+                        <i class="bi bi-lock"></i>
+
+                        <input
+                            type="password"
+                            id="receptionistPassword"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="passwordToggle"
+                            aria-label="Show password"
+                        >
+
+                            <i class="bi bi-eye"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     LOGIN MESSAGE
+                ========================================== -->
+
+                <div
+                    id="loginMessage"
+                    class="login-message"
+                    role="alert"
+                    aria-live="polite"
+                >
+                </div>
+
+
+                <!-- =========================================
+                     LOGIN BUTTON
+                ========================================== -->
+
+                <button
+                    type="submit"
+                    class="login-btn"
+                    id="loginButton"
+                >
+
+                    <i class="bi bi-box-arrow-in-right"></i>
+
+                    Login
+
+                </button>
+
+
+            </form>
+
+
+            <!-- =================================================
+                 BACK TO HOME
+            ================================================== -->
+
+            <div class="back-home">
+
+                <a href="../index.html">
+
+                    <i class="bi bi-arrow-left"></i>
+
+                    Back to Home
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         RECEPTIONIST LOGIN JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/receptionist-login.js"></script>
+
+
+</body>
+
+</html>

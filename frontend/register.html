@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration - DermCare</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="patient/css/register.css">
+</head>
+<body>
+
+    <!-- WEBSITE NOTIFICATION -->
+    <div id="notification" class="notification" role="alert" aria-live="polite">
+        <span id="notificationIcon" class="notification-icon"></span>
+        <span id="notificationMessage" class="notification-message"></span>
+        <button type="button" id="notificationClose" class="notification-close" aria-label="Close notification">&times;</button>
+        <span class="notification-progress"></span>
+    </div>
+
+    <!-- MOBILE HAMBURGER -->
+    <button type="button" class="menu-toggle" id="menuToggle"
+        aria-label="Open menu" aria-expanded="false" aria-controls="mobileSidebar">
+        <i class="bi bi-list"></i>
+    </button>
+
+    <!-- MOBILE SIDEBAR OVERLAY -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- MOBILE SIDEBAR -->
+    <aside class="mobile-sidebar" id="mobileSidebar">
+        <div class="mobile-sidebar-logo">
+            <a href="index.html">Dermacare</a>
+        </div>
+
+        <nav class="mobile-nav" aria-label="Mobile navigation">
+            <ul>
+                <li><a href="index.html"><i class="bi bi-house-door"></i><span>Home</span></a></li>
+                <li><a href="about.html"><i class="bi bi-info-circle"></i><span>About Us</span></a></li>
+                <li><a href="services.html"><i class="bi bi-heart-pulse"></i><span>Services</span></a></li>
+                <li><a href="doctors.html"><i class="bi bi-person-badge"></i><span>Doctors</span></a></li>
+                <li><a href="index.html#footer"><i class="bi bi-telephone"></i><span>Contact</span></a></li>
+            </ul>
+        </nav>
+
+        <!-- LOGIN AND REGISTER INSIDE SIDEBAR -->
+        <div class="mobile-auth-buttons">
+            <a href="login.html" class="mobile-login-btn">
+                <i class="bi bi-box-arrow-in-right"></i>
+                <span>Login</span>
+            </a>
+
+            <a href="register.html" class="mobile-register-btn active-btn">
+                <i class="bi bi-person-plus"></i>
+                <span>Register</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">Dermacare</a>
+
+            <nav class="desktop-nav" aria-label="Main navigation">
+                <ul>
+                    <li><a href="index.html"><i class="bi bi-house-door"></i>Home</a></li>
+                    <li><a href="about.html"><i class="bi bi-info-circle"></i>About Us</a></li>
+                    <li><a href="services.html"><i class="bi bi-heart-pulse"></i>Services</a></li>
+                    <li><a href="doctor/doctors.html"><i class="bi bi-person-badge"></i>Doctors</a></li>
+                    <li><a href="contact.html"><i class="bi bi-telephone"></i>Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- DESKTOP LOGIN / REGISTER BUTTONS -->
+            <div class="header-buttons">
+                <a href="login.html" class="login-btn">
+                    <i class="bi bi-box-arrow-in-right"></i>Login
+                </a>
+                <a href="register.html" class="register-btn active-btn">
+                    <i class="bi bi-person-plus"></i>Register
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- REGISTRATION PAGE -->
+    <main class="auth-page">
+        <div class="auth-container">
+            <h1>Create Account</h1>
+            <p class="auth-subtitle">Register as a patient at DermCare Clinic.</p>
+
+            <form id="registerForm" novalidate>
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName"
+                        placeholder="Enter your full name" autocomplete="name">
+                    <span id="fullNameError" class="field-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email"
+                        placeholder="Enter your email" autocomplete="email">
+                    <span id="emailError" class="field-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="mobile">Phone Number</label>
+                    <input type="tel" id="mobile" name="mobile"
+                        placeholder="Enter your 10-digit phone number"
+                        maxlength="10" inputmode="numeric" autocomplete="tel">
+                    <span id="mobileError" class="field-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" name="password"
+                            placeholder="Enter your password" autocomplete="new-password">
+                        <button type="button" class="password-eye" id="passwordEye"
+                            aria-label="Show password">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </div>
+                    <span id="passwordError" class="field-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="confirmPassword" name="confirmPassword"
+                            placeholder="Confirm your password" autocomplete="new-password">
+                        <button type="button" class="password-eye" id="confirmPasswordEye"
+                            aria-label="Show password">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </div>
+                    <span id="confirmPasswordError" class="field-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Gender</label>
+                    <div class="gender-options">
+                        <label class="radio-option"><input type="radio" name="gender" value="Male"> Male</label>
+                        <label class="radio-option"><input type="radio" name="gender" value="Female"> Female</label>
+                        <label class="radio-option"><input type="radio" name="gender" value="Other"> Other</label>
+                    </div>
+                    <span id="genderError" class="field-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="dateOfBirth">Date of Birth</label>
+                    <input type="date" id="dateOfBirth" name="dateOfBirth">
+                    <span id="dateOfBirthError" class="field-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="bloodGroup">Blood Group</label>
+                    <select id="bloodGroup" name="bloodGroup">
+                        <option value="">Select Blood Group</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                    <span id="bloodGroupError" class="field-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea id="address" name="address" rows="3"
+                        placeholder="Enter your address" autocomplete="street-address"></textarea>
+                    <span id="addressError" class="field-error"></span>
+                </div>
+
+                <button type="submit" class="auth-submit">Create Account</button>
+            </form>
+
+            <p class="account-link">
+                Already have an account? <a href="login.html">Login</a>
+            </p>
+        </div>
+    </main>
+
+    <script src="patient/js/register.js"></script>
+
+    <!-- NOTIFICATION CLOSE BUTTON -->
+    <script>
+        const notificationClose = document.getElementById("notificationClose");
+        const notificationBox = document.getElementById("notification");
+
+        if (notificationClose && notificationBox) {
+            notificationClose.addEventListener("click", function () {
+                notificationBox.classList.remove("show");
+            });
+        }
+    </script>
+</body>
+</html>

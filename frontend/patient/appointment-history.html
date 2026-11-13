@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- =====================================================
+         META TAGS
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+
+    <!-- =====================================================
+         TITLE
+    ====================================================== -->
+
+    <title>Appointment History | Dermacare</title>
+
+
+    <!-- =====================================================
+         BOOTSTRAP ICONS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    >
+
+
+    <!-- =====================================================
+         APPOINTMENT HISTORY CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/appointment-history.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         MOBILE MENU BUTTON
+    ====================================================== -->
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+    >
+
+        <i class="bi bi-list"></i>
+
+    </button>
+
+
+
+    <!-- =====================================================
+         SIDEBAR OVERLAY
+    ====================================================== -->
+
+    <div
+        class="overlay"
+        id="overlay"
+    ></div>
+
+
+
+    <!-- =====================================================
+         MAIN CONTAINER
+    ====================================================== -->
+
+    <div class="container">
+
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside
+            class="sidebar"
+            id="sidebar"
+        >
+
+
+            <!-- =============================================
+                 TEXT LOGO
+            ============================================== -->
+
+            <div class="logo">
+
+                <span>Dermacare</span>
+
+            </div>
+
+
+
+            <!-- =============================================
+                 MENU TITLE
+            ============================================== -->
+
+            <div class="menu-title">
+
+                MAIN
+
+            </div>
+
+
+
+            <!-- =============================================
+                 NAVIGATION
+            ============================================== -->
+
+            <nav>
+
+                <ul>
+
+
+                    <!-- Dashboard -->
+
+                    <li>
+
+                        <a href="dashboard.html">
+
+                            <i class="bi bi-grid-1x2-fill"></i>
+
+                            <span>Dashboard</span>
+
+                        </a>
+
+                    </li>
+
+
+
+                    <!-- Appointment History -->
+
+                    <li class="active">
+
+                        <a href="appointment-history.html">
+
+                            <i class="bi bi-calendar-check-fill"></i>
+
+                            <span>Appointment History</span>
+
+                        </a>
+
+                    </li>
+
+
+
+                    <!-- Prescriptions -->
+
+                    <li>
+
+                        <a href="prescriptions.html">
+
+                            <i class="bi bi-file-earmark-medical-fill"></i>
+
+                            <span>Prescriptions</span>
+
+                        </a>
+
+                    </li>
+
+
+
+                    <!-- My Profile -->
+
+                    <li>
+
+                        <a href="profile.html">
+
+                            <i class="bi bi-person-circle"></i>
+
+                            <span>My Profile</span>
+
+                        </a>
+
+                    </li>
+
+
+                </ul>
+
+            </nav>
+
+
+
+            <!-- =============================================
+                 LOGOUT
+            ============================================== -->
+
+            <div class="logout">
+
+                <a
+                    href="#"
+                    id="logoutButton"
+                >
+
+                    <i class="bi bi-box-arrow-right"></i>
+
+                    <span>Logout</span>
+
+                </a>
+
+            </div>
+
+
+        </aside>
+
+
+
+        <!-- =================================================
+             MAIN CONTENT
+        ================================================== -->
+
+        <main class="content">
+
+
+            <!-- =============================================
+                 PAGE HEADER
+            ============================================== -->
+
+            <section class="page-header">
+
+                <h1>
+
+                    My Appointments
+
+                </h1>
+
+                <p>
+
+                    View and manage your booked dermatologist appointments.
+
+                </p>
+
+            </section>
+
+
+
+            <!-- =============================================
+                 APPOINTMENT TABLE CONTAINER
+            ============================================== -->
+
+            <div class="appointment-table-container">
+
+
+                <table class="appointment-table">
+
+
+                    <!-- =====================================
+                         TABLE HEADER
+                    ====================================== -->
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Doctor Name
+                            </th>
+
+
+                            <th>
+                                Date
+                            </th>
+
+
+                            <th>
+                                Time
+                            </th>
+
+
+                            <th>
+                                Type
+                            </th>
+
+
+                            <th>
+                                Status
+                            </th>
+
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+
+                    <!-- =====================================
+                         TABLE BODY
+                    ====================================== -->
+
+                    <tbody
+                        id="appointmentTableBody"
+                    >
+
+
+                        <!-- =================================
+                             LOADING MESSAGE
+                        ================================== -->
+
+                        <tr>
+
+                            <td
+                                colspan="6"
+                                class="empty-message"
+                            >
+
+                                Loading appointments...
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         RESCHEDULE MODAL
+    ====================================================== -->
+
+    <div
+        class="reschedule-modal"
+        id="rescheduleModal"
+    >
+
+
+        <div
+            class="reschedule-modal-content"
+        >
+
+
+            <!-- =============================================
+                 MODAL HEADER
+            ============================================== -->
+
+            <div
+                class="reschedule-modal-header"
+            >
+
+
+                <h2>
+
+                    Reschedule Appointment
+
+                </h2>
+
+
+                <button
+                    type="button"
+                    id="closeRescheduleModal"
+                    class="close-modal-btn"
+                >
+
+                    <i class="bi bi-x-lg"></i>
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- =============================================
+                 SELECT DATE
+            ============================================== -->
+
+            <div
+                class="form-group"
+            >
+
+
+                <label
+                    for="rescheduleDate"
+                >
+
+                    Select New Date
+
+                </label>
+
+
+                <input
+                    type="date"
+                    id="rescheduleDate"
+                >
+
+
+            </div>
+
+
+
+            <!-- =============================================
+                 SELECT TIME
+            ============================================== -->
+
+            <div
+                class="form-group"
+            >
+
+
+                <label
+                    for="rescheduleTime"
+                >
+
+                    Select New Time
+
+                </label>
+
+
+                <select
+                    id="rescheduleTime"
+                >
+
+                    <option value="">
+
+                        Select Time
+
+                    </option>
+
+                </select>
+
+
+            </div>
+
+
+
+            <!-- =============================================
+                 MODAL ACTIONS
+            ============================================== -->
+
+            <div
+                class="modal-actions"
+            >
+
+
+                <button
+                    type="button"
+                    id="cancelRescheduleButton"
+                    class="modal-cancel-btn"
+                >
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    type="button"
+                    id="confirmRescheduleButton"
+                    class="modal-confirm-btn"
+                >
+
+                    Confirm Reschedule
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/appointment-history.js"></script>
+
+
+</body>
+
+</html>

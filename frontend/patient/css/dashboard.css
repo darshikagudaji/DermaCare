@@ -1,0 +1,1371 @@
+/* =====================================================
+   GLOBAL & DESKTOP LAYOUT
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #F5FAFF;
+    color: #1D3557;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.container,
+.patient-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* =====================================================
+   DESKTOP SIDEBAR
+===================================================== */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 250px;
+    height: 100vh;
+
+    background: #1D3557;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 0;
+
+    z-index: 1200;
+
+    overflow-y: auto;
+
+    transition: transform 0.3s ease;
+}
+
+
+/* =====================================================
+   TEXT LOGO
+===================================================== */
+
+.logo {
+    height: 82px;
+
+    display: flex;
+    align-items: center;
+
+    padding-left: 43px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+    flex-shrink: 0;
+}
+
+.logo span {
+    position: relative;
+
+    display: inline-block;
+
+    font-family: 'Segoe UI', sans-serif;
+
+    font-size: 36px;
+    font-weight: 700;
+
+    letter-spacing: -1px;
+
+    color: #FFFFFF;
+
+    line-height: 1;
+}
+
+
+/* Green underline */
+
+.logo span::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -9px;
+
+    width: 46px;
+    height: 3px;
+
+    background: #A8D52D;
+
+    border-radius: 2px;
+}
+
+
+/* =====================================================
+   PATIENT PROFILE
+===================================================== */
+
+.patient-profile {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 18px 20px;
+
+    margin: 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.patient-profile img {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 2px solid #A8D52D;
+
+    flex-shrink: 0;
+}
+
+.patient-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.patient-info h3 {
+    font-size: 15px;
+    font-weight: 600;
+
+    color: #FFFFFF;
+
+    margin: 0;
+}
+
+.patient-info p {
+    font-size: 12px;
+
+    color: rgba(255, 255, 255, 0.70);
+
+    margin-top: 3px;
+}
+
+
+/* =====================================================
+   MENU TITLE
+===================================================== */
+
+.menu-title {
+    padding: 20px 20px 10px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+/* =====================================================
+   SIDEBAR NAVIGATION
+===================================================== */
+
+.sidebar nav {
+    flex: 1;
+
+    overflow-y: auto;
+}
+
+.sidebar nav ul {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    margin-top: 10px;
+
+    padding: 0 12px;
+}
+
+.sidebar nav ul li {
+    width: 100%;
+}
+
+.sidebar nav ul li a {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    width: 100%;
+
+    min-height: 44px;
+
+    padding: 0 12px;
+
+    border-radius: 8px;
+
+    color: rgba(255, 255, 255, 0.78);
+
+    transition: all 0.3s ease;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   NAVIGATION ICONS
+===================================================== */
+
+.sidebar nav ul li a i {
+    width: 20px;
+
+    min-width: 20px;
+
+    text-align: center;
+
+    font-size: 17px;
+}
+
+
+/* =====================================================
+   NAVIGATION TEXT
+===================================================== */
+
+.sidebar nav ul li a span {
+    display: block;
+
+    line-height: 1.2;
+}
+
+
+/* =====================================================
+   NAVIGATION HOVER
+===================================================== */
+
+.sidebar nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.10);
+
+    color: #FFFFFF;
+}
+
+
+/* =====================================================
+   ACTIVE NAVIGATION
+===================================================== */
+
+.sidebar nav ul li.active a {
+    background: #1769D5;
+
+    color: #FFFFFF;
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+.logout {
+    margin-top: auto;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+    padding: 15px 12px;
+}
+
+.logout a {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    width: 100%;
+
+    height: 44px;
+
+    padding: 0 14px;
+
+    border-radius: 8px;
+
+    color: #FFFFFF;
+
+    background: transparent;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    transition: all 0.3s ease;
+}
+
+.logout a i {
+    width: 18px;
+
+    text-align: center;
+
+    font-size: 17px;
+}
+
+.logout a:hover {
+    background: #1769D5;
+
+    color: #FFFFFF;
+}
+
+.logout a:active {
+    transform: scale(0.98);
+}
+
+
+/* =====================================================
+   MOBILE MENU BUTTON
+===================================================== */
+
+.menu-toggle {
+    display: none;
+
+    position: fixed;
+
+    top: 15px;
+    left: 15px;
+
+    width: 42px;
+    height: 42px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #1769D5;
+
+    color: #FFFFFF;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    z-index: 1400;
+
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.menu-toggle:hover {
+    background: #1055B5;
+}
+
+.menu-toggle:active {
+    transform: scale(0.96);
+}
+
+
+/* =====================================================
+   OVERLAY
+===================================================== */
+
+.overlay {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(15, 23, 42, 0.50);
+
+    z-index: 1100;
+}
+
+
+/* =====================================================
+   DESKTOP CONTENT
+===================================================== */
+
+.content,
+.main-content {
+    margin-left: 250px;
+
+    width: calc(100% - 250px);
+
+    padding: 25px;
+}
+
+
+/* =====================================================
+   WELCOME CARD
+===================================================== */
+
+.welcome-card {
+    background: linear-gradient(
+        135deg,
+        #1769D5,
+        #1055B5
+    );
+
+    border-radius: 14px;
+
+    padding: 25px 30px;
+
+    color: #FFFFFF;
+
+    margin-bottom: 28px;
+
+    box-shadow: 0 8px 20px rgba(23, 105, 213, 0.18);
+}
+
+.welcome-card h1 {
+    font-size: 24px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+.welcome-card p {
+    font-size: 14px;
+
+    opacity: 0.95;
+}
+
+
+/* =====================================================
+   SECTION HEADER
+===================================================== */
+
+.section-header {
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    font-size: 18px;
+
+    font-weight: 600;
+
+    color: #1D3557;
+}
+
+
+/* =====================================================
+   DOCTOR CONTAINER
+===================================================== */
+
+.doctor-container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(220px, 1fr));
+
+    gap: 20px;
+}
+
+
+/* =====================================================
+   DOCTOR CARD
+===================================================== */
+
+.doctor-card {
+    position: relative;
+
+    background: #FFFFFF;
+
+    border-radius: 16px;
+
+    padding: 20px;
+
+    border: 1px solid #D6E2EF;
+
+    text-align: center;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+    box-shadow:
+        0 5px 15px rgba(15, 23, 42, 0.06);
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   DOCTOR CARD HOVER
+===================================================== */
+
+.doctor-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 12px 28px rgba(15, 23, 42, 0.11);
+}
+
+
+/* =====================================================
+   AVAILABILITY BADGE
+===================================================== */
+
+.doctor-availability {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    margin-bottom: 14px;
+}
+
+
+/* =====================================================
+   AVAILABLE
+===================================================== */
+
+.doctor-availability.available {
+    background: #ECFDF3;
+
+    color: #15803D;
+
+    border: 1px solid #BBF7D0;
+}
+
+
+/* =====================================================
+   NOT AVAILABLE
+===================================================== */
+
+.doctor-availability.not-available {
+    background: #FEF2F2;
+
+    color: #DC2626;
+
+    border: 1px solid #FECACA;
+}
+
+
+/* =====================================================
+   AVAILABILITY ICON
+===================================================== */
+
+.doctor-availability i {
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   DOCTOR IMAGE CONTAINER
+===================================================== */
+
+.doctor-image {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-bottom: 14px;
+}
+
+
+/* =====================================================
+   DOCTOR IMAGE
+===================================================== */
+
+.doctor-card img {
+    display: block;
+
+    width: 82px;
+    height: 82px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 3px solid #1769D5;
+
+    background: #F5FAFF;
+}
+
+
+/* =====================================================
+   DOCTOR INFORMATION
+===================================================== */
+
+.doctor-info {
+    width: 100%;
+}
+
+
+/* =====================================================
+   DOCTOR NAME
+===================================================== */
+
+.doctor-card h3 {
+    font-size: 17px;
+
+    color: #1D3557;
+
+    margin-bottom: 7px;
+
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   QUALIFICATION
+===================================================== */
+
+.doctor-card h4 {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    font-size: 12px;
+
+    color: #475569;
+
+    font-weight: 500;
+
+    margin-bottom: 9px;
+}
+
+.doctor-card h4 i {
+    color: #1769D5;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   SPECIALIZATION & EXPERIENCE
+===================================================== */
+
+.doctor-card p {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    font-size: 12px;
+
+    color: #64748B;
+
+    margin-bottom: 7px;
+
+    line-height: 1.5;
+}
+
+.doctor-card p i {
+    color: #1769D5;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   CONSULTATION FEE
+===================================================== */
+
+.consultation-fee {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-top: 13px;
+
+    margin-bottom: 15px;
+
+    padding: 10px 11px;
+
+    background: #F5FAFF;
+
+    border: 1px solid #E2E8F0;
+
+    border-radius: 8px;
+
+    text-align: left;
+}
+
+
+/* =====================================================
+   FEE LABEL
+===================================================== */
+
+.fee-label {
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    color: #64748B;
+
+    font-size: 11px;
+
+    font-weight: 500;
+}
+
+.fee-label i {
+    color: #1769D5;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   FEE AMOUNT
+===================================================== */
+
+.fee-amount {
+    color: #1D3557;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   BOOK BUTTON
+===================================================== */
+
+.book-btn {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    width: 100%;
+
+    padding: 10px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #1769D5;
+
+    color: #FFFFFF;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        transform 0.2s ease;
+
+    text-align: center;
+}
+
+.book-btn:hover {
+    background: #1055B5;
+
+    color: #FFFFFF;
+}
+
+.book-btn:active {
+    transform: scale(0.98);
+}
+
+
+/* =====================================================
+   DISABLED BOOK BUTTON
+===================================================== */
+
+.book-btn-disabled {
+    background: #CBD5E1;
+
+    color: #64748B;
+
+    cursor: not-allowed;
+
+    opacity: 0.85;
+}
+
+.book-btn-disabled:hover {
+    background: #CBD5E1;
+
+    color: #64748B;
+}
+
+.book-btn-disabled:active {
+    transform: none;
+}
+
+
+/* =====================================================
+   SCROLLBAR
+===================================================== */
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: #F5FAFF;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #94A3B8;
+
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #1769D5;
+}
+
+
+/* =====================================================
+   MOBILE VIEW
+   MAX-WIDTH: 900PX
+===================================================== */
+
+@media (max-width: 900px) {
+
+    /* =================================================
+       HAMBURGER / X BUTTON
+       STAYS AT TOP
+    ================================================== */
+
+    .menu-toggle {
+        display: flex;
+
+        position: fixed;
+
+        top: 15px;
+        left: 15px;
+
+        width: 42px;
+        height: 42px;
+
+        z-index: 1400;
+    }
+
+
+    /* =================================================
+       SIDEBAR
+       FULL HEIGHT
+       X APPEARS VISUALLY INSIDE SIDEBAR
+    ================================================== */
+
+    .sidebar {
+        width: 250px;
+
+        height: 100vh;
+
+        position: fixed;
+
+        top: 0;
+        left: 0;
+
+        transform: translateX(-100%);
+
+        background: #1D3557;
+
+        z-index: 1200;
+
+        transition: transform 0.3s ease;
+
+        overflow-y: auto;
+
+        padding-top: 65px;
+    }
+
+
+    /* =================================================
+       SIDEBAR OPEN
+    ================================================== */
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+
+    /* =================================================
+       OVERLAY
+    ================================================== */
+
+    .overlay.active {
+        display: block;
+    }
+
+
+    /* =================================================
+       LOGO
+       MOVED BELOW X BUTTON
+    ================================================== */
+
+    .sidebar .logo {
+        display: flex;
+
+        height: 82px;
+
+        padding-left: 30px;
+
+        flex-shrink: 0;
+    }
+
+    .sidebar .logo span {
+        font-size: 32px;
+    }
+
+
+    /* =================================================
+       PATIENT PROFILE
+    ================================================== */
+
+    .sidebar .patient-profile {
+        display: flex;
+    }
+
+
+    /* =================================================
+       MENU TITLE
+    ================================================== */
+
+    .sidebar .menu-title {
+        display: block;
+    }
+
+
+    /* =================================================
+       LOGOUT
+    ================================================== */
+
+    .sidebar .logout {
+        display: block;
+    }
+
+
+    /* =================================================
+       SIDEBAR NAVIGATION
+    ================================================== */
+
+    .sidebar nav {
+        width: 100%;
+
+        height: auto;
+
+        flex: 1;
+    }
+
+    .sidebar nav ul {
+        display: flex;
+
+        flex-direction: column;
+
+        width: 100%;
+
+        height: auto;
+
+        margin-top: 10px;
+
+        padding: 0 12px;
+
+        gap: 6px;
+    }
+
+    .sidebar nav ul li {
+        flex: none;
+
+        width: 100%;
+
+        height: auto;
+    }
+
+    .sidebar nav ul li a {
+        display: flex;
+
+        flex-direction: row;
+
+        align-items: center;
+
+        justify-content: flex-start;
+
+        width: 100%;
+
+        min-height: 44px;
+
+        height: 44px;
+
+        color: rgba(255, 255, 255, 0.78);
+
+        font-size: 14px;
+
+        gap: 12px;
+
+        text-align: left;
+
+        padding: 0 12px;
+
+        white-space: nowrap;
+    }
+
+    .sidebar nav ul li a i {
+        width: 20px;
+
+        min-width: 20px;
+
+        font-size: 17px;
+    }
+
+    .sidebar nav ul li a span {
+        line-height: 1.2;
+    }
+
+
+    /* =================================================
+       ACTIVE MOBILE LINK
+    ================================================== */
+
+    .sidebar nav ul li.active a {
+        background: #1769D5;
+
+        color: #FFFFFF;
+
+        border-radius: 8px;
+    }
+
+
+    /* =================================================
+       CONTENT
+    ================================================== */
+
+    .content,
+    .main-content {
+        margin-left: 0;
+
+        width: 100%;
+
+        padding: 75px 16px 25px 16px;
+    }
+
+
+    /* =================================================
+       WELCOME CARD MOBILE
+    ================================================== */
+
+    .welcome-card {
+        padding: 22px 20px;
+
+        margin-bottom: 22px;
+    }
+
+    .welcome-card h1 {
+        font-size: 21px;
+    }
+
+    .welcome-card p {
+        font-size: 13px;
+    }
+
+
+    /* =================================================
+       SECTION HEADER MOBILE
+    ================================================== */
+
+    .section-header {
+        margin-bottom: 16px;
+    }
+
+    .section-header h2 {
+        font-size: 17px;
+    }
+
+
+    /* =================================================
+       DOCTOR CARDS MOBILE
+    ================================================== */
+
+    .doctor-container {
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+    }
+
+    .doctor-card {
+        padding: 18px;
+    }
+
+    .doctor-card img {
+        width: 78px;
+        height: 78px;
+    }
+
+    .doctor-card h3 {
+        font-size: 16px;
+    }
+
+    .consultation-fee {
+        padding: 9px 10px;
+    }
+}
+
+
+/* =====================================================
+   DYNAMIC DOCTOR MESSAGE
+===================================================== */
+
+.doctor-message,
+.doctor-loading {
+    grid-column: 1 / -1;
+
+    min-height: 180px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 30px;
+}
+
+
+/* =====================================================
+   LOADING ICON
+===================================================== */
+
+.doctor-loading i {
+    color: #1769D5;
+
+    font-size: 30px;
+
+    margin-bottom: 10px;
+}
+
+.doctor-loading p {
+    color: #64748B;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   MESSAGE ICON
+===================================================== */
+
+.doctor-message i {
+    color: #1769D5;
+
+    font-size: 38px;
+
+    margin-bottom: 10px;
+}
+
+
+/* =====================================================
+   MESSAGE HEADING
+===================================================== */
+
+.doctor-message h3 {
+    color: #1D3557;
+
+    font-size: 18px;
+
+    margin-bottom: 6px;
+}
+
+
+/* =====================================================
+   MESSAGE TEXT
+===================================================== */
+
+.doctor-message p {
+    color: #64748B;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   DOCTOR IMAGE
+===================================================== */
+
+.doctor-card img {
+    display: block;
+
+    width: 82px;
+    height: 82px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 3px solid #1769D5;
+
+    margin: 0 auto 15px;
+}
+
+/* Notification Bell - Top Right Corner */
+.notification-wrapper {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    z-index: 100;
+}
+
+.notification-bell {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    color: #1769aa;
+    border-radius: 50%;
+    font-size: 20px;
+    text-decoration: none;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.10);
+    transition: 0.2s ease;
+}
+
+.notification-bell:hover {
+    background: #1769aa;
+    color: #ffffff;
+}
+
+.notification-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    min-width: 19px;
+    height: 19px;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #d7f36b;
+    color: #17324d;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.notification-count.hidden {
+    display: none;
+}
+
+
+/* ==========================================
+   DASHBOARD TOP BAR
+========================================== */
+
+.dashboard-topbar {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 5px 5px 0;
+}
+
+/* ==========================================
+   NOTIFICATION BELL
+========================================== */
+
+.notification-bell {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    color: #1769aa;
+    border-radius: 50%;
+    font-size: 20px;
+    text-decoration: none;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.10);
+    transition: 0.2s ease;
+}
+
+.notification-bell:hover {
+    background: #1769aa;
+    color: #ffffff;
+}
+
+/* Notification unread count */
+
+.notification-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    min-width: 19px;
+    height: 19px;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #d7f36b;
+    color: #17324d;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.notification-count.hidden {
+    display: none;
+}

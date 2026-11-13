@@ -1,0 +1,1066 @@
+
+/* =======================================================
+   DERMCARE - RECEPTIONIST ADD DOCTOR CSS
+======================================================= */
+
+
+/* =======================================================
+   BASIC
+======================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #F5FAFF;
+    color: #1D3557;
+}
+
+
+/* =======================================================
+   SIDEBAR
+======================================================= */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 100vh;
+    background: #1D3557;
+    color: #FFFFFF;
+    z-index: 1000;
+    overflow-y: hidden;
+    transition: transform 0.3s ease;
+}
+
+
+/* =======================================================
+   SIDEBAR LOGO
+======================================================= */
+
+.sidebar-logo {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo-text {
+    position: relative;
+    color: #FFFFFF;
+    font-size: 29px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.logo-text::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    width: 45px;
+    height: 3px;
+    background: #A8D52D;
+    border-radius: 3px;
+}
+
+
+/* =======================================================
+   RECEPTIONIST PROFILE
+======================================================= */
+
+.receptionist-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 18px 15px 8px;
+    padding: 13px 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 9px;
+}
+
+.receptionist-icon {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1769D5;
+    color: #FFFFFF;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+.receptionist-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.receptionist-name {
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.receptionist-role {
+    color: #B8C7D9;
+    font-size: 11px;
+    margin-top: 2px;
+}
+
+
+/* =======================================================
+   HAMBURGER BUTTON
+======================================================= */
+
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 7px;
+    background: #1769D5;
+    color: #FFFFFF;
+    align-items: center;
+    justify-content: center;
+    font-size: 21px;
+    cursor: pointer;
+    z-index: 2000;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.menu-toggle:hover {
+    background: #1055B5;
+}
+
+.menu-toggle:active {
+    transform: scale(0.96);
+}
+
+
+/* =======================================================
+   HAMBURGER OPEN STATE
+======================================================= */
+
+.menu-toggle.menu-open {
+    left: 15px;
+    top: 15px;
+    background: #1769D5;
+}
+
+.menu-toggle.menu-open:hover {
+    background: #1055B5;
+}
+
+
+/* =======================================================
+   SIDEBAR OVERLAY
+======================================================= */
+
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 999;
+}
+
+.overlay.show {
+    display: block;
+}
+
+
+/* =======================================================
+   SIDEBAR MENU
+======================================================= */
+
+.sidebar-menu {
+    padding: 15px 12px 20px;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 13px 15px;
+    margin-bottom: 6px;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 14px;
+    transition: background 0.2s ease;
+}
+
+.sidebar-menu a i {
+    font-size: 18px;
+    width: 22px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.sidebar-menu a:hover {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.sidebar-menu a.active {
+    background: #1769D5;
+}
+
+.sidebar-menu .logout-link {
+    margin-top: 25px;
+    color: #FFFFFF;
+}
+
+
+/* =======================================================
+   MAIN CONTENT
+======================================================= */
+
+.main-content {
+    margin-left: 250px;
+    min-height: 100vh;
+    padding: 35px;
+    transition: margin-left 0.3s ease;
+}
+
+
+/* =======================================================
+   PAGE HEADER
+======================================================= */
+
+.page-header {
+    margin-bottom: 25px;
+}
+
+.page-header h1 {
+    font-size: 30px;
+    color: #1D3557;
+    margin-bottom: 6px;
+}
+
+.page-header p {
+    color: #64748B;
+    font-size: 14px;
+}
+
+
+/* =======================================================
+   CARD
+======================================================= */
+
+.doctor-card {
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 18px rgba(29, 53, 87, 0.08);
+    border: 1px solid #E5EEF7;
+}
+
+
+/* =======================================================
+   CARD TITLE
+======================================================= */
+
+.card-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #E5EEF7;
+}
+
+.title-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 9px;
+    background: #EAF3FF;
+    color: #1769D5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.card-title h2 {
+    font-size: 19px;
+    color: #1D3557;
+    margin-bottom: 3px;
+}
+
+.card-title p {
+    font-size: 13px;
+    color: #64748B;
+}
+
+
+/* =========================================================
+   SUCCESS TOAST
+   SAME STYLE AS MANAGE DOCTORS
+========================================================= */
+
+.success-message {
+    position: fixed;
+
+    top: 25px;
+    right: 25px;
+    left: auto;
+
+    width: min(560px, calc(100% - 300px));
+    min-height: 64px;
+
+    padding: 18px 55px 18px 20px;
+
+    display: none;
+    align-items: center;
+    gap: 13px;
+
+    background: #1769D5;
+    color: #FFFFFF;
+
+    border-radius: 10px;
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.20);
+
+    z-index: 999999;
+
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.5;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   TOAST SHOW STATE
+========================================================= */
+
+.success-message.show {
+    display: flex;
+
+    animation: dermCareToastEnter 0.35s ease-out both;
+}
+
+
+/* =========================================================
+   TOAST ICON
+========================================================= */
+
+.success-message > i {
+    font-size: 22px;
+    color: #FFFFFF;
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   TOAST TEXT
+========================================================= */
+
+.success-message span {
+    flex: 1;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   LIME GREEN BOTTOM PROGRESS BAR
+   SHRINKS LEFT TO RIGHT OVER 5 SECONDS
+========================================================= */
+
+.success-message::after {
+    content: "";
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background: #A8D52D;
+
+    transform: scaleX(1);
+    transform-origin: left center;
+
+    animation: doctorToastProgress 5s linear forwards;
+}
+
+
+/* =========================================================
+   TOAST SLIDE-IN ANIMATION
+========================================================= */
+
+@keyframes dermCareToastEnter {
+    from {
+        opacity: 0;
+        transform: translateX(-35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* =========================================================
+   PROGRESS BAR ANIMATION
+========================================================= */
+
+@keyframes doctorToastProgress {
+    from {
+        transform: scaleX(1);
+    }
+
+    to {
+        transform: scaleX(0);
+    }
+}
+
+
+/* =======================================================
+   SECTION HEADING
+======================================================= */
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #1769D5;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.section-heading i {
+    font-size: 17px;
+}
+
+.professional-heading {
+    margin-top: 30px;
+}
+
+
+/* =======================================================
+   FORM GRID
+======================================================= */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 25px;
+}
+
+.form-group {
+    min-width: 0;
+}
+
+
+/* =======================================================
+   LABELS
+======================================================= */
+
+.form-group label,
+.image-section > label,
+.working-days-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #1D3557;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-group label span,
+.working-days-label span {
+    color: #DC3545;
+}
+
+
+/* =======================================================
+   INPUTS AND SELECT
+======================================================= */
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    height: 45px;
+    padding: 0 13px;
+    border: 1px solid #D6E2EF;
+    border-radius: 7px;
+    outline: none;
+    cursor: pointer;
+    color: #1D3557;
+    background: #FFFFFF;
+    font-size: 14px;
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+/* =======================================================
+   SELECTED GENDER - LIGHT BLUE BACKGROUND
+======================================================= */
+
+.form-group select:valid {
+    background: #EAF3FF;
+    border-color: #D6E2EF;
+    color: #1D3557;
+}
+
+
+/* =======================================================
+   INPUT AND SELECT FOCUS
+======================================================= */
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #1769D5;
+    box-shadow: 0 0 0 3px rgba(23, 105, 213, 0.08);
+}
+
+
+/* =======================================================
+   PLACEHOLDER
+======================================================= */
+
+.form-group input::placeholder {
+    color: #9AA8B7;
+}
+
+
+/* =======================================================
+   GENDER SELECT
+======================================================= */
+
+.form-group select {
+    cursor: pointer;
+}
+
+
+/* =======================================================
+   INVALID INPUT AND SELECT
+======================================================= */
+
+.form-group input.input-error,
+.form-group select.input-error {
+    border-color: #DC3545;
+}
+
+
+/* =======================================================
+   INVALID INPUT AND SELECT FOCUS
+======================================================= */
+
+.form-group input.input-error:focus,
+.form-group select.input-error:focus {
+    border-color: #DC3545;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.08);
+}
+
+
+/* =======================================================
+   PASSWORD
+======================================================= */
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 45px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    border: none;
+    background: transparent;
+    color: #64748B;
+
+    cursor: pointer;
+    font-size: 18px;
+    padding: 3px;
+}
+
+.password-toggle:hover {
+    color: #1769D5;
+}
+
+
+/* =======================================================
+   FIELD ERROR
+======================================================= */
+
+.field-error {
+    display: block;
+    min-height: 0;
+    margin-top: 5px;
+
+    color: #DC3545;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+/* =======================================================
+   WORKING DAYS
+======================================================= */
+
+.working-days-section {
+    margin-top: 25px;
+}
+
+.days-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.day-option {
+    cursor: pointer;
+}
+
+.day-option input {
+    display: none;
+}
+
+.day-option span {
+    display: inline-block;
+    padding: 9px 15px;
+
+    border: 1px solid #D6E2EF;
+    border-radius: 7px;
+
+    background: #FFFFFF;
+    color: #475569;
+    font-size: 13px;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.day-option input:checked + span {
+    background: #EAF3FF;
+    border-color: #1769D5;
+    color: #1769D5;
+    font-weight: 600;
+}
+
+
+/* =======================================================
+   IMAGE
+======================================================= */
+
+.image-section {
+    margin-top: 28px;
+}
+
+.top-image-section {
+    margin-top: 0;
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #E5EEF7;
+}
+
+.image-upload-area {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    padding: 18px;
+
+    border: 1px dashed #B9CDE2;
+    border-radius: 10px;
+
+    background: #FAFCFF;
+}
+
+.image-preview-container {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    background: #EAF3FF;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#doctorImagePreview {
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-placeholder {
+    color: #1769D5;
+    font-size: 42px;
+}
+
+
+/* =======================================================
+   BLUE CHOOSE FILE BUTTON
+======================================================= */
+
+.image-upload-content input[type="file"] {
+    width: 100%;
+    font-size: 13px;
+    color: #475569;
+}
+
+.image-upload-content input[type="file"]::file-selector-button {
+    margin-right: 12px;
+    padding: 9px 16px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: #1769D5;
+    color: #FFFFFF;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.image-upload-content input[type="file"]::file-selector-button:hover {
+    background: #1055B5;
+}
+
+.image-upload-content input[type="file"]::-moz-file-upload-button {
+    margin-right: 12px;
+    padding: 9px 16px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: #1769D5;
+    color: #FFFFFF;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.image-upload-content p {
+    margin-top: 7px;
+    color: #64748B;
+    font-size: 12px;
+}
+
+
+/* =======================================================
+   FORM ACTIONS
+======================================================= */
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+    padding-top: 22px;
+    border-top: 1px solid #E5EEF7;
+}
+
+.submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-width: 150px;
+    height: 45px;
+    padding: 0 20px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #1769D5;
+    color: #FFFFFF;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.submit-button:hover {
+    background: #1055B5;
+}
+
+.submit-button:active {
+    transform: scale(0.98);
+}
+
+.submit-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+
+/* =======================================================
+   RESPONSIVE - TABLET
+======================================================= */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+        width: 220px;
+    }
+
+    .main-content {
+        margin-left: 220px;
+        padding: 25px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =======================================================
+   RESPONSIVE - MOBILE
+======================================================= */
+
+@media (max-width: 650px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    /* HAMBURGER */
+
+    .menu-toggle {
+        display: flex;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        width: 42px;
+        height: 42px;
+        z-index: 2000;
+    }
+
+    .menu-toggle.menu-open {
+        top: 15px;
+        left: 15px;
+    }
+
+    /* SIDEBAR */
+
+    .sidebar {
+        width: 270px;
+        transform: translateX(-100%);
+        box-shadow: 5px 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .sidebar.mobile-open {
+        transform: translateX(0);
+    }
+
+    /* OVERLAY */
+
+    .overlay {
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+        transition:
+            opacity 0.3s ease,
+            visibility 0.3s ease;
+    }
+
+    .overlay.show {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    /* LOGO */
+
+    .sidebar-logo {
+        height: 130px;
+        padding: 65px 25px 15px 25px;
+
+        display: flex;
+        align-items: flex-end;
+    }
+
+    /* RECEPTIONIST PROFILE */
+
+    .receptionist-profile {
+        margin: 15px;
+    }
+
+    /* SIDEBAR MENU */
+
+    .sidebar-menu {
+        display: block;
+        padding: 15px 12px 20px;
+    }
+
+    .sidebar-menu a {
+        width: 100%;
+        margin-bottom: 6px;
+        white-space: normal;
+    }
+
+    .sidebar-menu .logout-link {
+        margin-top: 25px;
+    }
+
+    /* MAIN CONTENT */
+
+    .main-content {
+        margin-left: 0;
+        padding: 75px 15px 25px;
+    }
+
+    /* PAGE HEADER */
+
+    .page-header h1 {
+        font-size: 25px;
+    }
+
+    .page-header p {
+        font-size: 13px;
+    }
+
+    /* CARD */
+
+    .doctor-card {
+        padding: 20px;
+    }
+
+    /* CARD TITLE */
+
+    .card-title {
+        align-items: flex-start;
+        margin-bottom: 25px;
+    }
+
+    .card-title h2 {
+        font-size: 17px;
+    }
+
+    .card-title p {
+        font-size: 12px;
+    }
+
+    /* FORM */
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    /* IMAGE */
+
+    .image-upload-area {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .image-upload-content {
+        width: 100%;
+    }
+
+    /* BUTTON */
+
+    .form-actions {
+        justify-content: stretch;
+    }
+
+    .submit-button {
+        width: 100%;
+    }
+
+    /* WORKING DAYS */
+
+    .days-container {
+        gap: 8px;
+    }
+
+    .day-option span {
+        padding: 8px 12px;
+    }
+
+    /* MOBILE SUCCESS TOAST */
+
+    .success-message {
+        top: 18px;
+        left: 15px;
+        right: 15px;
+
+        width: auto;
+        max-width: none;
+
+        min-height: 58px;
+        padding: 15px 18px;
+
+        font-size: 14px;
+        border-radius: 9px;
+    }
+
+    .success-message i {
+        font-size: 20px;
+    }
+}
+
+
+/* =======================================================
+   REDUCE MOTION ACCESSIBILITY
+======================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .success-message.show {
+        animation: none !important;
+    }
+
+    .success-message.show::after {
+        animation: none !important;
+    }
+}

@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- BASIC DOCUMENT SETTINGS -->
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>DermCare - Today's Appointments</title>
+
+    <!-- BOOTSTRAP ICONS -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <!-- TODAY'S APPOINTMENTS CSS -->
+    <link
+        rel="stylesheet"
+        href="css/todays-appointments.css"
+    >
+</head>
+
+<body>
+
+    <!-- MOBILE HAMBURGER MENU -->
+    <button
+        type="button"
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="sidebar"
+    >
+        <i class="bi bi-list"></i>
+    </button>
+
+    <!-- MOBILE SIDEBAR OVERLAY -->
+    <div
+        class="overlay"
+        id="overlay"
+    ></div>
+
+    <!-- RECEPTIONIST SIDEBAR -->
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+        <!-- SIDEBAR CLOSE BUTTON -->
+        <button
+            type="button"
+            class="close-sidebar-btn"
+            id="closeSidebarBtn"
+            aria-label="Close sidebar"
+        >
+            <i class="bi bi-x-lg"></i>
+        </button>
+
+        <!-- DERMCARE LOGO -->
+        <div class="sidebar-logo">
+            <span class="logo-text">DermaCare</span>
+        </div>
+
+        <!-- RECEPTIONIST PROFILE -->
+        <div class="receptionist-profile">
+
+            <div class="receptionist-icon">
+                <i class="bi bi-person-fill"></i>
+            </div>
+
+            <div class="receptionist-info">
+                <span
+                    class="receptionist-name"
+                    id="receptionistName"
+                >
+                    Receptionist
+                </span>
+
+                <span class="receptionist-role">
+                    Clinic Staff
+                </span>
+            </div>
+
+        </div>
+
+        <!-- SIDEBAR MENU -->
+        <nav class="sidebar-menu">
+
+            <a href="receptionist-dashboard.html">
+                <i class="bi bi-grid-1x2-fill"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="add-doctor.html">
+                <i class="bi bi-person-plus-fill"></i>
+                <span>Add Doctor</span>
+            </a>
+
+            <a href="manage-doctors.html">
+                <i class="bi bi-person-badge-fill"></i>
+                <span>Manage Doctors</span>
+            </a>
+
+            <a
+                href="todays-appointments.html"
+                class="active"
+            >
+                <i class="bi bi-calendar-check-fill"></i>
+                <span>Today's Appointments</span>
+            </a>
+
+            <a href="upcoming-appointments.html">
+                <i class="bi bi-calendar-event-fill"></i>
+                <span>Upcoming Appointments</span>
+            </a>
+
+            <a href="leave-dateAppointment.html">
+                <i class="bi bi-calendar-x-fill"></i>
+                <span>Leave Date Appointments</span>
+            </a>
+
+            <a href="walk-in.html">
+                <i class="bi bi-person-walking"></i>
+                <span>Walk-in</span>
+            </a>
+
+            <a href="history.html">
+                <i class="bi bi-clock-history"></i>
+                <span>History</span>
+            </a>
+
+            <a
+                href="login.html"
+                class="logout-link"
+                id="logoutLink"
+            >
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Logout</span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- PAGE HEADER -->
+        <section class="page-header">
+
+            <div class="page-title-section">
+
+                <span class="page-label">
+                    Appointment Management
+                </span>
+
+                <h1>Today's Appointments</h1>
+
+                <p>
+                    View and manage all appointments scheduled
+                    for today.
+                </p>
+
+            </div>
+
+            <!-- TODAY DATE -->
+            <div class="current-date-card">
+
+                <i class="bi bi-calendar3"></i>
+
+                <div>
+                    <span>Today</span>
+
+                    <strong id="currentDate">
+                        Loading...
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- APPOINTMENTS SUMMARY -->
+        <section class="summary-grid">
+
+            <div class="summary-card total-card">
+                <div class="summary-icon">
+                    <i class="bi bi-calendar-check-fill"></i>
+                </div>
+
+                <div class="summary-content">
+                    <span>Total Appointments</span>
+                    <h2 id="totalAppointments">0</h2>
+                </div>
+            </div>
+
+            <div class="summary-card booked-card">
+                <div class="summary-icon">
+                    <i class="bi bi-calendar-plus-fill"></i>
+                </div>
+
+                <div class="summary-content">
+                    <span>Booked</span>
+                    <h2 id="bookedAppointments">0</h2>
+                </div>
+            </div>
+
+            <div class="summary-card arrived-card">
+                <div class="summary-icon">
+                    <i class="bi bi-person-check-fill"></i>
+                </div>
+
+                <div class="summary-content">
+                    <span>Arrived</span>
+                    <h2 id="arrivedAppointments">0</h2>
+                </div>
+            </div>
+
+            <div class="summary-card cancelled-card">
+                <div class="summary-icon">
+                    <i class="bi bi-calendar-x-fill"></i>
+                </div>
+
+                <div class="summary-content">
+                    <span>Cancelled</span>
+                    <h2 id="cancelledAppointments">0</h2>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- TODAY'S APPOINTMENTS TABLE -->
+        <section class="appointments-section">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Appointment List</h2>
+
+                    <p>
+                        All appointments scheduled for today.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Patient</th>
+                            <th>Doctor</th>
+                            <th>Time</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="todaysAppointmentsBody">
+
+                        <tr>
+                            <td
+                                colspan="6"
+                                class="loading-row"
+                            >
+                                Loading today's appointments...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- TODAY'S APPOINTMENTS JAVASCRIPT -->
+    <script src="js/todays-appointments.js"></script>
+
+</body>
+</html>

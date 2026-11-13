@@ -1,0 +1,1093 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- =====================================================
+         DERMCARE - RECEPTIONIST WALK-IN APPOINTMENTS
+         FILE: walk-in.html
+         PURPOSE: Register and manage walk-in patients
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Walk-in Appointments | DermCare</title>
+
+
+    <!-- =====================================================
+         GOOGLE FONT - POPPINS
+    ====================================================== -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         BOOTSTRAP ICONS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    >
+
+
+    <!-- =====================================================
+         WALK-IN CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/walk-in.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         MOBILE HAMBURGER MENU
+    ====================================================== -->
+
+    <button
+        type="button"
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="sidebar"
+    >
+
+        <i class="bi bi-list"></i>
+
+    </button>
+
+
+    <!-- =====================================================
+         MOBILE SIDEBAR OVERLAY
+    ====================================================== -->
+
+    <div
+        class="overlay"
+        id="overlay"
+    ></div>
+
+
+    <!-- =====================================================
+         RECEPTIONIST SIDEBAR
+    ====================================================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+
+        <!-- =============================================
+             SIDEBAR CLOSE BUTTON
+        ============================================== -->
+
+        <button
+            type="button"
+            class="close-sidebar-btn"
+            id="closeSidebarBtn"
+            aria-label="Close sidebar"
+        >
+
+            <i class="bi bi-x-lg"></i>
+
+        </button>
+
+
+        <!-- =============================================
+             DERMCARE LOGO
+        ============================================== -->
+
+        <div class="sidebar-logo">
+
+            <span class="logo-text">DermaCare</span>
+
+        </div>
+
+
+        <!-- =============================================
+             RECEPTIONIST PROFILE
+        ============================================== -->
+
+        <div class="receptionist-profile">
+
+            <div class="receptionist-icon">
+
+                <i class="bi bi-person-fill"></i>
+
+            </div>
+
+            <div class="receptionist-info">
+
+                <span
+                    class="receptionist-name"
+                    id="receptionistName"
+                >
+                    Receptionist
+                </span>
+
+                <span class="receptionist-role">
+                    Clinic Staff
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- =============================================
+             SIDEBAR NAVIGATION
+        ============================================== -->
+
+        <nav class="sidebar-menu">
+
+
+            <a href="receptionist-dashboard.html">
+
+                <i class="bi bi-grid-1x2-fill"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a href="add-doctor.html">
+
+                <i class="bi bi-person-plus-fill"></i>
+
+                <span>Add Doctor</span>
+
+            </a>
+
+
+            <a href="manage-doctors.html">
+
+                <i class="bi bi-person-badge-fill"></i>
+
+                <span>Manage Doctors</span>
+
+            </a>
+
+
+            <a href="todays-appointments.html">
+
+                <i class="bi bi-calendar-check-fill"></i>
+
+                <span>Today's Appointments</span>
+
+            </a>
+
+
+            <a href="upcoming-appointments.html">
+
+                <i class="bi bi-calendar-event-fill"></i>
+
+                <span>Upcoming Appointments</span>
+
+            </a>
+
+
+            <a href="leave-dateAppointment.html">
+
+                <i class="bi bi-calendar-x-fill"></i>
+
+                <span>Leave Date Appointments</span>
+
+            </a>
+
+
+            <a
+                href="walk-in.html"
+                class="active"
+                aria-current="page"
+            >
+
+                <i class="bi bi-person-walking"></i>
+
+                <span>Walk-in</span>
+
+            </a>
+
+
+            <a href="history.html">
+
+                <i class="bi bi-clock-history"></i>
+
+                <span>History</span>
+
+            </a>
+
+
+            <a
+                href="receptionist-login.html"
+                class="logout-link"
+                id="logoutLink"
+            >
+
+                <i class="bi bi-box-arrow-right"></i>
+
+                <span>Logout</span>
+
+            </a>
+
+
+        </nav>
+
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <header class="page-header">
+
+            <div>
+
+                <h1>Walk-in Appointments</h1>
+
+                <p>
+                    Register patients visiting the clinic
+                    without an online appointment.
+                </p>
+
+            </div>
+
+
+            <div class="header-date">
+
+                <i class="bi bi-calendar3"></i>
+
+                <span id="currentDate"></span>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             SUMMARY CARDS
+        ================================================== -->
+
+        <section class="summary-cards">
+
+
+            <!-- =============================================
+                 TOTAL WALK-INS
+            ============================================== -->
+
+            <div class="summary-card">
+
+                <div class="summary-icon blue">
+
+                    <i class="bi bi-people"></i>
+
+                </div>
+
+                <div class="summary-info">
+
+                    <p>Total Walk-ins Today</p>
+
+                    <h2 id="totalWalkIns">0</h2>
+
+                </div>
+
+            </div>
+
+
+            <!-- =============================================
+                 WAITING PATIENTS
+            ============================================== -->
+
+            <div class="summary-card">
+
+                <div class="summary-icon orange">
+
+                    <i class="bi bi-hourglass-split"></i>
+
+                </div>
+
+                <div class="summary-info">
+
+                    <p>Waiting Patients</p>
+
+                    <h2 id="waitingPatients">0</h2>
+
+                </div>
+
+            </div>
+
+
+            <!-- =============================================
+                 COMPLETED APPOINTMENTS
+            ============================================== -->
+
+            <div class="summary-card">
+
+                <div class="summary-icon green">
+
+                    <i class="bi bi-check-circle"></i>
+
+                </div>
+
+                <div class="summary-info">
+
+                    <p>Completed</p>
+
+                    <h2 id="completedPatients">0</h2>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             WALK-IN REGISTRATION SECTION
+        ================================================== -->
+
+        <section class="content-card">
+
+
+            <!-- =============================================
+                 SECTION HEADER
+            ============================================== -->
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        <i class="bi bi-person-plus"></i>
+
+                        Register Walk-in Patient
+                    </h2>
+
+                    <p>
+                        Enter patient details and assign
+                        an available walk-in time slot.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =============================================
+                 WALK-IN REGISTRATION FORM
+            ============================================== -->
+
+            <form id="walkInForm" novalidate>
+
+
+                <!-- =========================================
+                     PATIENT DETAILS
+                ========================================== -->
+
+                <div class="form-section-title">
+
+                    <i class="bi bi-person-vcard"></i>
+
+                    Patient Details
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <!-- =====================================
+                         PATIENT NAME AND EXISTING-PATIENT SEARCH
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="patientName">
+
+                            Patient Full Name
+                            <span class="required">*</span>
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="patientName"
+                            name="patientName"
+                            placeholder="Enter patient's full name"
+                            autocomplete="off"
+                            required
+                        >
+
+                        <small
+                            class="field-error"
+                            id="patientNameError"
+                        ></small>
+
+                        <!-- Existing patient search results -->
+
+                        <div
+                            id="existingPatientResults"
+                            class="existing-patient-results"
+                            style="display: none;"
+                        ></div>
+
+                        <!-- Selected existing patient's MongoDB ID -->
+
+                        <input
+                            type="hidden"
+                            id="existingPatientId"
+                            name="existingPatientId"
+                            value=""
+                        >
+
+                    </div>
+
+
+                    <!-- =====================================
+                         MOBILE NUMBER
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="patientMobile">
+
+                            Mobile Number
+                            <span class="required">*</span>
+
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="patientMobile"
+                            name="patientMobile"
+                            placeholder="Enter 10-digit mobile number"
+                            maxlength="10"
+                            inputmode="numeric"
+                            required
+                        >
+
+                        <small
+                            class="field-error"
+                            id="patientMobileError"
+                        ></small>
+
+                    </div>
+
+
+
+                    <!-- =====================================
+                         EMAIL ADDRESS
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="patientEmail">
+
+                            Email Address
+                            <span class="optional">(Optional)</span>
+
+                        </label>
+
+                        <input
+                            type="email"
+                            id="patientEmail"
+                            name="patientEmail"
+                            placeholder="Enter email address"
+                        >
+
+                        <small
+                            class="field-error"
+                            id="patientEmailError"
+                        ></small>
+
+                    </div>
+
+
+
+                    <!-- =====================================
+                         GENDER
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="patientGender">
+
+                            Gender
+                            <span class="required">*</span>
+
+                        </label>
+
+                        <select
+                            id="patientGender"
+                            name="patientGender"
+                            required
+                        >
+
+                            <option value="">
+                                Select Gender
+                            </option>
+
+                            <option value="Male">Male</option>
+
+                            <option value="Female">Female</option>
+
+                            <option value="Other">Other</option>
+
+                        </select>
+
+                        <small
+                            class="field-error"
+                            id="patientGenderError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         BLOOD GROUP
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="patientBloodGroup">
+
+                            Blood Group
+                            <span class="required">*</span>
+
+                        </label>
+
+                        <select
+                            id="patientBloodGroup"
+                            name="patientBloodGroup"
+                            required
+                        >
+
+                            <option value="">
+                                Select Blood Group
+                            </option>
+
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="Unknown">Unknown / Not Known</option>
+
+                        </select>
+
+                        <small
+                            class="field-error"
+                            id="patientBloodGroupError"
+                        ></small>
+
+                    </div>
+
+
+
+                    <!-- =====================================
+                         DATE OF BIRTH
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="patientDOB">
+
+                            Date of Birth
+                            <span class="optional">(Optional)</span>
+
+                        </label>
+
+                        <input
+                            type="date"
+                            id="patientDOB"
+                            name="patientDOB"
+                        >
+
+                        <small
+                            class="field-error"
+                            id="patientDOBError"
+                        ></small>
+
+                    </div>
+
+
+
+                    <!-- =====================================
+                         PATIENT ADDRESS
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="patientAddress">
+
+                            Address
+                            <span class="optional">(Optional)</span>
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="patientAddress"
+                            name="patientAddress"
+                            placeholder="Enter patient's address"
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =========================================
+                     APPOINTMENT DETAILS
+                ========================================== -->
+
+                <div class="form-section-title appointment-title">
+
+                    <i class="bi bi-calendar2-check"></i>
+
+                    Appointment Details
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <!-- =====================================
+                         SELECT DOCTOR
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="doctorSelect">
+
+                            Select Doctor
+                            <span class="required">*</span>
+
+                        </label>
+
+                        <select
+                            id="doctorSelect"
+                            name="doctorId"
+                            required
+                        >
+
+                            <option value="">
+                                Select Doctor
+                            </option>
+
+                        </select>
+
+                        <small
+                            class="field-error"
+                            id="doctorSelectError"
+                        ></small>
+
+                    </div>
+
+
+
+                    <!-- =====================================
+                         APPOINTMENT DATE
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="appointmentDate">
+
+                            Appointment Date
+                            <span class="required">*</span>
+
+                        </label>
+
+                        <input
+                            type="date"
+                            id="appointmentDate"
+                            name="appointmentDate"
+                            required
+                            disabled
+                        >
+
+                        <small
+                            class="field-hint"
+                            id="dateHint"
+                        >
+                            Select a doctor first.
+                        </small>
+
+                        <small
+                            class="field-error"
+                            id="appointmentDateError"
+                        ></small>
+
+                    </div>
+
+
+
+                    <!-- =====================================
+                         WALK-IN TIME SLOT
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="timeSlot">
+
+                            Walk-in Time Slot
+                            <span class="required">*</span>
+
+                        </label>
+
+                        <select
+                            id="timeSlot"
+                            name="timeSlot"
+                            required
+                            disabled
+                        >
+
+                            <option value="">
+                                Select Date First
+                            </option>
+
+                        </select>
+
+                        <small
+                            class="field-hint"
+                            id="slotHint"
+                        >
+                            Available walk-in slots will appear here.
+                        </small>
+
+                        <small
+                            class="field-error"
+                            id="timeSlotError"
+                        ></small>
+
+                    </div>
+
+
+
+                    <!-- =====================================
+                         CONSULTATION FEE
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="consultationFee">
+
+                            Consultation Fee
+                        </label>
+
+                        <div class="input-with-prefix">
+
+                            <span>₹</span>
+
+                            <input
+                                type="text"
+                                id="consultationFee"
+                                name="consultationFee"
+                                placeholder="Doctor's fee"
+                                readonly
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =====================================
+                         APPOINTMENT TYPE
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="appointmentType">
+
+                            Appointment Type
+                        </label>
+
+                        <input
+                            type="text"
+                            id="appointmentType"
+                            value="Walk-in"
+                            readonly
+                        >
+
+                    </div>
+
+
+
+                    <!-- =====================================
+                         PATIENT REASON
+                    ====================================== -->
+
+                    <div class="form-group full-width">
+
+                        <label for="visitReason">
+
+                            Reason for Visit
+                            <span class="optional">(Optional)</span>
+
+                        </label>
+
+                        <textarea
+                            id="visitReason"
+                            name="visitReason"
+                            rows="3"
+                            placeholder="Enter patient's symptoms or reason for visit"
+                        ></textarea>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =========================================
+                     FORM ACTIONS
+                ========================================== -->
+
+                <div class="form-actions">
+
+                    <button
+                        type="reset"
+                        class="btn btn-secondary"
+                        id="resetWalkInForm"
+                    >
+
+                        <i class="bi bi-arrow-counterclockwise"></i>
+
+                        Clear Form
+
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        id="registerWalkInButton"
+                    >
+
+                        <i class="bi bi-person-check"></i>
+
+                        Register Walk-in
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             TODAY'S WALK-IN APPOINTMENTS
+        ================================================== -->
+
+        <section class="content-card walk-in-list-card">
+
+
+            <!-- =============================================
+                 TABLE HEADER
+            ============================================== -->
+
+            <div class="section-header table-section-header">
+
+                <div>
+
+                    <h2>
+
+                        <i class="bi bi-list-check"></i>
+
+                        Today's Walk-in Patients
+
+                    </h2>
+
+                    <p>
+                        View walk-in registrations for the selected day.
+                    </p>
+
+                </div>
+
+
+                <div class="table-search">
+
+                    <i class="bi bi-search"></i>
+
+                    <input
+                        type="search"
+                        id="searchWalkIns"
+                        placeholder="Search patient..."
+                        aria-label="Search walk-in patients"
+                    >
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =============================================
+                 WALK-IN TABLE
+            ============================================== -->
+
+            <div class="table-responsive">
+
+                <table class="walk-in-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Patient</th>
+
+                            <th>Mobile</th>
+
+                            <th>Doctor</th>
+
+                            <th>Time Slot</th>
+
+                            <th>Status</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="walkInTableBody">
+
+                        <!-- Walk-in rows will be added by JavaScript -->
+
+                        <tr class="empty-row">
+
+                            <td colspan="6">
+
+                                <div class="empty-state">
+
+                                    <i class="bi bi-calendar2-x"></i>
+
+                                    <p>
+                                        No walk-in appointments to display.
+                                    </p>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+
+                </table>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="page-footer">
+
+            <p>
+                © 2026 DermCare Skin & Hair Clinic.
+                All rights reserved.
+            </p>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         WALK-IN SUCCESS / ERROR TOAST
+    ====================================================== -->
+
+    <div
+        id="walkInToast"
+        class="walk-in-toast"
+        role="status"
+        aria-live="polite"
+    >
+
+        <div class="walk-in-toast-icon">
+
+            <i class="bi bi-check-lg"></i>
+
+        </div>
+
+
+        <div
+            class="walk-in-toast-message"
+            id="walkInToastMessage"
+        >
+
+            Walk-in registration message
+
+        </div>
+
+
+        <div class="walk-in-toast-progress"></div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         WALK-IN JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/walk-in.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1136 @@
+
+/* =======================================================
+   DERMA CARE LOGIN PAGE
+======================================================= */
+
+
+/* =======================================================
+   GLOBAL STYLES
+======================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: #FFFFFF;
+    color: #1D3557;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* =======================================================
+   CONTAINER
+======================================================= */
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+/* =======================================================
+   HEADER
+======================================================= */
+
+.header {
+    width: 100%;
+    background: #FFFFFF;
+    padding: 14px 0;
+    border-bottom: 2px solid #E7EEF7;
+    box-shadow: 0 3px 12px rgba(23, 105, 213, 0.08);
+    position: relative;
+    z-index: 1000;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+
+/* =======================================================
+   TEXT LOGO
+======================================================= */
+
+.logo {
+    color: #1769D5;
+    font-size: 29px;
+    font-weight: 750;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    line-height: 1;
+}
+
+.logo::after {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 3px;
+    background: #A8D52D;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+
+/* =======================================================
+   DESKTOP NAVIGATION
+======================================================= */
+
+.header nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.header nav ul {
+    display: flex;
+    align-items: center;
+    gap: 27px;
+}
+
+.header nav ul li a {
+    color: #1D3557;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    gap: 9px;
+    padding: 8px 0;
+}
+
+.header nav ul li a i {
+    font-size: 15px;
+}
+
+.header nav ul li a:hover {
+    color: #1769D5;
+}
+
+.header nav ul li a.active {
+    color: #1D3557;
+}
+
+
+/* =======================================================
+   HEADER BUTTONS
+======================================================= */
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+
+/* =======================================================
+   COMMON HEADER BUTTON
+======================================================= */
+
+.register-btn,
+.login-btn {
+    padding: 9px 18px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    transition: all 0.3s ease;
+    border: 2px solid #1769D5;
+}
+
+.register-btn i,
+.login-btn i {
+    font-size: 15px;
+}
+
+
+/* =======================================================
+   REGISTER BUTTON
+======================================================= */
+
+.register-btn {
+    background: #FFFFFF;
+    color: #1769D5;
+    border: 2px solid #1769D5;
+}
+
+.register-btn:hover {
+    background: #1769D5;
+    color: #FFFFFF;
+    border-color: #1769D5;
+}
+
+
+/* =======================================================
+   LOGIN BUTTON
+======================================================= */
+
+.login-btn {
+    background: #FFFFFF;
+    color: #1769D5;
+    border: 2px solid #1769D5;
+}
+
+.login-btn:hover {
+    background: #1055B5;
+    color: #FFFFFF;
+    border-color: #1055B5;
+}
+
+.login-btn.active-btn {
+    background: #1769D5;
+    color: #FFFFFF;
+    border-color: #1769D5;
+}
+
+
+/* =======================================================
+   LOGIN PAGE BUTTON
+======================================================= */
+
+body.login-page .login-btn {
+    background: #1769D5;
+    color: #FFFFFF;
+    border: 2px solid #1769D5;
+}
+
+body.login-page .login-btn:hover {
+    background: #1055B5;
+    color: #FFFFFF;
+    border-color: #1055B5;
+}
+
+body.login-page .register-btn {
+    background: #FFFFFF;
+    color: #1769D5;
+    border: 2px solid #1769D5;
+}
+
+
+/* =======================================================
+   LOGIN PAGE
+======================================================= */
+
+.auth-page {
+    min-height: calc(100vh - 80px);
+    background: #F5FAFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 15px;
+}
+
+
+/* =======================================================
+   LOGIN CONTAINER
+======================================================= */
+
+.auth-container {
+    width: 100%;
+    max-width: 500px;
+    background: #FFFFFF;
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid #E1EAF5;
+    box-shadow: 0 5px 25px rgba(23, 105, 213, 0.10);
+}
+
+
+/* =======================================================
+   LOGIN HEADING
+======================================================= */
+
+.auth-container h1 {
+    text-align: center;
+    color: #1769D5;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.auth-container h1::after {
+    content: "";
+    display: block;
+    width: 45px;
+    height: 3px;
+    background: #A8D52D;
+    border-radius: 10px;
+    margin: 8px auto 0;
+}
+
+
+/* =======================================================
+   SUBTITLE
+======================================================= */
+
+.auth-subtitle {
+    text-align: center;
+    color: #64748B;
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+
+/* =======================================================
+   FORM GROUP
+======================================================= */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group > label {
+    display: block;
+    margin-bottom: 8px;
+    color: #1D3557;
+    font-weight: 600;
+}
+
+
+/* =======================================================
+   NORMAL INPUT
+======================================================= */
+
+.form-group input {
+    width: 100%;
+    height: 45px;
+    padding: 0 14px;
+    border: 1px solid #D6E2EF;
+    border-radius: 7px;
+    font-size: 15px;
+    font-family: inherit;
+    background: #FFFFFF;
+    color: #1D3557;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus {
+    border-color: #1769D5;
+    box-shadow: 0 0 0 2px rgba(23, 105, 213, 0.08);
+}
+
+
+/* =======================================================
+   PASSWORD BOX
+======================================================= */
+
+.password-box {
+    position: relative;
+    width: 100%;
+}
+
+.password-box input {
+    width: 100%;
+    height: 45px;
+    padding: 0 50px 0 14px;
+    border: 1px solid #D6E2EF;
+    border-radius: 7px;
+    font-size: 15px;
+    font-family: inherit;
+    background: #FFFFFF;
+    color: #1D3557;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.password-box input:focus {
+    border-color: #1769D5;
+    box-shadow: 0 0 0 2px rgba(23, 105, 213, 0.08);
+}
+
+
+/* =======================================================
+   PASSWORD EYE
+======================================================= */
+
+.eye {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 35px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #64748B;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.eye i {
+    font-size: 19px;
+    line-height: 1;
+}
+
+.eye:hover {
+    color: #1769D5;
+}
+
+.eye:focus {
+    outline: none;
+}
+
+
+/* =======================================================
+   FIELD ERROR
+======================================================= */
+
+.field-error {
+    display: block;
+    min-height: 0;
+    margin-top: 5px;
+    color: #DC3545;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+
+/* =======================================================
+   INVALID INPUT
+======================================================= */
+
+.input-error {
+    border-color: #DC3545 !important;
+    box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.08) !important;
+}
+
+
+/* =======================================================
+   LOGIN SUBMIT BUTTON
+======================================================= */
+
+.auth-submit {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 7px;
+    background: #1769D5;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.auth-submit:hover {
+    background: #1055B5;
+}
+
+.auth-submit::after {
+    content: "";
+    display: block;
+    width: 35px;
+    height: 2px;
+    background: #A8D52D;
+    margin: 3px auto 0;
+    border-radius: 5px;
+}
+
+
+/* =======================================================
+   REGISTER LINK
+======================================================= */
+
+.account-link {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0;
+    color: #1D3557;
+}
+
+.account-link a {
+    color: #1769D5;
+    font-weight: 600;
+}
+
+.account-link a:hover {
+    color: #1055B5;
+    text-decoration: underline;
+}
+
+
+/* =======================================================
+   NOTIFICATION BOX
+======================================================= */
+
+.notification {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    min-width: 320px;
+    max-width: 450px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.notification.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.notification.success {
+    background: #1769D5;
+    color: #FFFFFF;
+    border-left: 5px solid #A8D52D;
+}
+
+.notification.error {
+    background: #DC3545;
+    color: #FFFFFF;
+    border-left: 5px solid #A71D2A;
+}
+
+.notification span:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.notification span:first-child i {
+    font-size: 19px;
+}
+
+
+/* =======================================================
+   MOBILE SIDEBAR
+======================================================= */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    height: 100dvh;
+    background: #1D3557;
+    z-index: 1200;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.sidebar.active {
+    transform: translateX(0);
+}
+
+
+/* =======================================================
+   MOBILE MENU BUTTON
+======================================================= */
+
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    background: #1769D5;
+    color: #FFFFFF;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 1300;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+    transition:
+        left 0.3s ease,
+        background 0.3s ease,
+        transform 0.2s ease;
+}
+
+.menu-toggle:hover {
+    background: #1055B5;
+}
+
+.menu-toggle:active {
+    transform: scale(0.96);
+}
+
+.menu-toggle i {
+    font-size: 22px;
+    line-height: 1;
+}
+
+.menu-toggle.menu-open {
+    left: 15px;
+}
+
+
+/* =======================================================
+   SIDEBAR LOGO
+======================================================= */
+
+.sidebar-logo {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    flex-shrink: 0;
+}
+
+.sidebar-logo a {
+    color: #FFFFFF;
+    font-size: 26px;
+    font-weight: 750;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-logo a::after {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 3px;
+    background: #A8D52D;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+
+/* =======================================================
+   SIDEBAR NAVIGATION
+======================================================= */
+
+.sidebar nav {
+    display: block;
+    width: 100%;
+    padding: 20px 15px;
+}
+
+.sidebar nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+.sidebar nav ul li {
+    width: 100%;
+}
+
+.sidebar nav ul li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 13px 15px;
+    border-radius: 8px;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 500;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+.sidebar nav ul li a i {
+    width: 20px;
+    font-size: 17px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.sidebar nav ul li a:hover {
+    background: #1769D5;
+    color: #FFFFFF;
+}
+
+.sidebar nav ul li a.active {
+    background: #1769D5;
+    color: #FFFFFF;
+}
+
+
+/* =======================================================
+   MOBILE OVERLAY
+======================================================= */
+
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    z-index: 1100;
+}
+
+.overlay.active {
+    display: block;
+}
+
+
+/* =======================================================
+   RESPONSIVE HEADER
+======================================================= */
+
+@media (max-width: 992px) {
+
+    .header .container {
+        gap: 18px;
+    }
+
+    .header nav ul {
+        gap: 16px;
+    }
+
+    .header nav ul li a {
+        font-size: 14px;
+    }
+
+    .header-buttons {
+        gap: 7px;
+    }
+
+    .register-btn,
+    .login-btn {
+        padding: 8px 13px;
+        font-size: 13px;
+    }
+}
+
+
+/* =======================================================
+   TABLET / MOBILE
+======================================================= */
+
+@media (max-width: 768px) {
+
+    .header {
+        padding: 13px 0;
+        border-bottom: 2px solid #E7EEF7;
+    }
+
+    .header .container {
+        width: 92%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+
+
+    /* HIDE DESKTOP LOGO */
+
+    .header > .container > .logo {
+        display: none;
+    }
+
+
+    /* MOBILE HEADER BUTTONS */
+
+    .header-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 6px;
+        margin-left: auto;
+        width: auto;
+    }
+
+    .register-btn,
+    .login-btn {
+        padding: 7px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        gap: 5px;
+        border-width: 2px;
+    }
+
+    .register-btn i,
+    .login-btn i {
+        font-size: 13px;
+    }
+
+
+    /* HIDE DESKTOP NAVIGATION ONLY */
+
+    .header > .container > nav {
+        display: none;
+    }
+
+
+    /* MOBILE SIDEBAR */
+
+    .sidebar {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100vh;
+        height: 100dvh;
+        background: #1D3557;
+        z-index: 1200;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+
+    /* HAMBURGER BUTTON */
+
+    .menu-toggle {
+        display: flex;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        width: 42px;
+        height: 42px;
+        z-index: 1300;
+    }
+
+    .menu-toggle.menu-open {
+        left: 15px;
+    }
+
+
+    /* SIDEBAR LOGO */
+
+    .sidebar-logo {
+        height: 150px;
+        padding: 65px 25px 15px 25px;
+        display: flex;
+        align-items: flex-end;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    }
+
+    .sidebar-logo a {
+        color: #FFFFFF;
+        font-size: 25px;
+        font-weight: 750;
+        letter-spacing: 0.5px;
+    }
+
+    .sidebar-logo a::after {
+        content: "";
+        display: block;
+        width: 32px;
+        height: 3px;
+        background: #A8D52D;
+        border-radius: 10px;
+        margin-top: 5px;
+    }
+
+
+    /* SIDEBAR NAVIGATION - MATCH HOME PAGE */
+
+    .sidebar nav {
+        display: block;
+        width: 100%;
+        padding: 15px 0;
+    }
+
+    .sidebar nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+    }
+
+    .sidebar nav ul li {
+        width: 100%;
+    }
+
+    .sidebar nav ul li a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        padding: 15px 25px;
+        border-radius: 0;
+        color: #FFFFFF;
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .sidebar nav ul li a i {
+        width: 20px;
+        font-size: 17px;
+        text-align: center;
+        flex-shrink: 0;
+    }
+
+    .sidebar nav ul li a:hover,
+    .sidebar nav ul li a.active {
+        background: #1769D5;
+        color: #FFFFFF;
+    }
+
+
+    /* OVERLAY */
+
+    .overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.45);
+        z-index: 1100;
+    }
+
+    .overlay.active {
+        display: block;
+    }
+
+
+    /* LOGIN CONTENT */
+
+    .auth-page {
+        min-height: calc(100vh - 70px);
+        padding: 35px 15px;
+    }
+}
+
+
+/* =======================================================
+   SMALL MOBILE
+======================================================= */
+
+@media (max-width: 500px) {
+
+    .auth-page {
+        padding: 30px 15px;
+    }
+
+    .auth-container {
+        padding: 25px 18px;
+        border-radius: 14px;
+    }
+
+    .auth-container h1 {
+        font-size: 27px;
+    }
+
+    .auth-subtitle {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+
+    /* SMALL MOBILE HEADER BUTTONS */
+
+    .header-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 5px;
+        margin-left: auto;
+    }
+
+    .register-btn,
+    .login-btn {
+        padding: 6px 8px;
+        font-size: 11px;
+        gap: 4px;
+    }
+
+    .register-btn i,
+    .login-btn i {
+        font-size: 12px;
+    }
+
+
+    /* MOBILE NOTIFICATION */
+
+    .notification {
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        min-width: auto;
+        max-width: none;
+        width: auto;
+    }
+
+
+    /* MOBILE SIDEBAR */
+
+    .sidebar {
+        width: 250px;
+        height: 100vh;
+        height: 100dvh;
+    }
+
+    .sidebar-logo {
+        height: 150px;
+        padding: 65px 22px 15px 22px;
+    }
+
+    .sidebar-logo a {
+        font-size: 25px;
+    }
+
+
+    /* MOBILE MENU BUTTON */
+
+    .menu-toggle {
+        top: 15px;
+        left: 15px;
+        width: 42px;
+        height: 42px;
+    }
+
+    .menu-toggle.menu-open {
+        left: 15px;
+    }
+}
+
+
+/* =======================================================
+   FORGOT PASSWORD LINK
+======================================================= */
+
+.forgot-password-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+.forgot-password {
+    color: #2563EB;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.forgot-password:hover {
+    color: #0B6FB8;
+    text-decoration: underline;
+}
+
+
+/* =======================================================
+   HIDE BROWSER PASSWORD VISIBILITY CONTROLS
+======================================================= */
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    display: none;
+}
+
+
+/* =======================================================
+   PREVENT EXTRA CSS-GENERATED EYE ICONS
+======================================================= */
+
+.password-toggle::before,
+.password-toggle::after {
+    content: none !important;
+    display: none !important;
+}
+
+
+
+/* =======================================================
+   MOBILE SIDEBAR LOGIN / REGISTER BUTTONS
+   MATCH VIEW DOCTORS PAGE
+======================================================= */
+
+.mobile-auth-buttons {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    /* Hide Login and Register from the mobile header */
+    .header-buttons {
+        display: none !important;
+    }
+
+    /* Show buttons inside the sidebar */
+    .mobile-auth-buttons {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .mobile-auth-buttons a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        min-height: 71px;
+        padding: 15px 25px;
+        border-radius: 0;
+        color: #FFFFFF;
+        background: transparent;
+        font-size: 15px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: background 0.3s ease;
+    }
+
+    .mobile-auth-buttons a i {
+        width: 20px;
+        font-size: 17px;
+        text-align: center;
+        flex-shrink: 0;
+    }
+
+    .mobile-auth-buttons a:hover {
+        background: #1769D5;
+        color: #FFFFFF;
+    }
+
+    /* Override desktop button styles inside the sidebar */
+    .mobile-auth-buttons .mobile-login-btn,
+    .mobile-auth-buttons .mobile-register-btn {
+        border: none;
+        box-shadow: none;
+    }
+}

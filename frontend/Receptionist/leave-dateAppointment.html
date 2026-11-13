@@ -1,0 +1,728 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- =====================================================
+         DERMCARE - LEAVE DATE & AFFECTED APPOINTMENTS
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>DermCare - Leave Date Management</title>
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <!-- Leave Date CSS -->
+    <link
+        rel="stylesheet"
+        href="css/leave-dateAppointment.css"
+    >
+</head>
+
+<body>
+
+    <!-- MOBILE OVERLAY -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- RECEPTIONIST SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <!-- SIDEBAR CLOSE BUTTON (MOBILE) -->
+<button
+    type="button"
+    class="close-sidebar-btn"
+    id="closeSidebarBtn"
+    aria-label="Close menu"
+>
+    <i class="bi bi-x-lg"></i>
+</button>
+
+        <!-- DERMCARE LOGO -->
+        <div class="sidebar-logo">
+            <span class="logo-text">DermaCare</span>
+        </div>
+
+        <!-- RECEPTIONIST PROFILE -->
+        <div class="receptionist-profile">
+
+            <!-- Person icon kept, circular background removed via CSS -->
+            <div class="receptionist-icon">
+                <i class="bi bi-person-fill"></i>
+            </div>
+
+            <div class="receptionist-info">
+                <span
+                    class="receptionist-name"
+                    id="receptionistName"
+                >
+                    Receptionist
+                </span>
+
+                <span class="receptionist-role">
+                    Clinic Staff
+                </span>
+            </div>
+
+        </div>
+
+        <!-- SIDEBAR MENU -->
+        <nav class="sidebar-menu">
+
+            <a href="receptionist-dashboard.html">
+                <i class="bi bi-grid-1x2-fill"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="add-doctor.html">
+                <i class="bi bi-person-plus-fill"></i>
+                <span>Add Doctor</span>
+            </a>
+
+            <a href="manage-doctors.html">
+                <i class="bi bi-person-badge-fill"></i>
+                <span>Manage Doctors</span>
+            </a>
+
+            <a href="todays-appointments.html">
+                <i class="bi bi-calendar-check-fill"></i>
+                <span>Today's Appointments</span>
+            </a>
+
+            <a href="upcoming-appointments.html">
+                <i class="bi bi-calendar-event-fill"></i>
+                <span>Upcoming Appointments</span>
+            </a>
+
+            <a
+                href="leave-dateAppointment.html"
+                class="active"
+            >
+                <i class="bi bi-calendar-x-fill"></i>
+                <span>Leave Date Appointments</span>
+            </a>
+
+            <a href="walk-in.html">
+                <i class="bi bi-person-walking"></i>
+                <span>Walk-in</span>
+            </a>
+
+            <a href="history.html">
+                <i class="bi bi-clock-history"></i>
+                <span>History</span>
+            </a>
+
+            <a
+                href="login.html"
+                class="logout-link"
+                id="logoutLink"
+            >
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Logout</span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- MOBILE HAMBURGER MENU -->
+    <button
+        type="button"
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+    >
+        <i class="bi bi-list"></i>
+    </button>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- PAGE HEADER -->
+        <section class="page-header">
+
+            <div class="page-title-section">
+
+                <span class="page-label">
+                    RECEPTIONIST PORTAL
+                </span>
+
+                <h1>Doctor Leave Management</h1>
+
+                <p>
+                    Add doctor leave dates and manage
+                    appointments affected by unexpected leave.
+                </p>
+
+            </div>
+
+            <div class="current-date-card">
+
+                <i class="bi bi-calendar3"></i>
+
+                <div>
+                    <span>Today's Date</span>
+                    <strong id="currentDate">Loading...</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SECTION 1: ADD DOCTOR LEAVE -->
+        <section class="leave-form-section">
+
+            <div class="section-header">
+
+                <div class="section-heading">
+
+                    <div class="section-icon">
+                        <i class="bi bi-calendar-plus"></i>
+                    </div>
+
+                    <div>
+                        <h2>Add Doctor Leave</h2>
+                        <p>
+                            Mark a doctor as unavailable
+                            for a selected date.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <form id="leaveDateForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="doctorSelect">
+                            Select Doctor
+                            <span class="required">*</span>
+                        </label>
+
+                        <select
+                            id="doctorSelect"
+                            name="doctorId"
+                            required
+                        >
+                            <option value="">Select Doctor</option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="leaveDate">
+                            Leave Date
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="date"
+                            id="leaveDate"
+                            name="leaveDate"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="form-group full-width">
+
+                        <label for="leaveReason">
+                            Reason for Leave
+                            <span class="optional">(Optional)</span>
+                        </label>
+
+                        <textarea
+                            id="leaveReason"
+                            name="leaveReason"
+                            rows="3"
+                            placeholder="Enter reason for leave..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+                <div class="form-actions">
+
+                    <button
+                        type="reset"
+                        class="btn btn-secondary"
+                        id="resetLeaveForm"
+                    >
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                        Reset
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        id="addLeaveBtn"
+                    >
+                        <i class="bi bi-plus-circle"></i>
+                        Add Leave Date
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+        <!-- SECTION 2: AFFECTED APPOINTMENTS -->
+        <section class="affected-appointments-section">
+
+            <div class="section-header">
+
+                <div class="section-heading">
+
+                    <div class="section-icon warning-icon">
+                        <i class="bi bi-exclamation-triangle"></i>
+                    </div>
+
+                    <div>
+                        <h2>Appointments Affected by Leave</h2>
+                        <p>
+                            Review existing appointments
+                            scheduled on a doctor's leave date.
+                        </p>
+                    </div>
+
+                </div>
+
+                <span
+                    class="section-count"
+                    id="affectedAppointmentsCount"
+                >
+                    0 Appointments
+                </span>
+
+            </div>
+
+            <div class="info-notice">
+                <i class="bi bi-info-circle-fill"></i>
+
+                <p>
+                    Appointments already booked before a leave
+                    date was added will appear here.
+                    Receptionist can reschedule or cancel
+                    affected appointments.
+                </p>
+            </div>
+
+            <div class="table-container">
+
+                <table class="appointments-table">
+
+                    <thead>
+                        <tr>
+                            <th>Patient</th>
+                            <th>Doctor</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="affectedAppointmentsBody">
+
+                        <tr class="loading-row">
+                            <td colspan="7">
+                                <i class="bi bi-arrow-repeat"></i>
+                                Loading affected appointments...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div
+                class="empty-state"
+                id="noAffectedAppointments"
+                style="display: none;"
+            >
+                <i class="bi bi-calendar-check"></i>
+
+                <h3>No Affected Appointments</h3>
+
+                <p>
+                    There are no appointments requiring
+                    action for the current doctor leave dates.
+                </p>
+            </div>
+
+        </section>
+
+        <!-- SECTION 3: DOCTOR LEAVE RECORDS -->
+        <section class="leave-records-section">
+
+            <div class="section-header">
+
+                <div class="section-heading">
+
+                    <div class="section-icon">
+                        <i class="bi bi-calendar-minus"></i>
+                    </div>
+
+                    <div>
+                        <h2>Doctor Leave Records</h2>
+                        <p>
+                            View and manage previously
+                            added doctor leave dates.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="table-container">
+
+                <table class="leave-table">
+
+                    <thead>
+                        <tr>
+                            <th>Doctor</th>
+                            <th>Leave Date</th>
+                            <th>Reason</th>
+                            <th>Status</th>
+                            <th>Added By</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="leaveRecordsBody">
+
+                        <tr class="loading-row">
+                            <td colspan="6">
+                                <i class="bi bi-arrow-repeat"></i>
+                                Loading leave records...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div
+                class="empty-state"
+                id="noLeaveRecords"
+                style="display: none;"
+            >
+                <i class="bi bi-calendar2"></i>
+
+                <h3>No Leave Records Found</h3>
+
+                <p>
+                    Doctor leave dates will appear here
+                    after they are added.
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- RESCHEDULE APPOINTMENT MODAL -->
+    <div
+        class="modal"
+        id="rescheduleModal"
+        aria-hidden="true"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Reschedule Appointment</h2>
+                    <p>Select a new available date and time.</p>
+                </div>
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="closeRescheduleModal"
+                    aria-label="Close"
+                >
+                    <i class="bi bi-x-lg"></i>
+                </button>
+
+            </div>
+
+            <form id="rescheduleForm">
+
+                <input
+                    type="hidden"
+                    id="rescheduleAppointmentId"
+                >
+
+                <div class="appointment-info-card">
+
+                    <p>
+                        <strong>Patient:</strong>
+                        <span id="reschedulePatientName">-</span>
+                    </p>
+
+                    <p>
+                        <strong>Doctor:</strong>
+                        <span id="rescheduleDoctorName">-</span>
+                    </p>
+
+                    <p>
+                        <strong>Current Appointment:</strong>
+                        <span id="rescheduleCurrentDateTime">-</span>
+                    </p>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="newAppointmentDate">
+                        New Appointment Date
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="date"
+                        id="newAppointmentDate"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="newAppointmentTime">
+                        Available Time Slot
+                        <span class="required">*</span>
+                    </label>
+
+                    <select
+                        id="newAppointmentTime"
+                        required
+                        disabled
+                    >
+                        <option value="">Select a date first</option>
+                    </select>
+
+                </div>
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        id="cancelRescheduleBtn"
+                    >
+                        Close
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        id="confirmRescheduleBtn"
+                    >
+                        <i class="bi bi-calendar-check"></i>
+                        Confirm Reschedule
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- CANCEL APPOINTMENT MODAL -->
+    <div
+        class="modal"
+        id="cancelAppointmentModal"
+        aria-hidden="true"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Cancel Appointment</h2>
+                    <p>Confirm cancellation of this appointment.</p>
+                </div>
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="closeCancelModal"
+                    aria-label="Close"
+                >
+                    <i class="bi bi-x-lg"></i>
+                </button>
+
+            </div>
+
+            <form id="cancelAppointmentForm">
+
+                <input
+                    type="hidden"
+                    id="cancelAppointmentId"
+                >
+
+                <div class="appointment-info-card">
+
+                    <p>
+                        <strong>Patient:</strong>
+                        <span id="cancelPatientName">-</span>
+                    </p>
+
+                    <p>
+                        <strong>Doctor:</strong>
+                        <span id="cancelDoctorName">-</span>
+                    </p>
+
+                    <p>
+                        <strong>Appointment:</strong>
+                        <span id="cancelAppointmentDateTime">-</span>
+                    </p>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="cancellationReason">
+                        Cancellation Reason
+                        <span class="optional">(Optional)</span>
+                    </label>
+
+                    <textarea
+                        id="cancellationReason"
+                        rows="3"
+                        placeholder="Enter cancellation reason..."
+                    ></textarea>
+
+                </div>
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        id="cancelCancelModalBtn"
+                    >
+                        Go Back
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-danger"
+                        id="confirmCancelAppointmentBtn"
+                    >
+                        <i class="bi bi-x-circle"></i>
+                        Confirm Cancellation
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- REMOVE LEAVE CONFIRMATION MODAL -->
+    <div
+        class="modal"
+        id="removeLeaveModal"
+        aria-hidden="true"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Remove Leave Date</h2>
+                    <p>Confirm removal of this doctor leave record.</p>
+                </div>
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="closeRemoveLeaveModal"
+                    aria-label="Close"
+                >
+                    <i class="bi bi-x-lg"></i>
+                </button>
+
+            </div>
+
+            <div class="appointment-info-card">
+                <p>
+                    Are you sure you want to remove this leave date?
+                </p>
+
+                <p>
+                    <strong>Doctor:</strong>
+                    <span id="removeLeaveDoctorName">-</span>
+                </p>
+
+                <p>
+                    <strong>Leave Date:</strong>
+                    <span id="removeLeaveDate">-</span>
+                </p>
+            </div>
+
+            <input type="hidden" id="removeLeaveId">
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    id="cancelRemoveLeaveBtn"
+                >
+                    Keep Leave
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-danger"
+                    id="confirmRemoveLeaveBtn"
+                >
+                    <i class="bi bi-trash"></i>
+                    Confirm Remove
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- LEAVE DATE JAVASCRIPT -->
+    <script src="js/leave-dateAppointment.js"></script>
+
+</body>
+</html>

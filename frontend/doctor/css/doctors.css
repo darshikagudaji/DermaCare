@@ -1,0 +1,1211 @@
+/* =======================================================
+   DERMACARE - VIEW DOCTORS HOME PAGE
+   PURPOSE: Public doctors listing page
+   MOBILE SIDEBAR: Matches Index/Home page with smaller fonts
+======================================================= */
+
+/* GLOBAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #F5FAFF;
+    color: #1D3557;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* CONTAINER */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* =======================================================
+   HEADER - MATCH INDEX PAGE
+======================================================= */
+
+.header {
+    width: 100%;
+    background: #FFFFFF;
+    padding: 17px 0;
+    border-bottom: 2px solid #E7EEF7;
+    box-shadow: 0 3px 12px rgba(23, 105, 213, 0.08);
+    position: relative;
+    z-index: 1000;
+}
+
+.header .container {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+/* LOGO */
+.logo {
+    position: relative;
+    color: #1769D5;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    padding-bottom: 6px;
+    white-space: nowrap;
+}
+
+.logo::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 34px;
+    height: 4px;
+    background: #A8D52D;
+    border-radius: 5px;
+    transform: skewX(-25deg);
+}
+
+/* DESKTOP NAVIGATION */
+.desktop-nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.desktop-nav ul {
+    display: flex;
+    align-items: center;
+    gap: 27px;
+}
+
+.desktop-nav ul li a {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #222222;
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 8px 0;
+    transition: 0.3s;
+}
+
+.desktop-nav ul li a i {
+    font-size: 15px;
+}
+
+.desktop-nav ul li a:hover,
+.desktop-nav ul li a.active {
+    color: #1769D5;
+}
+
+/* DESKTOP LOGIN AND REGISTER */
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    white-space: nowrap;
+}
+
+.login-btn,
+.register-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 9px 18px;
+    border: 2px solid #1769D5;
+    border-radius: 25px;
+    background: #FFFFFF;
+    color: #1769D5;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.login-btn:hover,
+.register-btn:hover {
+    background: #1769D5;
+    color: #FFFFFF;
+}
+
+/* HIDE MOBILE-ONLY ELEMENTS ON DESKTOP */
+.menu-toggle,
+.mobile-sidebar,
+.sidebar-overlay,
+.mobile-header-buttons {
+    display: none;
+}
+
+/* =======================================================
+   HERO
+======================================================= */
+
+.doctors-hero {
+    width: 100%;
+    min-height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #F5FAFF 0%, #EAF4FF 100%);
+    padding: 55px 20px;
+}
+
+.hero-content {
+    max-width: 750px;
+    margin: auto;
+}
+
+.section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 10px;
+    color: #1769D5;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.section-label i {
+    font-size: 16px;
+}
+
+.hero-content h1 {
+    color: #1D3557;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.hero-content p {
+    max-width: 650px;
+    margin: auto;
+    color: #64748B;
+    font-size: 15px;
+}
+
+/* =======================================================
+   DOCTORS SECTION
+======================================================= */
+
+.doctors-section {
+    padding: 55px 0 65px;
+}
+
+.section-heading {
+    display: none;
+}
+
+.doctors-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+}
+
+.doctor-card {
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid #D6E2EF;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 18px rgba(29, 53, 87, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.doctor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(23, 105, 213, 0.12);
+}
+
+/* AVAILABILITY */
+.doctor-availability {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+    z-index: 5;
+}
+
+.doctor-availability.available {
+    background: #E8F7D2;
+    color: #4D7C0F;
+}
+
+.doctor-availability.not-available {
+    background: #FEE2E2;
+    color: #B91C1C;
+}
+
+.doctor-availability i {
+    font-size: 11px;
+}
+
+/* DOCTOR IMAGE */
+.doctor-image {
+    width: 100%;
+    height: 230px;
+    background: #F5FAFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-bottom: 1px solid #D6E2EF;
+}
+
+.doctor-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+.default-doctor-icon {
+    color: #1769D5;
+    font-size: 65px;
+}
+
+/* DOCTOR INFORMATION */
+.doctor-info {
+    padding: 18px;
+}
+
+.doctor-info h3 {
+    color: #1D3557;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.doctor-info h4 {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #1769D5;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 13px;
+}
+
+.doctor-info h4 i {
+    font-size: 15px;
+}
+
+.doctor-info p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #64748B;
+    font-size: 13px;
+    margin-bottom: 7px;
+}
+
+.doctor-info p i {
+    width: 18px;
+    color: #1769D5;
+    font-size: 14px;
+}
+
+/* CONSULTATION FEE */
+.consultation-fee {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    margin: 10px 0 14px;
+    border-top: 1px solid #D6E2EF;
+    border-bottom: 1px solid #D6E2EF;
+}
+
+.fee-label {
+    color: #64748B;
+    font-size: 12px;
+}
+
+.fee-label i {
+    color: #1769D5;
+    margin-right: 4px;
+}
+
+.fee-amount {
+    color: #1D3557;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* BOOK BUTTON */
+.book-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 10px 15px;
+    color: #FFFFFF;
+    background: #1769D5;
+    border: 1px solid #1769D5;
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.book-btn:hover {
+    background: #1055B5;
+    border-color: #1055B5;
+}
+
+/* LOADING MESSAGE */
+.loading-message {
+    grid-column: 1 / -1;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #64748B;
+}
+
+.loading-message i {
+    color: #1769D5;
+    font-size: 32px;
+}
+
+.loading-message p {
+    font-size: 14px;
+}
+
+/* ERROR MESSAGE */
+.error-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 45px 20px;
+    color: #64748B;
+}
+
+.error-message i {
+    display: block;
+    color: #1769D5;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.error-message h3 {
+    color: #1D3557;
+    font-size: 19px;
+    margin-bottom: 6px;
+}
+
+/* =======================================================
+   APPOINTMENT BANNER
+======================================================= */
+
+.appointment-banner {
+    background: linear-gradient(135deg, #1769D5, #1055B5);
+    padding: 55px 0;
+    color: #FFFFFF;
+}
+
+.banner-container {
+    display: flex;
+    align-items: center;
+}
+
+.banner-content {
+    max-width: 700px;
+}
+
+.banner-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #A8D52D;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    margin-bottom: 10px;
+}
+
+.banner-content h2 {
+    color: #FFFFFF;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 13px;
+}
+
+.banner-content p {
+    max-width: 650px;
+    color: #EAF4FF;
+    font-size: 14px;
+    margin-bottom: 22px;
+}
+
+.banner-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 19px;
+    background: #FFFFFF;
+    color: #1769D5;
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.banner-btn:hover {
+    background: #F5FAFF;
+    transform: translateY(-2px);
+}
+
+/* =======================================================
+   FOOTER
+======================================================= */
+
+footer {
+    background: #1D3557;
+    color: #FFFFFF;
+    padding-top: 45px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    padding-bottom: 35px;
+}
+
+.footer-box h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #FFFFFF;
+    font-size: 17px;
+    margin-bottom: 16px;
+}
+
+.footer-box h3 i {
+    color: #A8D52D;
+}
+
+.footer-box p {
+    color: #FFFFFF;
+    font-size: 13px;
+    margin-bottom: 7px;
+}
+
+.footer-box p i {
+    color: #A8D52D;
+    margin-right: 6px;
+}
+
+.footer-box a {
+    display: block;
+    color: #FFFFFF;
+    font-size: 13px;
+    margin-bottom: 11px;
+    transition: color 0.3s ease;
+}
+
+.footer-box a i {
+    color: #A8D52D;
+    margin-right: 7px;
+}
+
+.footer-box a:hover {
+    color: #A8D52D;
+}
+
+footer hr {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.copyright {
+    text-align: center;
+    color: #F0F4FA;
+    font-size: 12px;
+    padding: 16px 20px;
+}
+
+/* =======================================================
+   TABLET RESPONSIVE
+======================================================= */
+
+@media (max-width: 1000px) {
+    .desktop-nav ul {
+        gap: 16px;
+    }
+
+    .desktop-nav ul li a {
+        font-size: 13px;
+    }
+
+    .header-buttons {
+        gap: 6px;
+    }
+
+    .login-btn,
+    .register-btn {
+        padding: 9px 14px;
+    }
+
+    .doctors-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* =======================================================
+   MOBILE SIDEBAR - COMPACT AND MATCH HOME PAGE
+======================================================= */
+
+@media (max-width: 768px) {
+
+    /* Header */
+    .header {
+        padding: 12px 0;
+        position: relative;
+    }
+
+    .header .container {
+        width: 92%;
+        min-height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    /* Hide desktop navigation and buttons */
+    .desktop-nav,
+    .header-buttons,
+    .mobile-header-buttons {
+        display: none !important;
+    }
+
+    /* Hide desktop logo while keeping its layout space */
+    .header .logo {
+        visibility: hidden;
+    }
+
+    /* Compact hamburger button */
+    .menu-toggle {
+        display: flex !important;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        width: 38px;
+        height: 38px;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        outline: none;
+        background: #1769D5;
+        color: #FFFFFF;
+        border-radius: 8px;
+        font-size: 23px;
+        line-height: 1;
+        padding: 0;
+        cursor: pointer;
+        z-index: 1500;
+        transition: background 0.3s ease;
+    }
+
+    .menu-toggle:hover {
+        background: #1055B5;
+    }
+
+    /* Sidebar panel */
+    .mobile-sidebar {
+        display: block !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 270px;
+        max-width: 85vw;
+        height: 100vh;
+        height: 100dvh;
+        padding: 0;
+        margin: 0;
+        background: #1D3557;
+        z-index: 1200;
+        overflow-x: hidden;
+        overflow-y: auto;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        box-sizing: border-box;
+    }
+
+    /* Support both existing sidebar class conventions */
+    .mobile-sidebar.mobile-open,
+    .mobile-sidebar.active {
+        transform: translateX(0);
+    }
+
+    /* Compact logo area */
+    .mobile-sidebar-logo {
+        height: 105px;
+        width: 100%;
+        padding: 0 22px 12px;
+        margin: 0;
+        display: flex;
+        align-items: flex-end;
+        box-sizing: border-box;
+        background: #1D3557;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .mobile-sidebar-logo .mobile-logo {
+        position: relative;
+        display: inline-block;
+        margin: 0;
+        padding-bottom: 6px;
+        color: #FFFFFF;
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+        line-height: 1.3;
+    }
+
+    .mobile-sidebar-logo .mobile-logo::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 32px;
+        height: 3px;
+        background: #A8D52D;
+        border-radius: 5px;
+        transform: skewX(-25deg);
+    }
+
+    /* Navigation */
+    .mobile-sidebar .mobile-nav {
+        display: block !important;
+        width: 100%;
+        padding: 8px 0 12px;
+        margin: 0;
+    }
+
+    .mobile-sidebar .mobile-nav ul {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 2px !important;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .mobile-sidebar .mobile-nav ul li {
+        display: block !important;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .mobile-sidebar .mobile-nav ul li a {
+        display: flex !important;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        min-height: 48px;
+        padding: 11px 22px;
+        margin: 0;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 0;
+        background: #1D3557;
+        color: #FFFFFF;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.4;
+        text-decoration: none;
+        transition: background 0.25s ease;
+    }
+
+    .mobile-sidebar .mobile-nav ul li a i {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 18px;
+        width: 18px;
+        min-width: 18px;
+        margin: 0;
+        padding: 0;
+        background: transparent;
+        color: #FFFFFF;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .mobile-sidebar .mobile-nav ul li a:hover,
+    .mobile-sidebar .mobile-nav ul li a.active {
+        background: #1769D5;
+        color: #FFFFFF;
+    }
+
+    /* Login and Register - compact navigation style */
+    .mobile-sidebar .mobile-auth-buttons {
+        display: flex !important;
+        flex-direction: column;
+        gap: 2px;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        border: none;
+    }
+
+    .mobile-sidebar .mobile-auth-buttons a {
+        display: flex !important;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        width: 100%;
+        min-height: 48px;
+        padding: 11px 22px;
+        margin: 0;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        background: #1D3557;
+        color: #FFFFFF;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.4;
+        text-align: left;
+        text-decoration: none;
+        transition: background 0.25s ease;
+    }
+
+    .mobile-sidebar .mobile-auth-buttons a i {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 18px;
+        width: 18px;
+        min-width: 18px;
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: transparent;
+        color: #FFFFFF;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .mobile-sidebar .mobile-auth-buttons a:hover {
+        background: #1769D5;
+        color: #FFFFFF;
+    }
+
+    /* Overlay */
+    .sidebar-overlay {
+        display: block !important;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.45);
+        z-index: 1100;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .sidebar-overlay.mobile-open,
+    .sidebar-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Hero */
+    .doctors-hero {
+        min-height: 240px;
+        padding: 45px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 34px;
+    }
+
+    .hero-content p {
+        font-size: 14px;
+    }
+
+    /* Doctors */
+    .doctors-section {
+        padding: 45px 0 55px;
+    }
+
+    .doctors-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .doctor-image {
+        height: 240px;
+    }
+
+    .doctor-info {
+        padding: 18px;
+    }
+
+    /* Banner */
+    .banner-content h2 {
+        font-size: 26px;
+    }
+
+    /* Footer */
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
+/* =======================================================
+   SMALL MOBILE
+======================================================= */
+
+@media (max-width: 480px) {
+
+    .container {
+        width: 92%;
+    }
+
+    .mobile-sidebar {
+        width: 270px;
+        max-width: 85vw;
+    }
+
+    .mobile-sidebar-logo {
+        height: 100px;
+        padding: 0 20px 12px;
+    }
+
+    .mobile-sidebar-logo .mobile-logo {
+        font-size: 23px;
+    }
+
+    .menu-toggle {
+        top: 10px;
+        left: 10px;
+        width: 36px;
+        height: 36px;
+        font-size: 22px;
+    }
+
+    .doctors-hero {
+        padding: 40px 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 30px;
+    }
+
+    .hero-content p {
+        font-size: 13px;
+    }
+
+    .doctor-image {
+        height: 220px;
+    }
+
+    .doctor-info {
+        padding: 16px;
+    }
+
+    .doctor-info h3 {
+        font-size: 17px;
+    }
+
+    .banner-content h2 {
+        font-size: 23px;
+    }
+}
+
+/* =======================================================
+   DERMACARE SERVICES - MOBILE SIDEBAR
+   MATCH INDEX / HOME PAGE
+======================================================= */
+
+.menu-toggle,
+.mobile-sidebar,
+.sidebar-overlay {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    /* Hide desktop navigation */
+    .desktop-nav,
+    .header-buttons,
+    .mobile-header-buttons {
+        display: none !important;
+    }
+
+    /* Hide desktop logo */
+    .header .logo {
+        visibility: hidden;
+    }
+
+    /* Hamburger button */
+    .menu-toggle {
+        display: flex !important;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        width: 42px;
+        height: 42px;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        outline: none;
+        background: #1769D5;
+        color: #FFFFFF;
+        border-radius: 8px;
+        font-size: 22px;
+        cursor: pointer;
+        z-index: 1500;
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+    }
+
+    /* Sidebar */
+    .mobile-sidebar {
+        display: block !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        max-width: 85vw;
+        height: 100vh;
+        height: 100dvh;
+        padding: 0;
+        margin: 0;
+        background: #1D3557;
+        z-index: 1200;
+        overflow-x: hidden;
+        overflow-y: auto;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    /* Open sidebar */
+    .mobile-sidebar.active,
+    .mobile-sidebar.mobile-open {
+        transform: translateX(0);
+    }
+
+    /* Logo area */
+    .mobile-sidebar-logo {
+        display: flex;
+        align-items: flex-end;
+        width: 100%;
+        height: 150px;
+        padding: 65px 25px 15px;
+        margin: 0;
+        box-sizing: border-box;
+        background: #1D3557;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .mobile-sidebar-logo .mobile-logo {
+        position: relative;
+        color: #FFFFFF;
+        font-size: 25px;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        padding-bottom: 6px;
+    }
+
+    .mobile-sidebar-logo .mobile-logo::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 32px;
+        height: 3px;
+        background: #A8D52D;
+        border-radius: 5px;
+        transform: skewX(-25deg);
+    }
+
+    /* Navigation */
+    .mobile-sidebar .mobile-nav {
+        display: block !important;
+        width: 100%;
+    }
+
+    .mobile-sidebar .mobile-nav ul {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .mobile-sidebar .mobile-nav ul li {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .mobile-sidebar .mobile-nav ul li a {
+        display: flex !important;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        min-height: 48px;
+        padding: 15px 25px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        background: #1D3557;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 1.6;
+        transition: background 0.3s ease;
+    }
+
+    .mobile-sidebar .mobile-nav ul li a i {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 20px;
+        width: 20px;
+        min-width: 20px;
+        font-size: 17px;
+        text-align: center;
+    }
+
+    .mobile-sidebar .mobile-nav ul li a:hover,
+    .mobile-sidebar .mobile-nav ul li a.active {
+        background: #1769D5;
+        color: #FFFFFF;
+    }
+
+    /* Login and Register */
+    .mobile-sidebar .mobile-auth-buttons {
+        display: flex !important;
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        border: none;
+    }
+
+    .mobile-sidebar .mobile-auth-buttons a {
+        display: flex !important;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 12px;
+        width: 100%;
+        min-height: 71px;
+        padding: 15px 25px !important;
+        margin: 0;
+        box-sizing: border-box;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        background: #1D3557;
+        color: #FFFFFF;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 1.6;
+        text-align: left;
+    }
+
+    .mobile-sidebar .mobile-auth-buttons a i {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 20px;
+        width: 20px;
+        min-width: 20px;
+        font-size: 17px;
+        color: #FFFFFF;
+    }
+
+    .mobile-sidebar .mobile-auth-buttons a:hover {
+        background: #1769D5;
+        color: #FFFFFF;
+    }
+
+    /* Overlay */
+    .sidebar-overlay {
+        display: block !important;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.45);
+        z-index: 1100;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .sidebar-overlay.active,
+    .sidebar-overlay.mobile-open {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .mobile-sidebar {
+        width: 250px;
+        max-width: 85vw;
+    }
+
+    .mobile-sidebar-logo {
+        height: 150px;
+        padding: 65px 22px 15px;
+    }
+
+    .menu-toggle {
+        top: 15px;
+        left: 15px;
+        width: 42px;
+        height: 42px;
+        font-size: 21px;
+    }
+}

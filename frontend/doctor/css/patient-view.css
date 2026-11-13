@@ -1,0 +1,365 @@
+
+/* ======================================================
+   DERMCARE - PATIENT DETAILS
+   Reuses doctor/css/dashboard.css
+====================================================== */
+
+.patient-content {
+    min-width: 0;
+}
+
+/* PAGE HEADER */
+
+.patient-page-header {
+    margin-bottom: 25px;
+}
+
+.patient-heading {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.patient-back-button {
+    width: 43px;
+    height: 43px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #D6E2EF;
+    border-radius: 9px;
+
+    background: #FFFFFF;
+    color: #1769D5;
+
+    font-size: 19px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.patient-back-button:hover {
+    background: #1769D5;
+    color: #FFFFFF;
+}
+
+.patient-small-heading {
+    margin-bottom: 5px;
+    color: #1769D5;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.patient-heading h1 {
+    color: #1D3557;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.patient-subtitle {
+    margin-top: 6px;
+    color: #64748B;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* MESSAGE */
+
+.page-message {
+    margin-bottom: 20px;
+    padding: 15px 18px;
+
+    border: 1px solid #BFDBFE;
+    border-radius: 10px;
+
+    background: #EFF6FF;
+    color: #1D4ED8;
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.page-message.error {
+    border-color: #FECACA;
+    background: #FEF2F2;
+    color: #B91C1C;
+}
+
+/* DETAIL CARDS */
+
+.patient-details-card {
+    margin-bottom: 24px;
+    padding: 25px;
+
+    background: #FFFFFF;
+    border: 1px solid #D6E2EF;
+    border-radius: 14px;
+
+    box-shadow: 0 3px 12px rgba(29, 53, 87, 0.03);
+}
+
+.patient-card-heading {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    margin-bottom: 22px;
+    padding-bottom: 17px;
+
+    border-bottom: 1px solid #E8F0F7;
+}
+
+.patient-heading-icon {
+    width: 43px;
+    height: 43px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+    background: #EAF3FF;
+    color: #1769D5;
+
+    font-size: 20px;
+}
+
+.patient-card-heading h2 {
+    color: #1D3557;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.patient-card-heading p {
+    margin-top: 5px;
+    color: #64748B;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* PATIENT PROFILE */
+
+.patient-profile {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 23px;
+}
+
+.patient-avatar {
+    width: 58px;
+    height: 58px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background: #EAF3FF;
+    color: #1769D5;
+
+    font-size: 28px;
+}
+
+.patient-profile h3 {
+    margin-bottom: 5px;
+    color: #1D3557;
+    font-size: 19px;
+    overflow-wrap: anywhere;
+}
+
+.patient-profile p {
+    color: #64748B;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+/* DETAILS GRID */
+
+.patient-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.patient-detail-item {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    padding: 15px;
+
+    border: 1px solid #E3EDF7;
+    border-radius: 10px;
+
+    background: #F8FBFF;
+}
+
+.patient-detail-item span {
+    color: #64748B;
+    font-size: 12px;
+}
+
+.patient-detail-item strong {
+    color: #1D3557;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+/* STATUS */
+
+.patient-status {
+    display: inline-flex;
+    align-self: flex-start;
+    width: fit-content;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+    background: #EAF3FF;
+    color: #1769D5 !important;
+
+    font-size: 11px !important;
+    font-weight: 700;
+}
+
+/* CONSULTATION INFORMATION */
+
+.patient-information-field {
+    margin-bottom: 18px;
+}
+
+.patient-information-field:last-child {
+    margin-bottom: 0;
+}
+
+.patient-information-field label {
+    display: block;
+    margin-bottom: 8px;
+
+    color: #1D3557;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.patient-information-box {
+    min-height: 46px;
+    padding: 13px 15px;
+
+    border: 1px solid #D6E2EF;
+    border-radius: 9px;
+
+    background: #F8FBFF;
+    color: #475569;
+
+    font-size: 13px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+/* ACTION BUTTONS */
+
+.patient-page-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+
+    margin: 25px 0;
+}
+
+.patient-primary-button,
+.patient-secondary-button {
+    min-height: 43px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    padding: 11px 18px;
+
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.patient-primary-button {
+    border: 1px solid #1769D5;
+    background: #1769D5;
+    color: #FFFFFF;
+}
+
+.patient-primary-button:hover {
+    border-color: #1055B5;
+    background: #1055B5;
+}
+
+.patient-secondary-button {
+    border: 1px solid #D6E2EF;
+    background: #FFFFFF;
+    color: #1769D5;
+}
+
+.patient-secondary-button:hover {
+    background: #EAF3FF;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .patient-content {
+        padding-top: 80px;
+    }
+}
+
+@media (max-width: 600px) {
+    .patient-content {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .patient-heading {
+        gap: 11px;
+    }
+
+    .patient-heading h1 {
+        font-size: 21px;
+    }
+
+    .patient-details-card {
+        padding: 19px 16px;
+    }
+
+    .patient-card-heading h2 {
+        font-size: 16px;
+    }
+
+    .patient-details-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .patient-page-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .patient-primary-button,
+    .patient-secondary-button {
+        width: 100%;
+    }
+}

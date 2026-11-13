@@ -1,0 +1,562 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>History | DermCare Receptionist</title>
+
+    <!-- Bootstrap Icons Only -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <!-- History CSS -->
+    <link rel="stylesheet" href="css/history.css">
+</head>
+
+<body>
+
+    <!-- Mobile Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+
+        <!-- Logo -->
+        <div class="sidebar-header">
+            <div class="logo">
+                <span>DermaCare</span>
+            </div>
+
+            <!-- Mobile Close Button -->
+            <button
+                type="button"
+                class="close-sidebar-btn"
+                id="closeSidebarBtn"
+                aria-label="Close sidebar"
+            >
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+
+        <!-- Receptionist Profile -->
+        <div class="profile-section">
+
+            <div class="profile-avatar">
+                <i class="bi bi-person-fill"></i>
+            </div>
+
+            <div class="profile-info">
+                <h3 id="receptionistName">Receptionist</h3>
+                <p>Clinic Staff</p>
+            </div>
+
+        </div>
+
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar-nav">
+
+            <a href="receptionist-dashboard.html" class="nav-link">
+                <i class="bi bi-grid-1x2-fill"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="add-doctor.html" class="nav-link">
+                <i class="bi bi-person-plus-fill"></i>
+                <span>Add Doctor</span>
+            </a>
+
+            <a href="manage-doctors.html" class="nav-link">
+                <i class="bi bi-person-badge-fill"></i>
+                <span>Manage Doctors</span>
+            </a>
+
+            <a href="todays-appointments.html" class="nav-link">
+                <i class="bi bi-calendar-check-fill"></i>
+                <span>Today's Appointments</span>
+            </a>
+
+            <a href="upcoming-appointments.html" class="nav-link">
+                <i class="bi bi-calendar-event-fill"></i>
+                <span>Upcoming Appointments</span>
+            </a>
+
+            <a href="leave-dateAppointment.html" class="nav-link">
+                <i class="bi bi-calendar-x-fill"></i>
+                <span>Leave Date Appointments</span>
+            </a>
+
+            <a href="walk-in.html" class="nav-link">
+                <i class="bi bi-person-walking"></i>
+                <span>Walk-in Patients</span>
+            </a>
+
+            <a href="history.html" class="nav-link active">
+                <i class="bi bi-clock-history"></i>
+                <span>History</span>
+            </a>
+
+        </nav>
+
+        <!-- Logout at the Bottom -->
+        <div class="sidebar-footer">
+            <a href="login.html" id="logoutLink" class="nav-link logout-link">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Top Header -->
+        <header class="top-header">
+
+            <button
+                type="button"
+                class="mobile-menu-button"
+                id="menuToggle"
+                aria-label="Open sidebar"
+                aria-expanded="false"
+                aria-controls="sidebar"
+            >
+                <i class="bi bi-list"></i>
+            </button>
+
+            <div class="header-title">
+                <h2>Appointment Management</h2>
+                <p>Manage patient records and appointment history</p>
+            </div>
+
+            <div class="header-icon">
+                <i class="bi bi-clock-history"></i>
+            </div>
+
+        </header>
+
+        <!-- Page Heading -->
+        <section class="page-heading">
+            <div>
+                <h1>History</h1>
+                <p>
+                    View registered patients, completed appointments,
+                    and cancelled appointments.
+                </p>
+            </div>
+
+            <div class="date-card">
+                <i class="bi bi-calendar3"></i>
+                <span id="currentDate">Loading date...</span>
+            </div>
+        </section>
+
+        <!-- History Summary Cards -->
+        <section class="history-cards">
+
+            <button
+                type="button"
+                class="history-card patients-card"
+                id="allPatientsCard"
+                aria-controls="allPatientsSection"
+                aria-expanded="false"
+            >
+                <div class="card-icon">
+                    <i class="bi bi-people-fill"></i>
+                </div>
+
+                <div class="card-details">
+                    <p>All Registered Patients</p>
+                    <h2 id="totalPatients">0</h2>
+                    <span>View and edit patient details</span>
+                </div>
+
+                <i class="bi bi-arrow-up-right card-arrow"></i>
+            </button>
+
+            <button
+                type="button"
+                class="history-card completed-card"
+                id="completedAppointmentsCard"
+                aria-controls="completedAppointmentsSection"
+                aria-expanded="false"
+            >
+                <div class="card-icon">
+                    <i class="bi bi-check-circle-fill"></i>
+                </div>
+
+                <div class="card-details">
+                    <p>Completed Appointments</p>
+                    <h2 id="totalCompleted">0</h2>
+                    <span>View patients who visited the doctor</span>
+                </div>
+
+                <i class="bi bi-arrow-up-right card-arrow"></i>
+            </button>
+
+            <button
+                type="button"
+                class="history-card cancelled-card"
+                id="cancelledAppointmentsCard"
+                aria-controls="cancelledAppointmentsSection"
+                aria-expanded="false"
+            >
+                <div class="card-icon">
+                    <i class="bi bi-x-circle-fill"></i>
+                </div>
+
+                <div class="card-details">
+                    <p>Cancelled Appointments</p>
+                    <h2 id="totalCancelled">0</h2>
+                    <span>View cancelled appointment records</span>
+                </div>
+
+                <i class="bi bi-arrow-up-right card-arrow"></i>
+            </button>
+
+        </section>
+
+        <!-- General Message -->
+        <div
+            class="status-message"
+            id="statusMessage"
+            role="status"
+            aria-live="polite"
+        >
+            Select a history card to view its records.
+        </div>
+
+        <!-- All Registered Patients -->
+        <section class="history-section" id="allPatientsSection" hidden>
+
+            <div class="section-header">
+                <div>
+                    <h2>
+                        <i class="bi bi-people-fill"></i>
+                        All Registered Patients
+                    </h2>
+                    <p>View and update registered patient information.</p>
+                </div>
+
+                <button
+                    type="button"
+                    class="close-section-btn"
+                    data-close-section="allPatientsSection"
+                    aria-label="Close registered patients"
+                >
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
+            <div class="table-toolbar">
+                <div class="search-box">
+                    <i class="bi bi-search"></i>
+                    <input
+                        type="search"
+                        id="patientSearch"
+                        placeholder="Search by name, email or mobile number"
+                        aria-label="Search registered patients"
+                    >
+                </div>
+
+                <span class="record-count" id="patientRecordCount">0 patients</span>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sr. No.</th>
+                            <th>Patient Name</th>
+                            <th>Email</th>
+                            <th>Mobile Number</th>
+                            <th>Date of Birth</th>
+                            <th>Gender</th>
+                            <th>Blood Group</th>
+                            <th>Address</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="patientsTableBody">
+                        <tr>
+                            <td colspan="9" class="empty-state">
+                                Patient records will appear here.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <!-- Completed Appointments -->
+        <section class="history-section" id="completedAppointmentsSection" hidden>
+
+            <div class="section-header">
+                <div>
+                    <h2>
+                        <i class="bi bi-check-circle-fill"></i>
+                        Completed Appointments
+                    </h2>
+                    <p>Appointments marked as completed by the doctor.</p>
+                </div>
+
+                <button
+                    type="button"
+                    class="close-section-btn"
+                    data-close-section="completedAppointmentsSection"
+                    aria-label="Close completed appointments"
+                >
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
+            <div class="table-toolbar">
+                <div class="search-box">
+                    <i class="bi bi-search"></i>
+                    <input
+                        type="search"
+                        id="completedSearch"
+                        placeholder="Search patient or doctor"
+                        aria-label="Search completed appointments"
+                    >
+                </div>
+
+                <span class="record-count" id="completedRecordCount">0 appointments</span>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sr. No.</th>
+                            <th>Patient Name</th>
+                            <th>Doctor Name</th>
+                            <th>Appointment Date</th>
+                            <th>Appointment Time</th>
+                            <th>Appointment Type</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="completedAppointmentsTableBody">
+                        <tr>
+                            <td colspan="7" class="empty-state">
+                                Completed appointments will appear here.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <!-- Cancelled Appointments -->
+        <section class="history-section" id="cancelledAppointmentsSection" hidden>
+
+            <div class="section-header">
+                <div>
+                    <h2>
+                        <i class="bi bi-x-circle-fill"></i>
+                        Cancelled Appointments
+                    </h2>
+                    <p>Review cancelled bookings and their available details.</p>
+                </div>
+
+                <button
+                    type="button"
+                    class="close-section-btn"
+                    data-close-section="cancelledAppointmentsSection"
+                    aria-label="Close cancelled appointments"
+                >
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
+            <div class="table-toolbar">
+                <div class="search-box">
+                    <i class="bi bi-search"></i>
+                    <input
+                        type="search"
+                        id="cancelledSearch"
+                        placeholder="Search patient or doctor"
+                        aria-label="Search cancelled appointments"
+                    >
+                </div>
+
+                <span class="record-count" id="cancelledRecordCount">0 appointments</span>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sr. No.</th>
+                            <th>Patient Name</th>
+                            <th>Doctor Name</th>
+                            <th>Appointment Date</th>
+                            <th>Appointment Time</th>
+                            <th>Appointment Type</th>
+                            <th>Cancelled By</th>
+                            <th>Cancellation Reason</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="cancelledAppointmentsTableBody">
+                        <tr>
+                            <td colspan="9" class="empty-state">
+                                Cancelled appointments will appear here.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <!-- Edit Patient Modal -->
+        <div
+            class="modal"
+            id="editPatientModal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="editPatientTitle"
+            hidden
+        >
+            <div class="modal-backdrop" data-close-modal="true"></div>
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <div>
+                        <h2 id="editPatientTitle">Edit Patient Details</h2>
+                        <p>Update the patient's registered information.</p>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="modal-close-btn"
+                        id="closeEditModal"
+                        aria-label="Close edit form"
+                    >
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
+
+                <form id="editPatientForm">
+
+                    <input type="hidden" id="editPatientId">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="editFullName">Full Name</label>
+                            <input type="text" id="editFullName" name="fullName" required>
+                            <small class="field-error" id="fullNameError"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editEmail">Email Address</label>
+                            <input type="email" id="editEmail" name="email" required>
+                            <small class="field-error" id="emailError"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editMobileNo">Mobile Number</label>
+                            <input type="tel" id="editMobileNo" name="mobileNo" required>
+                            <small class="field-error" id="mobileNoError"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editDateOfBirth">Date of Birth</label>
+                            <input type="date" id="editDateOfBirth" name="dateOfBirth" required>
+                            <small class="field-error" id="dateOfBirthError"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editGender">Gender</label>
+                            <select id="editGender" name="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <small class="field-error" id="genderError"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editBloodGroup">Blood Group</label>
+                            <select id="editBloodGroup" name="bloodGroup" required>
+                                <option value="">Select Blood Group</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                            <small class="field-error" id="bloodGroupError"></small>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="editAddress">Address</label>
+                            <textarea id="editAddress" name="address" rows="3" required></textarea>
+                            <small class="field-error" id="addressError"></small>
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="modal-message"
+                        id="editPatientMessage"
+                        role="status"
+                        aria-live="polite"
+                    ></div>
+
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelEditPatient">
+                            Cancel
+                        </button>
+
+                        <button type="submit" class="btn btn-primary" id="savePatientChanges">
+                            <i class="bi bi-check-lg"></i>
+                            Save Changes
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <!-- Toast Notification -->
+        <div
+            class="toast-message"
+            id="toastMessage"
+            role="status"
+            aria-live="polite"
+            hidden
+        >
+            <span id="toastText"></span>
+
+            <button type="button" id="closeToast" aria-label="Close notification">
+                &times;
+            </button>
+
+            <div class="toast-progress" id="toastProgress"></div>
+        </div>
+
+    </main>
+
+    <!-- History JavaScript -->
+    <script src="js/history.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- =====================================================
+         BASIC SETTINGS
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>DermCare - Manage Doctors</title>
+
+
+
+    <!-- =====================================================
+         BOOTSTRAP ICONS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+
+
+    <!-- =====================================================
+         MANAGE DOCTORS CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/manage-doctors.css"
+    >
+
+</head>
+
+
+
+<body>
+
+
+
+    <!-- =====================================================
+         MOBILE HAMBURGER MENU
+    ====================================================== -->
+
+    <button
+        type="button"
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+    >
+
+        <i class="bi bi-list"></i>
+
+    </button>
+
+
+
+
+
+    <!-- =====================================================
+         MOBILE SIDEBAR OVERLAY
+    ====================================================== -->
+
+    <div
+        class="overlay"
+        id="overlay"
+    ></div>
+
+
+
+
+
+    <!-- =====================================================
+         RECEPTIONIST SIDEBAR
+    ====================================================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+
+
+        <!-- =================================================
+             DERMACARE LOGO
+        ================================================== -->
+
+        <div class="sidebar-logo">
+
+            <span class="logo-text">
+                DermaCare
+            </span>
+
+        </div>
+
+
+
+
+
+        <!-- =================================================
+             RECEPTIONIST PROFILE
+        ================================================== -->
+
+        <div class="receptionist-profile">
+
+            <div class="receptionist-icon">
+
+                <i class="bi bi-person-fill"></i>
+
+            </div>
+
+
+
+            <div class="receptionist-info">
+
+                <span class="receptionist-name">
+                    Receptionist
+                </span>
+
+
+
+                <span class="receptionist-role">
+                    Clinic Staff
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-- =================================================
+             SIDEBAR MENU
+        ================================================== -->
+
+        <nav class="sidebar-menu">
+
+
+
+            <!-- DASHBOARD -->
+
+            <a href="receptionist-dashboard.html">
+
+                <i class="bi bi-grid-1x2-fill"></i>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+
+            <!-- ADD DOCTOR -->
+
+            <a href="add-doctor.html">
+
+                <i class="bi bi-person-plus-fill"></i>
+
+                <span>
+                    Add Doctor
+                </span>
+
+            </a>
+
+
+
+            <!-- MANAGE DOCTORS -->
+
+            <a
+                href="manage-doctors.html"
+                class="active"
+            >
+
+                <i class="bi bi-person-badge-fill"></i>
+
+                <span>
+                    Manage Doctors
+                </span>
+
+            </a>
+
+
+
+            <!-- TODAY'S APPOINTMENTS -->
+
+            <a href="todays-appointments.html">
+
+                <i class="bi bi-calendar-check-fill"></i>
+
+                <span>
+                    Today's Appointments
+                </span>
+
+            </a>
+
+
+
+            <!-- UPCOMING APPOINTMENTS -->
+
+            <a href="upcoming-appointments.html">
+
+                <i class="bi bi-calendar-event-fill"></i>
+
+                <span>
+                    Upcoming Appointments
+                </span>
+
+            </a>
+
+
+
+            <!-- LEAVE DATE -->
+
+            <a href="leave-dateAppointment.html">
+
+                <i class="bi bi-calendar-x-fill"></i>
+
+                <span>
+                    Leave Date Appointments
+                </span>
+
+            </a>
+
+
+
+            <!-- WALK-IN -->
+
+            <a href="walk-in.html">
+
+                <i class="bi bi-person-walking"></i>
+
+                <span>
+                    Walk-in
+                </span>
+
+            </a>
+
+
+
+            <!-- HISTORY -->
+
+            <a href="history.html">
+
+                <i class="bi bi-clock-history"></i>
+
+                <span>
+                    History
+                </span>
+
+            </a>
+
+
+
+            <!-- LOGOUT -->
+
+            <a
+                href="login.html"
+                class="logout-link"
+            >
+
+                <i class="bi bi-box-arrow-right"></i>
+
+                <span>
+                    Logout
+                </span>
+
+            </a>
+
+
+
+        </nav>
+
+    </aside>
+
+
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <div class="page-header">
+
+            <div>
+
+                <h1>
+                    Manage Doctors
+                </h1>
+
+
+
+                <p>
+                    View and manage all doctors registered in DermCare.
+                </p>
+
+            </div>
+
+
+
+            <!-- ADD DOCTOR BUTTON -->
+
+            <a
+                href="add-doctor.html"
+                class="add-doctor-button"
+            >
+
+                <i class="bi bi-person-plus-fill"></i>
+
+                Add Doctor
+
+            </a>
+
+        </div>
+
+
+
+
+
+        <!-- =================================================
+             DOCTORS CARD
+        ================================================== -->
+
+        <section class="doctors-card">
+
+
+
+            <!-- =============================================
+                 CARD TITLE
+            ============================================== -->
+
+            <div class="card-title">
+
+
+                <div class="title-icon">
+
+                    <i class="bi bi-person-badge-fill"></i>
+
+                </div>
+
+
+
+                <div>
+
+                    <h2>
+                        All Doctors
+                    </h2>
+
+
+
+                    <p>
+                        View doctor information and manage doctor profiles.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+           <!-- =============================================
+     SUCCESS TOAST MESSAGE
+============================================== -->
+
+<div
+    id="successMessage"
+    class="success-message"
+    role="status"
+    aria-live="polite"
+>
+
+    <span class="toast-icon">
+        <i class="bi bi-check-lg"></i>
+    </span>
+
+    <span id="successMessageText">
+        Doctor information updated successfully!
+    </span>
+
+</div>
+
+
+
+
+
+            <!-- =============================================
+                 LOADING MESSAGE
+            ============================================== -->
+
+            <div
+                id="loadingMessage"
+                class="loading-message"
+            >
+
+                <i class="bi bi-hourglass-split"></i>
+
+                <p>
+                    Loading doctors...
+                </p>
+
+            </div>
+
+
+
+
+
+            <!-- =============================================
+                 EMPTY MESSAGE
+            ============================================== -->
+
+            <div
+                id="emptyDoctorsMessage"
+                class="empty-doctors-message"
+            >
+
+                <i class="bi bi-person-x-fill"></i>
+
+                <h3>
+                    No Doctors Found
+                </h3>
+
+                <p>
+                    No doctors have been added yet.
+                </p>
+
+
+
+                <a
+                    href="add-doctor.html"
+                    class="empty-add-button"
+                >
+
+                    <i class="bi bi-person-plus-fill"></i>
+
+                    Add First Doctor
+
+                </a>
+
+            </div>
+
+
+
+
+
+            <!-- =============================================
+                 DOCTORS CONTAINER
+
+                 JAVASCRIPT WILL LOAD DOCTOR CARDS HERE
+            ============================================== -->
+
+            <div
+                class="doctors-container"
+                id="doctorsContainer"
+            >
+
+
+                <!-- =========================================
+                     DOCTOR CARDS WILL APPEAR HERE
+                ========================================== -->
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/manage-doctors.js"></script>
+
+
+
+</body>
+
+</html>

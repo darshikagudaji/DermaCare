@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- =====================================================
+         META TAGS
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile - Dermacare</title>
+
+
+    <!-- =====================================================
+         BOOTSTRAP ICONS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
+    <!-- =====================================================
+         PROFILE CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/profile.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         PROFILE SUCCESS / ERROR NOTIFICATION
+    ====================================================== -->
+
+    <div
+        id="profileMessage"
+        class="profile-message"
+        role="alert">
+
+        <span class="profile-message-icon">
+
+            <i
+                id="profileMessageIcon"
+                class="bi bi-check-circle-fill">
+            </i>
+
+        </span>
+
+        <span id="profileMessageText"></span>
+
+    </div>
+
+
+    <!-- =====================================================
+         MOBILE HAMBURGER
+    ====================================================== -->
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false">
+
+        <i class="bi bi-list"></i>
+
+    </button>
+
+
+    <!-- =====================================================
+         MOBILE SIDEBAR OVERLAY
+    ====================================================== -->
+
+    <div
+        class="overlay"
+        id="overlay">
+    </div>
+
+
+    <!-- =====================================================
+         PATIENT LAYOUT
+    ====================================================== -->
+
+    <div class="patient-layout">
+
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside
+            class="sidebar"
+            id="sidebar">
+
+
+            <!-- =================================================
+                 TEXT LOGO
+            ================================================== -->
+
+            <div class="logo">
+
+                <span>Dermacare</span>
+
+            </div>
+
+
+            <!-- =================================================
+                 MAIN MENU
+            ================================================== -->
+
+            <div class="menu-title">
+                MAIN
+            </div>
+
+
+            <!-- =================================================
+                 NAVIGATION
+            ================================================== -->
+
+            <nav>
+
+                <ul>
+
+
+                    <!-- DASHBOARD -->
+
+                    <li>
+
+                        <a href="dashboard.html">
+
+                            <i class="bi bi-grid-1x2-fill"></i>
+
+                            <span>Dashboard</span>
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- APPOINTMENT HISTORY -->
+
+                    <li>
+
+                        <a href="appointment-history.html">
+
+                            <i class="bi bi-calendar-check-fill"></i>
+
+                            <span>Appointment History</span>
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- PRESCRIPTIONS -->
+
+                    <li>
+
+                        <a href="prescriptions.html">
+
+                            <i class="bi bi-file-earmark-medical-fill"></i>
+
+                            <span>Prescriptions</span>
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- PROFILE -->
+
+                    <li class="active">
+
+                        <a href="profile.html">
+
+                            <i class="bi bi-person-circle"></i>
+
+                            <span>My Profile</span>
+
+                        </a>
+
+                    </li>
+
+
+                </ul>
+
+            </nav>
+
+
+            <!-- =================================================
+                 SIDEBAR LOGOUT
+            ================================================== -->
+
+            <div class="logout">
+
+                <a href="../index.html">
+
+                    <i class="bi bi-box-arrow-right"></i>
+
+                    <span>Logout</span>
+
+                </a>
+
+            </div>
+
+
+        </aside>
+
+
+        <!-- =================================================
+             MAIN CONTENT
+        ================================================== -->
+
+        <main class="content">
+
+
+            <!-- =================================================
+                 PAGE HEADING
+            ================================================== -->
+
+            <div class="profile-heading">
+
+                <h1>My Profile</h1>
+
+                <p>
+                    View and update your personal information.
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 PROFILE CARD
+            ================================================== -->
+
+            <div class="profile-card">
+
+
+                <!-- CARD HEADER -->
+
+                <div class="profile-card-header">
+
+                    <div>
+
+                        <h2>Personal Information</h2>
+
+                        <p>
+                            Manage your patient account details.
+                        </p>
+
+                    </div>
+
+
+                    <!-- EDIT PROFILE BUTTON -->
+
+                    <button
+                        type="button"
+                        class="edit-button"
+                        id="editProfile">
+
+                        Edit Profile
+
+                    </button>
+
+                </div>
+
+
+                <!-- =================================================
+                     PROFILE FORM
+                ================================================== -->
+
+                <form
+                    id="profileForm"
+                    novalidate>
+
+
+                    <div class="profile-grid">
+
+
+                        <!-- FULL NAME -->
+
+                        <div class="form-group">
+
+                            <label for="fullName">
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="fullName"
+                                disabled>
+
+                        </div>
+
+
+                        <!-- EMAIL -->
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                Email
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                disabled>
+
+                        </div>
+
+
+                        <!-- MOBILE -->
+
+                        <div class="form-group">
+
+                            <label for="mobile">
+                                Mobile Number
+                            </label>
+
+                            <input
+                                type="text"
+                                id="mobile"
+                                disabled>
+
+                        </div>
+
+
+                        <!-- DATE OF BIRTH -->
+
+                        <div class="form-group">
+
+                            <label for="dob">
+                                Date of Birth
+                            </label>
+
+                            <input
+                                type="date"
+                                id="dob"
+                                disabled>
+
+                        </div>
+
+
+                        <!-- GENDER -->
+
+                        <div class="form-group">
+
+                            <label for="gender">
+                                Gender
+                            </label>
+
+                            <select
+                                id="gender"
+                                disabled>
+
+                                <option value="">
+                                    Select Gender
+                                </option>
+
+                                <option value="Male">
+                                    Male
+                                </option>
+
+                                <option value="Female">
+                                    Female
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- BLOOD GROUP -->
+
+                        <div class="form-group">
+
+                            <label for="bloodGroup">
+                                Blood Group
+                            </label>
+
+                            <select
+                                id="bloodGroup"
+                                disabled>
+
+                                <option value="">
+                                    Select Blood Group
+                                </option>
+
+                                <option value="A+">
+                                    A+
+                                </option>
+
+                                <option value="A-">
+                                    A-
+                                </option>
+
+                                <option value="B+">
+                                    B+
+                                </option>
+
+                                <option value="B-">
+                                    B-
+                                </option>
+
+                                <option value="AB+">
+                                    AB+
+                                </option>
+
+                                <option value="AB-">
+                                    AB-
+                                </option>
+
+                                <option value="O+">
+                                    O+
+                                </option>
+
+                                <option value="O-">
+                                    O-
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- ADDRESS -->
+
+                        <div class="form-group full-width">
+
+                            <label for="address">
+                                Address
+                            </label>
+
+                            <textarea
+                                id="address"
+                                rows="4"
+                                disabled></textarea>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- SAVE PROFILE -->
+
+                    <div
+                        class="profile-actions"
+                        id="profileActions">
+
+                        <button
+                            type="submit"
+                            class="save-button"
+                            id="saveProfile"
+                            style="display:none;">
+
+                            Save Changes
+
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+
+            <!-- =================================================
+                 ACCOUNT PASSWORD SECTION
+            ================================================== -->
+
+            <div
+                class="password-section"
+                id="passwordSection">
+
+
+                <!-- PASSWORD HEADING -->
+
+                <h2>Account Password</h2>
+
+                <p>
+                    Change your Dermacare account password.
+                </p>
+
+
+                <!-- CHANGE PASSWORD BUTTON -->
+
+                <button
+                    type="button"
+                    class="password-button"
+                    id="changePasswordButton">
+
+                    <i class="bi bi-key-fill"></i>
+
+                    <span>
+                        Change Password
+                    </span>
+
+                </button>
+
+
+                <!-- CHANGE PASSWORD FORM CONTAINER -->
+
+                <div
+                    id="changePasswordFormContainer"
+                    class="change-password-container"
+                    style="display:none;">
+
+
+                    <!-- CHANGE PASSWORD FORM -->
+
+                    <form
+                        id="changePasswordForm"
+                        novalidate>
+
+
+                        <!-- CURRENT PASSWORD -->
+
+                        <div class="form-group">
+
+                            <label for="currentPassword">
+                                Current Password
+                            </label>
+
+                            <div class="password-input-wrapper">
+
+                                <input
+                                    type="password"
+                                    id="currentPassword"
+                                    placeholder="Enter current password"
+                                    autocomplete="current-password">
+
+                                <button
+                                    type="button"
+                                    class="password-toggle"
+                                    id="toggleCurrentPassword"
+                                    aria-label="Show password">
+
+                                    <i class="bi bi-eye"></i>
+
+                                </button>
+
+                            </div>
+
+                            <small
+                                id="currentPasswordError"
+                                class="field-error">
+                            </small>
+
+                        </div>
+
+
+                        <!-- NEW PASSWORD -->
+
+                        <div class="form-group">
+
+                            <label for="newPassword">
+                                New Password
+                            </label>
+
+                            <div class="password-input-wrapper">
+
+                                <input
+                                    type="password"
+                                    id="newPassword"
+                                    placeholder="Enter new password"
+                                    autocomplete="new-password">
+
+                                <button
+                                    type="button"
+                                    class="password-toggle"
+                                    id="toggleNewPassword"
+                                    aria-label="Show password">
+
+                                    <i class="bi bi-eye"></i>
+
+                                </button>
+
+                            </div>
+
+                            <small
+                                id="newPasswordError"
+                                class="field-error">
+                            </small>
+
+                        </div>
+
+
+                        <!-- CONFIRM PASSWORD -->
+
+                        <div class="form-group">
+
+                            <label for="confirmPassword">
+                                Confirm New Password
+                            </label>
+
+                            <div class="password-input-wrapper">
+
+                                <input
+                                    type="password"
+                                    id="confirmPassword"
+                                    placeholder="Confirm new password"
+                                    autocomplete="new-password">
+
+                                <button
+                                    type="button"
+                                    class="password-toggle"
+                                    id="toggleConfirmPassword"
+                                    aria-label="Show password">
+
+                                    <i class="bi bi-eye"></i>
+
+                                </button>
+
+                            </div>
+
+                            <small
+                                id="confirmPasswordError"
+                                class="field-error">
+                            </small>
+
+                        </div>
+
+
+                        <!-- PASSWORD ACTION BUTTONS -->
+
+                        <div class="password-actions">
+
+
+                            <!-- UPDATE PASSWORD -->
+
+                            <button
+                                type="submit"
+                                class="save-button"
+                                id="updatePasswordButton">
+
+                                <i class="bi bi-check-circle-fill"></i>
+
+                                <span>
+                                    Update Password
+                                </span>
+
+                            </button>
+
+
+                            <!-- CANCEL -->
+
+                            <button
+                                type="button"
+                                class="edit-button"
+                                id="cancelPasswordButton">
+
+                                Cancel
+
+                            </button>
+
+
+                        </div>
+
+
+                    </form>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =================================================
+                 MOBILE LOGOUT
+            ================================================== -->
+
+            <div class="profile-logout-section">
+
+                <a
+                    href="../index.html"
+                    class="profile-logout-button">
+
+                    <i class="bi bi-box-arrow-right"></i>
+
+                    Logout
+
+                </a>
+
+            </div>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================================
+         PROFILE JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/profile.js"></script>
+
+
+</body>
+
+</html>

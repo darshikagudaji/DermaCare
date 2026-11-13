@@ -1,0 +1,1471 @@
+/* =====================================================
+
+   DERMACARE - DOCTOR BOOKING PAGE
+
+   PURPOSE: Patient views doctor details and books appointment
+
+===================================================== */
+
+
+/* =====================================================
+
+   GLOBAL & DESKTOP LAYOUT
+
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #F5FAFF;
+    color: #1D3557;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* =====================================================
+
+   DESKTOP SIDEBAR
+
+===================================================== */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background: #1D3557;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    z-index: 1200;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+}
+
+
+/* =====================================================
+
+   TEXT LOGO
+
+===================================================== */
+
+.logo {
+    height: 82px;
+    display: flex;
+    align-items: center;
+    padding-left: 43px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    flex-shrink: 0;
+}
+
+.logo span {
+    position: relative;
+    display: inline-block;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    line-height: 1;
+}
+
+
+/* =====================================================
+
+   GREEN UNDERLINE
+
+===================================================== */
+
+.logo span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -9px;
+    width: 46px;
+    height: 3px;
+    background: #A8D52D;
+    border-radius: 2px;
+}
+
+
+/* =====================================================
+
+   PATIENT PROFILE
+
+===================================================== */
+
+.patient-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 20px;
+    margin: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.patient-profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #A8D52D;
+    flex-shrink: 0;
+}
+
+.patient-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.patient-info h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.patient-info p {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.70);
+    margin-top: 3px;
+}
+
+
+/* =====================================================
+
+   MENU TITLE
+
+===================================================== */
+
+.menu-title {
+    padding: 20px 20px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.55);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+
+/* =====================================================
+
+   SIDEBAR NAVIGATION
+
+===================================================== */
+
+.sidebar nav {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.sidebar nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 10px;
+    padding: 0 12px;
+}
+
+.sidebar nav ul li {
+    width: 100%;
+}
+
+.sidebar nav ul li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 44px;
+    padding: 0 12px;
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.78);
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+
+   NAVIGATION ICONS
+
+===================================================== */
+
+.sidebar nav ul li a i {
+    width: 20px;
+    min-width: 20px;
+    text-align: center;
+    font-size: 17px;
+}
+
+
+/* =====================================================
+
+   NAVIGATION TEXT
+
+===================================================== */
+
+.sidebar nav ul li a span {
+    display: block;
+    line-height: 1.2;
+}
+
+
+/* =====================================================
+
+   NAVIGATION HOVER
+
+===================================================== */
+
+.sidebar nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.10);
+    color: #FFFFFF;
+}
+
+
+/* =====================================================
+
+   ACTIVE NAVIGATION
+
+===================================================== */
+
+.sidebar nav ul li.active a {
+    background: #1769D5;
+    color: #FFFFFF;
+}
+
+
+/* =====================================================
+
+   LOGOUT
+
+===================================================== */
+
+.logout {
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 15px 12px;
+}
+
+.logout a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    height: 44px;
+    padding: 0 14px;
+    border-radius: 8px;
+    color: #FFFFFF;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.logout a i {
+    width: 18px;
+    text-align: center;
+    font-size: 17px;
+}
+
+.logout a:hover {
+    background: #1769D5;
+    color: #FFFFFF;
+}
+
+.logout a:active {
+    transform: scale(0.98);
+}
+
+
+/* =====================================================
+
+   MOBILE MENU BUTTON
+
+===================================================== */
+
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 8px;
+    background: #1769D5;
+    color: #FFFFFF;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 1400;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.menu-toggle:hover {
+    background: #1055B5;
+}
+
+.menu-toggle:active {
+    transform: scale(0.96);
+}
+
+
+/* =====================================================
+
+   OVERLAY
+
+===================================================== */
+
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.50);
+    z-index: 1100;
+}
+
+.overlay.active,
+.overlay.show {
+    display: block;
+}
+
+
+/* =====================================================
+
+   MAIN CONTENT
+
+===================================================== */
+
+.content {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    padding: 25px;
+}
+
+
+/* =====================================================
+
+   TOP BAR
+
+===================================================== */
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #1769D5;
+    color: #FFFFFF;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #1055B5;
+    color: #FFFFFF;
+}
+
+.back-btn i {
+    font-size: 16px;
+}
+
+
+/* =====================================================
+
+   DOCTOR PROFILE CARD
+
+===================================================== */
+
+.doctor-profile-card {
+    background: #FFFFFF;
+    border-radius: 14px;
+    padding: 30px;
+    display: flex;
+    gap: 35px;
+    align-items: center;
+    border: 1px solid #D6E2EF;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
+    margin-bottom: 25px;
+}
+
+
+/* =====================================================
+
+   DOCTOR IMAGE
+
+===================================================== */
+
+.doctor-image {
+    flex-shrink: 0;
+}
+
+.doctor-image img {
+    display: block;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #1769D5;
+}
+
+
+/* =====================================================
+
+   DOCTOR DETAILS
+
+===================================================== */
+
+.doctor-details {
+    flex: 1;
+}
+
+.doctor-details h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1D3557;
+    margin-bottom: 6px;
+}
+
+.doctor-details h3 {
+    color: #1769D5;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.specialization {
+    color: #64748B;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+
+/* =====================================================
+
+   DOCTOR INFORMATION GRID
+
+===================================================== */
+
+.doctor-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.doctor-info-grid div {
+    background: #F5FAFF;
+    border: 1px solid #D6E2EF;
+    border-radius: 12px;
+    padding: 18px;
+}
+
+.doctor-info-grid strong {
+    display: block;
+    color: #1769D5;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.doctor-info-grid p {
+    font-size: 15px;
+    color: #1D3557;
+}
+
+
+/* =====================================================
+
+   ABOUT DOCTOR
+
+===================================================== */
+
+.about-doctor h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: #1D3557;
+}
+
+.about-doctor p {
+    color: #64748B;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+
+/* =====================================================
+
+   BOOKING CARD
+
+===================================================== */
+
+.booking-card {
+    background: #FFFFFF;
+    border: 1px solid #D6E2EF;
+    border-radius: 14px;
+    padding: 30px;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
+}
+
+.booking-card h2 {
+    font-size: 22px;
+    color: #1D3557;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+
+   DATE BUTTONS
+
+===================================================== */
+
+.date-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.date-btn {
+    padding: 12px 24px;
+    border: 2px solid #1769D5;
+    background: #FFFFFF;
+    color: #1769D5;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.date-btn:hover {
+    background: #1769D5;
+    color: #FFFFFF;
+}
+
+.date-btn.active {
+    background: #1769D5;
+    color: #FFFFFF;
+}
+
+
+/* =====================================================
+
+   TIME SLOT SECTION
+
+===================================================== */
+
+.slot-section {
+    margin-top: 10px;
+}
+
+.slot-section h2 {
+    font-size: 20px;
+    color: #1D3557;
+    margin-bottom: 20px;
+}
+
+.time-slots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+
+/* =====================================================
+
+   TIME SLOT BUTTON
+
+===================================================== */
+
+.time-slots button {
+    padding: 12px 20px;
+    border: 2px solid #D6E2EF;
+    background: #F5FAFF;
+    color: #1D3557;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.time-slots button:hover {
+    background: #1769D5;
+    color: #FFFFFF;
+    border-color: #1769D5;
+}
+
+
+/* =====================================================
+
+   SELECTED TIME SLOT
+
+===================================================== */
+
+.time-slots button.active,
+.time-slot-btn.active,
+.time-slots button.selected {
+    background: #1769D5;
+    color: #FFFFFF;
+    border-color: #1769D5;
+}
+
+
+/* =====================================================
+   PATIENT APPOINTMENT DETAILS
+   Added for online appointment information
+===================================================== */
+
+.patient-appointment-details {
+    margin-top: 35px;
+    padding-top: 30px;
+    border-top: 1px solid #D6E2EF;
+}
+
+
+/* =====================================================
+   PATIENT DETAILS HEADING
+===================================================== */
+
+.patient-details-heading {
+    margin-bottom: 25px;
+}
+
+.patient-details-heading h2 {
+    font-size: 20px;
+    color: #1D3557;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.patient-details-heading p {
+    color: #64748B;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   APPOINTMENT FORM GROUP
+===================================================== */
+
+.appointment-form-group {
+    margin-bottom: 22px;
+}
+
+
+/* =====================================================
+   APPOINTMENT FORM LABEL
+===================================================== */
+
+.appointment-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #1D3557;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.appointment-form-group label span {
+    color: #DC3545;
+    margin-left: 2px;
+}
+
+
+/* =====================================================
+   INPUT / TEXTAREA / SELECT
+===================================================== */
+
+.appointment-form-group input,
+.appointment-form-group textarea,
+.appointment-form-group select {
+    width: 100%;
+    border: 1px solid #D6E2EF;
+    border-radius: 9px;
+    background: #F8FBFF;
+    color: #1D3557;
+    font-size: 14px;
+    padding: 12px 14px;
+    outline: none;
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.appointment-form-group input {
+    height: 46px;
+}
+
+
+/* =====================================================
+   TEXTAREA
+===================================================== */
+
+.appointment-form-group textarea {
+    min-height: 105px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   SELECT
+===================================================== */
+
+.appointment-form-group select {
+    height: 46px;
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   INPUT FOCUS
+===================================================== */
+
+.appointment-form-group input:focus,
+.appointment-form-group textarea:focus,
+.appointment-form-group select:focus {
+    border-color: #1769D5;
+    background: #FFFFFF;
+    box-shadow: 0 0 0 3px rgba(23, 105, 213, 0.10);
+}
+
+
+/* =====================================================
+   PLACEHOLDER
+===================================================== */
+
+.appointment-form-group input::placeholder,
+.appointment-form-group textarea::placeholder {
+    color: #94A3B8;
+}
+
+
+/* =====================================================
+   INLINE FIELD ERROR
+===================================================== */
+
+.field-error {
+    display: block;
+    min-height: 18px;
+    margin-top: 5px;
+    color: #DC3545;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+
+/* =====================================================
+   INVALID FIELD
+===================================================== */
+
+.appointment-form-group input.input-error,
+.appointment-form-group textarea.input-error,
+.appointment-form-group select.input-error {
+    border-color: #DC3545;
+    background: #FFF8F8;
+}
+
+
+/* =====================================================
+
+   BOOK BUTTON
+
+===================================================== */
+
+.book-btn {
+    margin-top: 35px;
+    width: 100%;
+    height: 50px;
+    border: none;
+    background: #1769D5;
+    color: #FFFFFF;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.book-btn:hover {
+    background: #1055B5;
+    transform: translateY(-1px);
+}
+
+.book-btn:active {
+    transform: scale(0.98);
+}
+
+.book-btn:disabled {
+    background: #94A3B8;
+    color: #FFFFFF;
+    cursor: not-allowed;
+    opacity: 0.7;
+    transform: none;
+}
+
+
+/* =====================================================
+
+   MESSAGE TEXT
+
+===================================================== */
+
+#dateMessage,
+#slotMessage {
+    color: #64748B;
+    font-size: 14px;
+    padding: 10px 0;
+}
+
+
+/* =====================================================
+
+   SCROLLBAR
+
+===================================================== */
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: #F5FAFF;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #94A3B8;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #1769D5;
+}
+
+
+/* =====================================================
+
+   MOBILE VIEW
+
+   MAX-WIDTH: 900PX
+
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .menu-toggle {
+        display: flex;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        width: 42px;
+        height: 42px;
+        z-index: 1400;
+    }
+
+
+    .sidebar {
+        width: 250px;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translateX(-100%);
+        background: #1D3557;
+        z-index: 1200;
+        transition: transform 0.3s ease;
+        overflow-y: auto;
+        padding-top: 65px;
+    }
+
+
+    .sidebar.active,
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+
+    .overlay.active,
+    .overlay.show {
+        display: block;
+    }
+
+
+    .sidebar .logo {
+        display: flex;
+        height: 82px;
+        padding-left: 30px;
+        flex-shrink: 0;
+    }
+
+    .sidebar .logo span {
+        font-size: 32px;
+    }
+
+
+    .sidebar .patient-profile {
+        display: flex;
+    }
+
+
+    .sidebar .menu-title {
+        display: block;
+    }
+
+
+    .sidebar .logout {
+        display: block;
+    }
+
+
+    .sidebar nav {
+        width: 100%;
+        height: auto;
+        flex: 1;
+    }
+
+    .sidebar nav ul {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        margin-top: 10px;
+        padding: 0 12px;
+        gap: 6px;
+    }
+
+    .sidebar nav ul li {
+        flex: none;
+        width: 100%;
+        height: auto;
+    }
+
+    .sidebar nav ul li a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        min-height: 44px;
+        height: 44px;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 14px;
+        gap: 12px;
+        text-align: left;
+        padding: 0 12px;
+        white-space: nowrap;
+    }
+
+    .sidebar nav ul li a i {
+        width: 20px;
+        min-width: 20px;
+        font-size: 17px;
+    }
+
+    .sidebar nav ul li a span {
+        line-height: 1.2;
+    }
+
+
+    .sidebar nav ul li.active a {
+        background: #1769D5;
+        color: #FFFFFF;
+        border-radius: 8px;
+    }
+
+
+    .content {
+        margin-left: 0;
+        width: 100%;
+        padding: 75px 16px 25px 16px;
+    }
+
+
+    .doctor-profile-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        padding: 22px;
+    }
+
+    .doctor-image img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .doctor-details h1 {
+        font-size: 24px;
+    }
+
+
+    .doctor-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .booking-card {
+        padding: 22px;
+    }
+
+    .date-buttons {
+        justify-content: center;
+    }
+
+    .date-btn {
+        flex: 1;
+        min-width: 90px;
+    }
+
+    .time-slots {
+        justify-content: center;
+    }
+
+    .time-slots button {
+        flex: 1;
+        min-width: 120px;
+    }
+
+
+    /* =====================================================
+       MOBILE APPOINTMENT DETAILS
+    ====================================================== */
+
+    .patient-appointment-details {
+        margin-top: 30px;
+        padding-top: 25px;
+    }
+
+    .patient-details-heading {
+        text-align: left;
+    }
+
+    .appointment-form-group {
+        margin-bottom: 20px;
+    }
+
+}
+
+
+/* =====================================================
+
+   SMALL MOBILE
+
+===================================================== */
+
+@media (max-width: 576px) {
+
+    .content {
+        padding: 75px 12px 20px;
+    }
+
+    .doctor-profile-card,
+    .booking-card {
+        padding: 18px;
+    }
+
+    .doctor-details h1 {
+        font-size: 21px;
+    }
+
+    .doctor-details h3 {
+        font-size: 16px;
+    }
+
+    .about-doctor h2,
+    .booking-card h2,
+    .slot-section h2 {
+        font-size: 18px;
+    }
+
+
+    .date-buttons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .date-btn {
+        width: 100%;
+        min-width: 0;
+        flex: none;
+    }
+
+
+    .time-slots {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .time-slots button {
+        width: 100%;
+        min-width: 0;
+        flex: none;
+    }
+
+
+    /* =====================================================
+       SMALL MOBILE APPOINTMENT DETAILS
+    ====================================================== */
+
+    .patient-details-heading p {
+        font-size: 13px;
+    }
+
+    .appointment-form-group label {
+        font-size: 13px;
+    }
+
+    .appointment-form-group input,
+    .appointment-form-group textarea,
+    .appointment-form-group select {
+        font-size: 13px;
+    }
+
+    .appointment-form-group input,
+    .appointment-form-group select {
+        height: 44px;
+    }
+
+    .appointment-form-group textarea {
+        min-height: 100px;
+    }
+
+
+    .book-btn {
+        font-size: 14px;
+    }
+
+}
+
+
+/* =========================================================
+   APPOINTMENT TOAST MESSAGE
+========================================================= */
+
+.appointment-message {
+    position: fixed;
+
+     top: 25px;
+    right: 25px;
+    
+
+    width: min(560px, calc(100% - 40px));
+
+    min-height: 64px;
+
+    padding: 18px 55px 18px 20px;
+
+    display: none;
+
+    align-items: center;
+
+    gap: 13px;
+
+    background: #1769D5;
+
+    color: #ffffff;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.20);
+
+    z-index: 9999;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    line-height: 1.5;
+
+    overflow: hidden;
+
+    animation:appointmentToastSlideIn 0.35s ease;
+}
+
+
+/* =========================================================
+   TOAST ICON
+========================================================= */
+
+.appointment-message i {
+    font-size: 22px;
+
+    color: #ffffff;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   TOAST MESSAGE TEXT
+========================================================= */
+
+.appointment-message span {
+    flex: 1;
+
+    color: #ffffff;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   LIME GREEN BOTTOM PROGRESS LINE
+========================================================= */
+
+.appointment-message::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+
+    height: 4px;
+
+    background: #A8D52D;
+
+    transform-origin: left center;
+
+    animation:
+        appointmentToastProgress 5s linear forwards;
+}
+
+
+/* =========================================================
+   SUCCESS TOAST
+========================================================= */
+
+.appointment-message.success {
+    background: #1769D5;
+}
+
+
+/* =========================================================
+   ERROR TOAST
+========================================================= */
+
+.appointment-message.error {
+    background: #1769D5;
+}
+
+
+/* =========================================================
+   INFORMATION TOAST
+========================================================= */
+
+.appointment-message.info {
+    background: #1769D5;
+}
+
+
+/* =========================================================
+   TOAST OPEN ANIMATION
+========================================================= */
+
+@keyframes appointmentToastSlideIn {
+
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+/* =========================================================
+   PROGRESS LINE ANIMATION
+========================================================= */
+
+@keyframes appointmentToastProgress {
+
+    from {
+        transform: scaleX(1);
+    }
+
+    to {
+        transform: scaleX(0);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE TOAST
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .appointment-message {
+        top: 18px;
+
+        width:
+            calc(100% - 30px);
+
+        min-height: 58px;
+
+        padding:
+            15px
+            18px;
+
+        font-size: 14px;
+
+        border-radius: 9px;
+    }
+
+
+    .appointment-message i {
+        font-size: 20px;
+    }
+
+}
+
+
+/* =====================================================
+   CANCEL RESCHEDULE BUTTON
+   Used when patient is rescheduling an appointment
+===================================================== */
+
+.cancel-reschedule-btn {
+    min-width: 190px;
+
+    min-height: 44px;
+
+    padding: 10px 18px;
+
+    border: 1px solid #DC3545;
+
+    border-radius: 8px;
+
+    background: #DC3545;
+
+    color: #FFFFFF;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+    margin-top: 20px;
+}
+
+
+/* =====================================================
+   CANCEL RESCHEDULE BUTTON ICON
+===================================================== */
+
+.cancel-reschedule-btn i {
+    font-size: 16px;
+}
+
+
+/* =====================================================
+   CANCEL RESCHEDULE BUTTON HOVER
+===================================================== */
+
+.cancel-reschedule-btn:hover {
+    background: #DC3545;
+
+    color: #FFFFFF;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 5px 12px rgba(220, 53, 69, 0.20);
+}
+
+
+/* =====================================================
+   CANCEL RESCHEDULE BUTTON ACTIVE
+===================================================== */
+
+.cancel-reschedule-btn:active {
+    transform: scale(0.98);
+
+    box-shadow: none;
+}
+
+
+/* =====================================================
+   MOBILE RESPONSIVE
+===================================================== */
+
+@media (max-width: 576px) {
+
+    .cancel-reschedule-btn {
+        width: 100%;
+
+        min-height: 42px;
+    }
+
+}

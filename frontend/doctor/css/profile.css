@@ -1,0 +1,1580 @@
+
+/* =====================================================
+   DERMCARE - DOCTOR PROFILE PAGE CSS
+   File: doctor/css/profile.css
+===================================================== */
+
+
+/* =====================================================
+   GLOBAL RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #F5FAFF;
+    color: #1D3557;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    min-height: 100vh;
+
+    background: #1D3557;
+
+    display: flex;
+    flex-direction: column;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    z-index: 1000;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    transition: transform 0.25s ease;
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo {
+    height: 82px;
+    min-height: 82px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 43px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.logo span {
+    position: relative;
+    display: inline-block;
+
+    color: #FFFFFF;
+
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+
+    white-space: nowrap;
+}
+
+.logo span::after {
+    content: "";
+
+    position: absolute;
+    left: 2px;
+    bottom: -7px;
+
+    width: 28px;
+    height: 4px;
+
+    background: #A8D52D;
+    border-radius: 10px;
+}
+
+
+/* =====================================================
+   DOCTOR ROLE
+===================================================== */
+
+.doctor-role {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin: 22px 12px 12px;
+    padding: 11px 14px;
+
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: #FFFFFF;
+
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.doctor-role i {
+    font-size: 17px;
+    color: #1769D5;
+}
+
+
+/* =====================================================
+   MENU TITLE
+===================================================== */
+
+.menu-title {
+    color: #B8C7D9;
+
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+
+    padding: 18px 20px 10px;
+}
+
+
+/* =====================================================
+   SIDEBAR NAVIGATION
+===================================================== */
+
+nav {
+    padding: 0 12px;
+}
+
+nav ul {
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+nav ul li {
+    margin-bottom: 0;
+}
+
+nav ul li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    min-height: 44px;
+    padding: 10px 14px;
+
+    border-radius: 8px;
+
+    color: rgba(255, 255, 255, 0.90);
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+nav ul li a i {
+    width: 20px;
+
+    font-size: 17px;
+    text-align: center;
+
+    flex-shrink: 0;
+}
+
+nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.10);
+    color: #FFFFFF;
+}
+
+
+/* =====================================================
+   ACTIVE MENU
+===================================================== */
+
+nav ul li.active a {
+    background: #1769D5;
+    color: #FFFFFF;
+
+    box-shadow: 0 5px 12px rgba(23, 105, 213, 0.25);
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+.logout {
+    margin-top: auto;
+
+    padding: 15px 12px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.logout a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    min-height: 44px;
+    padding: 10px 14px;
+
+    border-radius: 8px;
+
+    color: rgba(255, 255, 255, 0.90);
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.logout a i {
+    width: 20px;
+
+    font-size: 18px;
+    text-align: center;
+
+    flex-shrink: 0;
+}
+
+.logout a:hover {
+    background: #1769D5;
+    color: #FFFFFF;
+}
+
+
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
+
+.content {
+    width: calc(100% - 250px);
+    margin-left: 250px;
+
+    padding: 28px;
+
+    min-height: 100vh;
+}
+
+
+/* =====================================================
+   PROFILE PAGE
+===================================================== */
+
+.profile-page {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+
+/* =====================================================
+   DOCTOR SUCCESS TOAST
+   MATCHES WORKING HOURS TOAST DESIGN
+===================================================== */
+
+.doctor-success-toast {
+    position: fixed;
+
+    top: 25px;
+    right: 25px;
+    left: auto;
+
+    width: min(560px, calc(100% - 300px));
+    max-width: 560px;
+
+    min-height: 64px;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    margin: 0;
+    padding: 18px 20px;
+
+    background: #1769D5;
+    color: #FFFFFF;
+
+    border: 1px solid #125AB9;
+    border-radius: 10px;
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.20);
+
+    overflow: hidden;
+    z-index: 9999999;
+
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.5;
+
+    animation: doctorToastSlideIn 0.35s ease both;
+}
+
+
+/* =====================================================
+   TOAST SUCCESS ICON
+   PLAIN WHITE ICON - NO OUTER CIRCLE
+===================================================== */
+
+.doctor-toast-icon {
+     width: 25px;
+    height: 25px;
+    min-width: 25px;
+
+    background-color: #FFFFFF;
+    color: #1769D5;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.doctor-toast-icon i {
+    font-size: 20px;
+    color: #1769D5;
+}
+
+
+/* =====================================================
+   TOAST MESSAGE
+===================================================== */
+
+.doctor-toast-message {
+    flex: 1;
+
+    color: #FFFFFF;
+
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =====================================================
+   TOAST CLOSE BUTTON
+   REMOVED / HIDDEN
+===================================================== */
+
+.doctor-toast-close {
+    display: none !important;
+}
+
+
+/* =====================================================
+   TOAST PROGRESS BAR
+   LIME-GREEN BOTTOM ACCENT
+===================================================== */
+
+.doctor-toast-progress {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background: #A8D52D;
+
+    transform: scaleX(1);
+    transform-origin: left center;
+
+    z-index: 5;
+
+    animation: doctorToastProgress 5s linear forwards;
+}
+
+
+/* =====================================================
+   TOAST SLIDE-IN ANIMATION
+===================================================== */
+
+@keyframes doctorToastSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* =====================================================
+   TOAST PROGRESS ANIMATION
+===================================================== */
+
+@keyframes doctorToastProgress {
+    from {
+        transform: scaleX(1);
+    }
+
+    to {
+        transform: scaleX(0);
+    }
+}
+
+
+/* =====================================================
+   MY PROFILE TITLE CARD
+===================================================== */
+
+.my-profile-card {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 22px;
+
+    padding: 22px 28px;
+    margin-bottom: 20px;
+
+    border-radius: 10px;
+
+    background: linear-gradient(135deg, #1769D5, #0F4EAA);
+    color: #FFFFFF;
+
+    box-shadow: 0 8px 20px rgba(23, 105, 213, 0.18);
+}
+
+.my-profile-icon {
+    width: 62px;
+    height: 62px;
+    min-width: 62px;
+
+    border-radius: 50%;
+
+    background: #FFFFFF;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.my-profile-icon i {
+    font-size: 38px;
+    color: #1769D5;
+}
+
+.my-profile-text h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.my-profile-text p {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+
+/* =====================================================
+   PROFILE HEADER CARD
+===================================================== */
+
+.profile-header-card {
+    background: #FFFFFF;
+
+    border: 1px solid #D9E4F0;
+    border-radius: 10px;
+
+    padding: 20px 26px;
+    margin-bottom: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    box-shadow: 0 5px 16px rgba(29, 53, 87, 0.05);
+}
+
+
+/* =====================================================
+   PROFILE IMAGE
+===================================================== */
+
+.profile-image-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-image-wrapper {
+    position: relative;
+    width: 105px;
+    height: 105px;
+}
+
+.profile-image-wrapper img {
+    width: 105px;
+    height: 105px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 4px solid #EDF4FC;
+    background: #EAF1F8;
+}
+
+
+/* =====================================================
+   CAMERA BUTTON
+===================================================== */
+
+.image-edit-button {
+    position: absolute;
+    right: -2px;
+    bottom: 3px;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    background: #1769D5;
+    border: 3px solid #FFFFFF;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #FFFFFF;
+
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.image-edit-button:hover {
+    background: #1055B5;
+    transform: scale(1.05);
+}
+
+.image-edit-button i {
+    font-size: 16px;
+}
+
+
+/* =====================================================
+   PROFILE HEADER INFORMATION
+===================================================== */
+
+.profile-header-info {
+    flex: 1;
+}
+
+.profile-header-info h2 {
+    font-size: 21px;
+    font-weight: 700;
+
+    color: #1D3557;
+
+    margin-bottom: 7px;
+}
+
+.profile-header-info > p {
+    font-size: 15px;
+    color: #4E6580;
+
+    margin-bottom: 12px;
+}
+
+
+/* =====================================================
+   PROFILE STATUS
+===================================================== */
+
+.profile-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 7px 14px;
+
+    border-radius: 20px;
+
+    background: #EAF7F0;
+    color: #287A52;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #2AA36B;
+}
+
+
+/* =====================================================
+   EDIT PROFILE BUTTON
+===================================================== */
+
+.edit-profile-button {
+    height: 45px;
+    padding: 0 22px;
+
+    border: 1.5px solid #1769D5;
+    border-radius: 8px;
+
+    background: #FFFFFF;
+    color: #1769D5;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.edit-profile-button:hover {
+    background: #1769D5;
+    color: #FFFFFF;
+}
+
+
+/* =====================================================
+   PROFILE CARD
+===================================================== */
+
+.profile-card {
+    background: #FFFFFF;
+
+    border: 1px solid #D9E4F0;
+    border-radius: 10px;
+
+    padding: 24px;
+    margin-bottom: 20px;
+
+    box-shadow: 0 5px 16px rgba(29, 53, 87, 0.05);
+}
+
+
+/* =====================================================
+   CARD HEADING
+===================================================== */
+
+.card-heading {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+.card-heading-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+
+    border-radius: 10px;
+
+    background: #EAF2FC;
+    color: #1769D5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-heading-icon i {
+    font-size: 24px;
+}
+
+.card-heading h2 {
+    color: #1D3557;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    margin-bottom: 5px;
+}
+
+.card-heading p {
+    color: #64748B;
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   FORM GRID
+===================================================== */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 17px 22px;
+}
+
+.form-group {
+    width: 100%;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+
+/* =====================================================
+   FORM LABEL
+===================================================== */
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #344B66;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   INPUT WRAPPER
+===================================================== */
+
+.input-wrapper {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper > i {
+    position: absolute;
+
+    left: 14px;
+
+    color: #526E8C;
+    font-size: 16px;
+
+    pointer-events: none;
+    z-index: 2;
+}
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.input-wrapper input {
+    width: 100%;
+    height: 40px;
+
+    padding: 0 42px;
+
+    border: 1px solid #D4E0EC;
+    border-radius: 8px;
+
+    background: #F8FBFF;
+    color: #425B77;
+
+    font-size: 13px;
+
+    outline: none;
+    transition: 0.25s;
+}
+
+.input-wrapper input:focus {
+    border-color: #1769D5;
+    background: #FFFFFF;
+
+    box-shadow: 0 0 0 3px rgba(23, 105, 213, 0.08);
+}
+
+.input-wrapper input:disabled {
+    background: #F4F8FC;
+    color: #4C6580;
+
+    cursor: default;
+    opacity: 1;
+}
+
+
+/* =====================================================
+   GENDER SELECT INPUT
+===================================================== */
+
+.input-wrapper select {
+    width: 100%;
+    height: 40px;
+
+    padding: 0 42px;
+
+    border: 1px solid #D4E0EC;
+    border-radius: 8px;
+
+    background: #F8FBFF;
+    color: #425B77;
+
+    font-size: 13px;
+
+    outline: none;
+    transition: 0.25s;
+
+    cursor: pointer;
+}
+
+.input-wrapper select:focus {
+    border-color: #1769D5;
+    background: #FFFFFF;
+
+    box-shadow: 0 0 0 3px rgba(23, 105, 213, 0.08);
+}
+
+.input-wrapper select:disabled {
+    background: #F4F8FC;
+    color: #4C6580;
+
+    cursor: default;
+    opacity: 1;
+}
+
+
+/* =====================================================
+   INPUT ERROR
+===================================================== */
+
+.input-wrapper input.input-error,
+.input-wrapper select.input-error,
+.textarea-wrapper textarea.input-error {
+    border-color: #D9534F;
+    background: #FFF8F8;
+}
+
+.input-wrapper input.input-error:focus,
+.input-wrapper select.input-error:focus,
+.textarea-wrapper textarea.input-error:focus {
+    border-color: #D9534F;
+    box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.08);
+}
+
+
+/* =====================================================
+   EXPERIENCE SUFFIX
+===================================================== */
+
+.input-suffix {
+    position: absolute;
+
+    right: 13px;
+
+    color: #64748B;
+    font-size: 12px;
+
+    pointer-events: none;
+}
+
+.input-wrapper:has(.input-suffix) input {
+    padding-right: 60px;
+}
+
+
+/* =====================================================
+   TEXTAREA
+===================================================== */
+
+.textarea-wrapper {
+    position: relative;
+}
+
+.textarea-wrapper > i {
+    position: absolute;
+
+    left: 14px;
+    top: 14px;
+
+    color: #526E8C;
+    font-size: 16px;
+
+    pointer-events: none;
+}
+
+.textarea-wrapper textarea {
+    width: 100%;
+    min-height: 70px;
+
+    padding: 13px 16px 13px 42px;
+
+    border: 1px solid #D4E0EC;
+    border-radius: 8px;
+
+    background: #F8FBFF;
+    color: #425B77;
+
+    font-size: 13px;
+    line-height: 1.5;
+
+    resize: vertical;
+
+    outline: none;
+    transition: 0.25s;
+}
+
+.textarea-wrapper textarea:focus {
+    border-color: #1769D5;
+    background: #FFFFFF;
+
+    box-shadow: 0 0 0 3px rgba(23, 105, 213, 0.08);
+}
+
+.textarea-wrapper textarea:disabled {
+    background: #F4F8FC;
+    color: #4C6580;
+
+    opacity: 1;
+    cursor: default;
+}
+
+
+/* =====================================================
+   WORKING DAYS DISPLAY
+===================================================== */
+
+.working-days-display {
+    min-height: 40px;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 7px;
+
+    padding: 7px 10px;
+
+    border: 1px solid #D4E0EC;
+    border-radius: 8px;
+
+    background: #F4F8FC;
+}
+
+.working-day-empty {
+    color: #64748B;
+    font-size: 13px;
+}
+
+.working-days-display span:not(.working-day-empty) {
+    padding: 5px 9px;
+
+    border-radius: 5px;
+
+    background: #EAF2FC;
+    color: #1769D5;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   EDITABLE WORKING DAYS
+===================================================== */
+
+.working-days-edit {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+/* Hide default checkbox */
+
+.working-day-option input {
+    display: none;
+}
+
+
+/* Working day button */
+
+.working-day-option span {
+    min-width: 70px;
+    height: 38px;
+
+    padding: 0 14px;
+
+    border: 1px solid #D4E0EC;
+    border-radius: 8px;
+
+    background: #F8FBFF;
+    color: #536B85;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+
+/* Working day hover */
+
+.working-day-option span:hover {
+    border-color: #1769D5;
+}
+
+
+/* Selected working day */
+
+.working-day-option input:checked + span {
+    background: #1769D5;
+    border-color: #1769D5;
+    color: #FFFFFF;
+
+    box-shadow: 0 4px 10px rgba(23, 105, 213, 0.18);
+}
+
+
+/* Disabled working day */
+
+.working-day-option input:disabled + span {
+    background: #F4F8FC;
+    color: #7A8CA0;
+    border-color: #DCE6F0;
+
+    cursor: default;
+}
+
+
+/* =====================================================
+   FIELD NOTE
+===================================================== */
+
+.field-note {
+    display: block;
+
+    margin-top: 6px;
+
+    color: #7A8CA0;
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   FIELD ERROR
+===================================================== */
+
+.field-error {
+    display: block;
+    min-height: 15px;
+
+    margin-top: 4px;
+
+    color: #D9534F;
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   FORM ACTIONS
+===================================================== */
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+
+    margin-top: 24px;
+    padding-top: 20px;
+
+    border-top: 1px solid #E1E9F1;
+}
+
+.cancel-button,
+.save-button {
+    height: 43px;
+    padding: 0 20px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.cancel-button {
+    border: 1px solid #C9D6E4;
+
+    background: #FFFFFF;
+    color: #536B85;
+}
+
+.cancel-button:hover {
+    background: #F4F7FA;
+}
+
+.save-button {
+    border: none;
+
+    background: #1769D5;
+    color: #FFFFFF;
+}
+
+.save-button:hover {
+    background: #1055B5;
+}
+
+
+/* =====================================================
+   PASSWORD CARD
+===================================================== */
+
+.password-card {
+    margin-bottom: 0;
+}
+
+
+/* =====================================================
+   PASSWORD GRID
+===================================================== */
+
+.password-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+
+/* =====================================================
+   PASSWORD TOGGLE
+===================================================== */
+
+.password-toggle {
+    position: absolute;
+
+    right: 8px;
+
+    width: 32px;
+    height: 32px;
+
+    border: none;
+    background: transparent;
+
+    color: #64748B;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    z-index: 3;
+}
+
+.password-toggle:hover {
+    color: #1769D5;
+}
+
+.password-toggle i {
+    font-size: 17px;
+}
+
+
+/* =====================================================
+   PASSWORD ACTIONS
+===================================================== */
+
+.password-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 22px;
+}
+
+.change-password-button {
+    height: 43px;
+    padding: 0 22px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #1769D5;
+    color: #FFFFFF;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.change-password-button:hover {
+    background: #1055B5;
+}
+
+
+/* =====================================================
+   MOBILE MENU BUTTON
+===================================================== */
+
+.menu-toggle {
+    display: none;
+
+    position: fixed;
+
+    top: 15px;
+    left: 15px;
+
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #1769D5;
+    color: #FFFFFF;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    z-index: 1400;
+
+    box-shadow: 0 5px 15px rgba(23, 105, 213, 0.25);
+
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-toggle:hover {
+    background: #1055B5;
+}
+
+.menu-toggle i {
+    color: #FFFFFF;
+    font-size: 22px;
+}
+
+
+/* =====================================================
+   OVERLAY
+===================================================== */
+
+.overlay {
+    display: none;
+}
+
+
+/* =====================================================
+   TABLET RESPONSIVE
+===================================================== */
+
+@media (max-width: 1100px) {
+
+    .sidebar {
+        width: 250px;
+    }
+
+    .content {
+        width: calc(100% - 250px);
+        margin-left: 250px;
+    }
+
+    .password-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =====================================================
+   MOBILE RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .sidebar {
+        width: 250px;
+        height: 100vh;
+
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .menu-toggle {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        top: 15px;
+        left: 15px;
+
+        z-index: 1400;
+    }
+
+    /* Keep the menu button above the opened sidebar */
+
+    body:has(.sidebar.active) .menu-toggle {
+        left: 15px;
+        top: 15px;
+        z-index: 1401;
+    }
+
+    /* Leave room for the X button */
+
+    body:has(.sidebar.active) .sidebar .logo {
+        padding-top: 60px;
+        height: 145px;
+        min-height: 145px;
+        align-items: center;
+    }
+
+    .overlay.active {
+        display: block;
+
+        position: fixed;
+        inset: 0;
+
+        background: rgba(29, 53, 87, 0.45);
+
+        z-index: 900;
+    }
+
+    .content {
+        width: 100%;
+        margin-left: 0;
+
+        padding: 80px 16px 20px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full-width {
+        grid-column: auto;
+    }
+
+    .profile-header-card {
+        flex-wrap: wrap;
+    }
+
+    .edit-profile-button {
+        width: 100%;
+    }
+
+    .password-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Toast responsive positioning */
+
+    .doctor-success-toast {
+        top: 18px;
+        right: 15px;
+        left: 15px;
+
+        width: auto;
+        max-width: none;
+
+        min-height: 64px;
+
+        padding: 18px 20px;
+    }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .content {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .my-profile-card {
+        padding: 18px;
+        gap: 15px;
+    }
+
+    .my-profile-icon {
+        width: 52px;
+        height: 52px;
+        min-width: 52px;
+    }
+
+    .my-profile-icon i {
+        font-size: 31px;
+    }
+
+    .my-profile-text h1 {
+        font-size: 22px;
+    }
+
+    .my-profile-text p {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .profile-card {
+        padding: 18px 15px;
+    }
+
+    .profile-header-card {
+        padding: 20px 15px;
+
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile-image-section {
+        width: 100%;
+    }
+
+    .profile-header-info {
+        width: 100%;
+    }
+
+    .card-heading h2 {
+        font-size: 16px;
+    }
+
+    .card-heading p {
+        font-size: 12px;
+    }
+
+    .working-days-edit {
+        gap: 8px;
+    }
+
+    .working-day-option {
+        flex: 1 1 calc(50% - 8px);
+    }
+
+    .working-day-option span {
+        width: 100%;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .cancel-button,
+    .save-button {
+        width: 100%;
+    }
+
+    .password-actions {
+        width: 100%;
+    }
+
+    .change-password-button {
+        width: 100%;
+    }
+
+    body:has(.sidebar.active) .menu-toggle {
+        left: 15px;
+        top: 15px;
+    }
+
+    body:has(.sidebar.active) .sidebar .logo {
+        padding-top: 60px;
+        height: 140px;
+        min-height: 140px;
+    }
+
+    /* Toast positioning on small mobile */
+
+    .doctor-success-toast {
+        top: 12px;
+        right: 12px;
+        left: 12px;
+
+        width: auto;
+        max-width: none;
+
+        min-height: 64px;
+
+        padding: 15px 18px 18px;
+
+        border-radius: 10px;
+    }
+
+    .doctor-toast-icon {
+        font-size: 20px;
+    }
+
+    .doctor-toast-message {
+        font-size: 14px;
+    }
+
+    .doctor-toast-close {
+        display: none !important;
+    }
+}
+
+
+/* =======================================================
+   REMOVE BROWSER DEFAULT PASSWORD EYE ICON
+======================================================= */
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    display: none;
+}

@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <!-- =====================================================
+         META TAGS
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+
+    <!-- =====================================================
+         PAGE TITLE
+    ====================================================== -->
+
+    <title>Working Hours | Dermacare</title>
+
+
+    <!-- =====================================================
+         BOOTSTRAP ICONS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    >
+
+
+    <!-- =====================================================
+         PAGE CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/working-hours.css"
+    >
+
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         MOBILE MENU BUTTON
+    ====================================================== -->
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+    >
+
+        <i class="bi bi-list"></i>
+
+    </button>
+
+
+
+    <!-- =====================================================
+         MAIN CONTAINER
+    ====================================================== -->
+
+    <div class="container">
+
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside
+            class="sidebar"
+            id="sidebar"
+        >
+
+
+            <!-- =============================================
+                 LOGO
+            ============================================== -->
+
+            <div class="logo">
+
+                <span>
+                    Dermacare
+                </span>
+
+            </div>
+
+
+
+            <!-- =============================================
+                 DOCTOR ROLE
+            ============================================== -->
+
+            <div class="doctor-role">
+
+                <i class="bi bi-person-badge-fill"></i>
+
+                <span>
+                    Doctor
+                </span>
+
+            </div>
+
+
+
+            <!-- =============================================
+                 MENU TITLE
+            ============================================== -->
+
+            <div class="menu-title">
+
+                MAIN
+
+            </div>
+
+
+
+            <!-- =============================================
+                 NAVIGATION
+            ============================================== -->
+
+            <nav>
+
+                <ul>
+
+
+                    <!-- DASHBOARD -->
+
+                    <li>
+
+                        <a href="dashboard.html">
+
+                            <i class="bi bi-grid-1x2-fill"></i>
+
+                            <span>
+                                Dashboard
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+
+                    <!-- TODAY'S APPOINTMENTS -->
+
+                    <li>
+
+                        <a href="today-appointments.html">
+
+                            <i class="bi bi-calendar-day-fill"></i>
+
+                            <span>
+                                Today's Appointments
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+
+                    <!-- UPCOMING APPOINTMENTS -->
+
+                    <li>
+
+                        <a href="upcoming-appointments.html">
+
+                            <i class="bi bi-calendar-check-fill"></i>
+
+                            <span>
+                                Upcoming Appointments
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+
+                    <!-- WORKING HOURS -->
+
+                    <li class="active">
+
+                        <a href="working-hours.html">
+
+                            <i class="bi bi-clock-fill"></i>
+
+                            <span>
+                                Working Hours and Leave Date
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+
+                    <!-- PRESCRIPTIONS -->
+
+                    <li>
+
+                        <a href="prescription-form.html">
+
+                            <i class="bi bi-file-earmark-medical-fill"></i>
+
+                            <span>
+                                Prescriptions
+                            </span>
+
+                        </a>
+
+                    </li>
+
+                    <!-- =========================================
+                         HISTORY
+                    ========================================== -->
+
+                    <li>
+
+                        <a href="history.html">
+
+                            <i class="bi bi-clock-history"></i>
+
+                            <span>
+                                History
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+
+                    <!-- PROFILE -->
+
+                    <li>
+
+                        <a href="profile.html">
+
+                            <i class="bi bi-person-circle"></i>
+
+                            <span>
+                                Profile
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+                </ul>
+
+            </nav>
+
+
+
+            <!-- =============================================
+                 LOGOUT
+            ============================================== -->
+
+            <div class="logout">
+
+                <a
+                    href="#"
+                    id="logoutLink"
+                >
+
+                    <i class="bi bi-box-arrow-right"></i>
+
+                    <span>
+                        Logout
+                    </span>
+
+                </a>
+
+            </div>
+
+
+        </aside>
+
+
+
+        <!-- =================================================
+             MOBILE OVERLAY
+        ================================================== -->
+
+        <div
+            class="overlay"
+            id="overlay"
+        ></div>
+
+
+
+        <!-- =================================================
+             MAIN CONTENT
+        ================================================== -->
+
+        <main class="content">
+
+
+            <!-- =============================================
+                 PAGE HEADER
+            ============================================== -->
+
+            <section class="page-header">
+
+                <div>
+
+                    <p class="page-small-title">
+
+                        Doctor Schedule
+
+                    </p>
+
+
+                    <h1>
+
+                        Working Hours and Leave Date
+
+                    </h1>
+
+
+                    <p>
+
+                        Manage your weekly working hours
+                        and leave dates.
+
+                    </p>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =============================================
+                 WORKING HOURS SUCCESS / ERROR MESSAGE
+
+                 THIS MESSAGE APPEARS ABOVE THE
+                 WEEKLY WORKING HOURS BOX
+            ============================================== -->
+
+            <div
+                class="working-hours-message"
+                id="workingHoursMessage"
+                role="alert"
+                aria-live="polite"
+            >
+
+                <!-- JavaScript will add message here -->
+
+            </div>
+
+
+
+            <!-- =============================================
+                 WEEKLY WORKING HOURS
+            ============================================== -->
+
+            <section class="working-hours-card">
+
+
+                <!-- =========================================
+                     CARD HEADER
+                ========================================== -->
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>
+
+                            Weekly Working Hours
+
+                        </h2>
+
+
+                        <p>
+
+                            Set your regular working hours.
+                            These timings will automatically
+                            repeat every week.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="working-hours-icon">
+
+                        <i class="bi bi-clock-fill"></i>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =========================================
+                     INFORMATION MESSAGE
+                ========================================== -->
+
+                <div class="schedule-info">
+
+                    <i class="bi bi-info-circle-fill"></i>
+
+                    <p>
+
+                        Enter your full working time for each
+                        working day. The system will automatically
+                        divide the available time equally between
+                        online appointments and walk-in appointments.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     WEEKLY SCHEDULE FORM
+                ========================================== -->
+
+                <form
+                    id="workingHoursForm"
+                >
+
+
+                    <!-- =====================================
+                         MONDAY
+                    ====================================== -->
+
+                    <div class="day-schedule-card">
+
+                        <div class="day-header">
+
+                            <div>
+
+                                <h3>
+
+                                    Monday
+
+                                </h3>
+
+                                <p>
+
+                                    Set your working hours for Monday.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="time-input-grid">
+
+                            <div class="form-group">
+
+                                <label for="mondayStartTime">
+
+                                    Start Time
+
+                                </label>
+
+
+                                <input
+                                    type="time"
+                                    id="mondayStartTime"
+                                    name="mondayStartTime"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="mondayEndTime">
+
+                                    End Time
+
+                                </label>
+
+
+                                <input
+                                    type="time"
+                                    id="mondayEndTime"
+                                    name="mondayEndTime"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =====================================
+                         TUESDAY
+                    ====================================== -->
+
+                    <div class="day-schedule-card">
+
+                        <div class="day-header">
+
+                            <div>
+
+                                <h3>
+
+                                    Tuesday
+
+                                </h3>
+
+                                <p>
+
+                                    Set your working hours for Tuesday.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="time-input-grid">
+
+                            <div class="form-group">
+
+                                <label for="tuesdayStartTime">
+
+                                    Start Time
+
+                                </label>
+
+
+                                <input
+                                    type="time"
+                                    id="tuesdayStartTime"
+                                    name="tuesdayStartTime"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="tuesdayEndTime">
+
+                                    End Time
+
+                                </label>
+
+
+                                <input
+                                    type="time"
+                                    id="tuesdayEndTime"
+                                    name="tuesdayEndTime"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =====================================
+                         WEDNESDAY
+                    ====================================== -->
+
+                    <div class="day-schedule-card">
+
+                        <div class="day-header">
+
+                            <div>
+
+                                <h3>
+
+                                    Wednesday
+
+                                </h3>
+
+                                <p>
+
+                                    Set your working hours for Wednesday.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="time-input-grid">
+
+                            <div class="form-group">
+
+                                <label for="wednesdayStartTime">
+
+                                    Start Time
+
+                                </label>
+
+
+                                <input
+                                    type="time"
+                                    id="wednesdayStartTime"
+                                    name="wednesdayStartTime"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="wednesdayEndTime">
+
+                                    End Time
+
+                                </label>
+
+
+                                <input
+                                    type="time"
+                                    id="wednesdayEndTime"
+                                    name="wednesdayEndTime"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =====================================
+                         THURSDAY
+                    ====================================== -->
+
+                    <div class="day-schedule-card">
+
+                        <div class="day-header">
+
+                            <div>
+
+                                <h3>
+
+                                    Thursday
+
+                                </h3>
+
+                                <p>
+
+                                    Set your working hours for Thursday.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="time-input-grid">
+
+                            <div class="form-group">
+
+                                <label for="thursdayStartTime">
+
+                                    Start Time
+
+                                </label>
+
+
+                                <input
+                                    type="time"
+                                    id="thursdayStartTime"
+                                    name="thursdayStartTime"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="thursdayEndTime">
+
+                                    End Time
+
+                                </label>
+
+
+                                <input
+                                    type="time"
+                                    id="thursdayEndTime"
+                                    name="thursdayEndTime"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =====================================
+                         FRIDAY
+                    ====================================== -->
+
+                    <div class="day-schedule-card">
+
+                        <div class="day-header">
+
+                            <div>
+
+                                <h3>
+
+                                    Friday
+
+                                </h3>
+
+                                <p>
+
+                                    Set your working hours for Friday.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="time-input-grid">
+
+                            <div class="form-group">
+
+                                <label for="fridayStartTime">
+
+                                    Start Time
+
+                                </label>
+
+
+                                <input
+                                    type="time"
+                                    id="fridayStartTime"
+                                    name="fridayStartTime"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="fridayEndTime">
+
+                                    End Time
+
+                                </label>
+
+
+                                <input
+                                    type="time"
+                                    id="fridayEndTime"
+                                    name="fridayEndTime"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =====================================
+                         SATURDAY
+                    ====================================== -->
+
+                    <div class="day-schedule-card">
+
+                        <div class="day-header">
+
+                            <div>
+
+                                <h3>
+
+                                    Saturday
+
+                                </h3>
+
+                                <p>
+
+                                    Set your working hours for Saturday.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="time-input-grid">
+
+                            <div class="form-group">
+
+                                <label for="saturdayStartTime">
+
+                                    Start Time
+
+                                </label>
+
+
+                                <input
+                                    type="time"
+                                    id="saturdayStartTime"
+                                    name="saturdayStartTime"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="saturdayEndTime">
+
+                                    End Time
+
+                                </label>
+
+
+                                <input
+                                    type="time"
+                                    id="saturdayEndTime"
+                                    name="saturdayEndTime"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =====================================
+                         SUNDAY
+                    ====================================== -->
+
+                    <div class="day-schedule-card">
+
+                        <div class="day-header">
+
+                            <div>
+
+                                <h3>
+
+                                    Sunday
+
+                                </h3>
+
+                                <p>
+
+                                    Set your working hours for Sunday.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="time-input-grid">
+
+                            <div class="form-group">
+
+                                <label for="sundayStartTime">
+
+                                    Start Time
+
+                                </label>
+
+
+                                <input
+                                    type="time"
+                                    id="sundayStartTime"
+                                    name="sundayStartTime"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="sundayEndTime">
+
+                                    End Time
+
+                                </label>
+
+
+                                <input
+                                    type="time"
+                                    id="sundayEndTime"
+                                    name="sundayEndTime"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =====================================
+                         SLOT INFORMATION
+                    ====================================== -->
+
+                    <div class="slot-info-box">
+
+                        <i class="bi bi-calendar2-check-fill"></i>
+
+
+                        <div>
+
+                            <strong>
+
+                                Appointment Slot Duration
+
+                            </strong>
+
+
+                            <p>
+
+                                Each appointment slot is
+                                automatically generated for
+                                20 minutes. Your working time
+                                will be divided equally between
+                                online and walk-in appointments.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =====================================
+                         SAVE BUTTON
+                    ====================================== -->
+
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            class="save-btn"
+                            id="saveWorkingHoursBtn"
+                        >
+
+                            <i class="bi bi-check-circle-fill"></i>
+
+                            Save Weekly Schedule
+
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+
+            </section>
+
+
+
+            <!-- =============================================
+                 LEAVE MANAGEMENT
+            ============================================== -->
+
+            <section class="leave-card">
+
+
+                <!-- =========================================
+                     CARD HEADER
+                ========================================== -->
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>
+
+                            Manage Leave Dates
+
+                        </h2>
+
+
+                        <p>
+
+                            Add dates when you will not be
+                            available for appointments.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="leave-icon">
+
+                        <i class="bi bi-calendar-x-fill"></i>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =========================================
+                     LEAVE INFORMATION
+                ========================================== -->
+
+                <div class="leave-info">
+
+                    <i class="bi bi-exclamation-circle-fill"></i>
+
+                    <p>
+
+                        Once a leave date is added, patients
+                        and the receptionist will not be able
+                        to book an appointment on that date.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     ADD LEAVE FORM
+                ========================================== -->
+
+                <form
+                    class="leave-form"
+                    id="leaveForm"
+                >
+
+
+                    <!-- LEAVE DATE -->
+
+                    <div class="form-group">
+
+                        <label for="leaveDate">
+
+                            Select Leave Date
+
+                        </label>
+
+
+                        <input
+                            type="date"
+                            id="leaveDate"
+                            name="leaveDate"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- LEAVE REASON -->
+
+                    <div class="form-group">
+
+                        <label for="leaveReason">
+
+                            Reason
+
+                            <span class="optional-text">
+
+                                (Optional)
+
+                            </span>
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="leaveReason"
+                            name="leaveReason"
+                            placeholder="Enter reason for leave"
+                        >
+
+                    </div>
+
+
+
+                    <!-- ADD LEAVE BUTTON -->
+
+                    <button
+                        type="submit"
+                        class="add-leave-btn"
+                        id="addLeaveBtn"
+                    >
+
+                        <i class="bi bi-calendar-plus-fill"></i>
+
+                        Add Leave Date
+
+                    </button>
+
+
+                </form>
+
+
+
+                <!-- =========================================
+                     UPCOMING LEAVE DATES
+                ========================================== -->
+
+                <div class="leave-list-section">
+
+
+                    <div class="leave-list-header">
+
+                        <h3>
+
+                            Upcoming Leave Dates
+
+                        </h3>
+
+                    </div>
+
+
+
+                    <div
+                        class="leave-list"
+                        id="leaveList"
+                    >
+
+
+                        <!-- JavaScript will generate leave items -->
+
+                        <div
+                            class="no-leave-message"
+                            id="noLeaveMessage"
+                        >
+
+                            <i class="bi bi-calendar-check"></i>
+
+
+                            <p>
+
+                                No upcoming leave dates.
+
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/working-hours.js"></script>
+
+
+</body>
+
+</html>
