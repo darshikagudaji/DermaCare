@@ -8,7 +8,7 @@
 // BACKEND API
 // =======================================================
 
-const API_BASE_URL = "http://127.0.0.1:5000/api";
+const API_BASE_URL = "https://dermacare-eeca.onrender.com/api";
 
 
 // =======================================================
@@ -313,7 +313,7 @@ const createDoctorCard = (doctorContainer, doctor) => {
             !doctorImage.startsWith("https://")
         ) {
             doctorImage =
-                `http://127.0.0.1:5000/${doctorImage.replace(/^\/+/, "")}`;
+                `https://dermacare-eeca.onrender.com/${doctorImage.replace(/^\/+/, "")}`;
         }
 
     } else {

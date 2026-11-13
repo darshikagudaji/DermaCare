@@ -8,25 +8,25 @@
 // BACKEND API - DOCTORS
 // =======================================================
 
-const API_URL = "http://127.0.0.1:5000/api/doctors";
+const API_URL = "https://dermacare-eeca.onrender.com/api/doctors";
 
 // =======================================================
 // BACKEND API - LEAVES
 // =======================================================
 
-const LEAVE_API_URL = "http://127.0.0.1:5000/api/leaves";
+const LEAVE_API_URL = "https://dermacare-eeca.onrender.com/api/leaves";
 
 // =======================================================
 // BACKEND API - DOCTOR SCHEDULE
 // =======================================================
 
-const DOCTOR_SCHEDULE_API_URL = "http://127.0.0.1:5000/api/doctor-schedule";
+const DOCTOR_SCHEDULE_API_URL = "https://dermacare-eeca.onrender.com/api/doctor-schedule";
 
 // =======================================================
 // BACKEND API - APPOINTMENTS
 // =======================================================
 
-const APPOINTMENT_API_URL = "http://127.0.0.1:5000/api/appointments";
+const APPOINTMENT_API_URL = "https://dermacare-eeca.onrender.com/api/appointments";
 
 // =======================================================
 // APPOINTMENT SLOT DURATION
@@ -1155,7 +1155,7 @@ const getDoctorImageURL = (imagePath) => {
 
     const cleanPath = imagePath.replace(/^\/+/, "");
 
-    return "http://127.0.0.1:5000/" + cleanPath;
+    return "https://dermacare-eeca.onrender.com/" + cleanPath;
 };
 
 // =======================================================

@@ -6,7 +6,7 @@
 // API BASE URL
 // =======================================================
 const API_BASE_URL =
-    "http://127.0.0.1:5000/api/patients";
+    "https://dermacare-eeca.onrender.com/api/patients";
 
 // =======================================================
 // GET PROFILE HTML ELEMENTS

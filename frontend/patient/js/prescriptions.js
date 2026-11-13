@@ -5,7 +5,7 @@
    formatted instructions and PDF download
 ===================================================== */
 
-const API_BASE_URL = "http://127.0.0.1:5000/api";
+const API_BASE_URL = "https://dermacare-eeca.onrender.com/api";
 
 const menuToggle = document.getElementById("menuToggle");
 const sidebar = document.getElementById("sidebar");

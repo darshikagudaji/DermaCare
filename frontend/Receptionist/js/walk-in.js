@@ -4,7 +4,7 @@
    FILE: receptionist/js/walk-in.js
 ======================================================= */
 
-const API_BASE_URL = "http://127.0.0.1:5000/api";
+const API_BASE_URL = "https://dermacare-eeca.onrender.com/api";
 
 const DOCTORS_API_URL = `${API_BASE_URL}/doctors`;
 const APPOINTMENTS_API_URL = `${API_BASE_URL}/appointments`;

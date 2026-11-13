@@ -892,7 +892,7 @@ if (doctorLoginForm) {
                 const response =
                     await fetch(
 
-                        "http://127.0.0.1:5000/api/doctors/login",
+                        "https://dermacare-eeca.onrender.com/api/doctors/login",
 
                         {
 
