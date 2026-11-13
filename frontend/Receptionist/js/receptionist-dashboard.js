@@ -8,7 +8,7 @@
 // API BASE URL
 // =======================================================
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://dermacare-eeca.onrender.com/api";
 
 
 // =======================================================

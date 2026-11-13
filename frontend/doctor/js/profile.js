@@ -9,7 +9,7 @@
 // =======================================================
 
 const API_URL =
-    "http://localhost:5000/api";
+    "https://dermacare-eeca.onrender.com/api";
 
 
 // =======================================================
@@ -766,7 +766,7 @@ function getDoctorImageUrl(imagePath) {
             .replace(/^\/+/, "");
 
     return (
-        "http://localhost:5000/" +
+        "https://dermacare-eeca.onrender.com/" +
         cleanPath
     );
 

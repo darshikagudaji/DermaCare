@@ -18,7 +18,7 @@
 // =======================================================
 
 const APPOINTMENT_API_URL =
-    "http://localhost:5000/api/appointments";
+    "https://dermacare-eeca.onrender.com/api/appointments";
 
 
 // =======================================================

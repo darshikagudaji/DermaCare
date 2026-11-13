@@ -411,7 +411,7 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
 
             const response = await fetch(
-                `http://localhost:5000/api/patients/profile/${encodeURIComponent(patientId)}`
+                `https://dermacare-eeca.onrender.com/api/patients/profile/${encodeURIComponent(patientId)}`
             );
 
             if (!response.ok) {
@@ -600,7 +600,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Call the route registered in appointmentRoutes.js.
 
             const response = await fetch(
-                `http://localhost:5000/api/appointments/${encodeURIComponent(appointmentId)}/complete`,
+                `https://dermacare-eeca.onrender.com/api/appointments/${encodeURIComponent(appointmentId)}/complete`,
                 {
                     method: "PATCH",
                     headers: {

@@ -10,7 +10,7 @@
 // =======================================================
 
 const API_URL =
-    "http://localhost:5000/api/doctors";
+    "https://dermacare-eeca.onrender.com/api/doctors";
 
 
 
@@ -19,7 +19,7 @@ const API_URL =
 // =======================================================
 
 const BACKEND_URL =
-    "http://localhost:5000";
+    "https://dermacare-eeca.onrender.com";
 
 
 

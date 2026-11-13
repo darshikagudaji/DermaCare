@@ -11,7 +11,7 @@ if (window.dermCareLeaveDateInitialized) {
        API CONFIGURATION
     =================================================== */
 
-    const API_BASE_URL = "http://localhost:5000/api";
+    const API_BASE_URL = "https://dermacare-eeca.onrender.com/api";
     const LEAVE_API = `${API_BASE_URL}/leaves`;
     const DOCTOR_API = `${API_BASE_URL}/doctors`;
     const APPOINTMENT_API = `${API_BASE_URL}/appointments`;

@@ -822,7 +822,7 @@ if (registerForm) {
 
                 const response =
                     await fetch(
-                        "http://localhost:5000/api/patients/register",
+                        "https://dermacare-eeca.onrender.com/api/patients/register",
                         {
                             method: "POST",
 

@@ -297,7 +297,7 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
 
             const response = await fetch(
-                "http://localhost:5000/api/patients/forgot-password",
+                "https://dermacare-eeca.onrender.com/api/patients/forgot-password",
                 {
 
                     method: "POST",

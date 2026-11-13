@@ -9,7 +9,7 @@
    API CONFIGURATION
 ======================================================= */
 
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = "https://dermacare-eeca.onrender.com/api";
 
 const PATIENTS_API = `${API_BASE_URL}/patients`;
 const APPOINTMENTS_API = `${API_BASE_URL}/appointments`;

@@ -14,7 +14,7 @@
 
 "use strict";
 
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = "https://dermacare-eeca.onrender.com/api";
 const APPOINTMENT_API_URL = `${API_BASE_URL}/appointments`;
 
 let allTodayAppointments = [];

@@ -9,14 +9,14 @@
 // BACKEND API URL
 // =======================================================
 const API_URL =
-    "http://localhost:5000/api/doctors";
+    "https://dermacare-eeca.onrender.com/api/doctors";
 
 
 // =======================================================
 // BACKEND SERVER URL
 // =======================================================
 const SERVER_URL =
-    "http://localhost:5000";
+    "https://dermacare-eeca.onrender.com";
 
 
 // =======================================================

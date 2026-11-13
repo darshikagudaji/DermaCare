@@ -122,7 +122,7 @@ if (window.dermCareAddDoctorInitialized) {
         // API URL
         // =================================================
 
-        const API_URL = "http://localhost:5000/api/doctors/add";
+        const API_URL = "https://dermacare-eeca.onrender.com/api/doctors/add";
 
 
         // =================================================

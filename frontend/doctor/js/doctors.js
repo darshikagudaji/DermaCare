@@ -14,7 +14,7 @@
 // Backend server is running on port 5000.
 
 const API_URL =
-    "http://localhost:5000/api/doctors";
+    "https://dermacare-eeca.onrender.com/api/doctors";
 
 
 
@@ -318,7 +318,7 @@ function createDoctorCard(doctor) {
         // uploads/doctors/image.png
 
         doctorImage =
-            `http://localhost:5000/${doctor.doctorImage}`;
+            `https://dermacare-eeca.onrender.com/${doctor.doctorImage}`;
 
     }
 
