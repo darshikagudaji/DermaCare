@@ -4,17 +4,11 @@
 // FILE: server.js
 // =======================================================
 
-
-// =======================================================
-// IMPORT REQUIRED PACKAGES
-// =======================================================
-
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const http = require("http");
 const { Server } = require("socket.io");
-
 
 // =======================================================
 // LOAD ENVIRONMENT VARIABLES
@@ -22,13 +16,11 @@ const { Server } = require("socket.io");
 
 dotenv.config();
 
-
 // =======================================================
 // IMPORT DATABASE CONNECTION
 // =======================================================
 
 const connectDB = require("./config/db");
-
 
 // =======================================================
 // IMPORT EMAIL SERVICE
@@ -38,7 +30,6 @@ const {
     verifyEmailConnection
 } = require("./config/email");
 
-
 // =======================================================
 // IMPORT AUTOMATIC REMINDER SCHEDULER
 // =======================================================
@@ -46,7 +37,6 @@ const {
 const {
     startReminderScheduler
 } = require("./services/reminderScheduler");
-
 
 // =======================================================
 // IMPORT ROUTES
@@ -61,13 +51,11 @@ const receptionistRoutes = require("./routes/receptionistRoutes");
 const prescriptionRoutes = require("./routes/prescriptionRoutes");
 const notificationRoutes = require("./routes/notificationRoutes");
 
-
 // =======================================================
 // CREATE EXPRESS APPLICATION
 // =======================================================
 
 const app = express();
-
 
 // =======================================================
 // CREATE HTTP SERVER
@@ -75,6 +63,15 @@ const app = express();
 
 const server = http.createServer(app);
 
+// =======================================================
+// ALLOWED FRONTEND URLS
+// =======================================================
+
+const allowedOrigins = [
+    "http://127.0.0.1:5500",
+    "http://localhost:5500",
+    "https://cosmic-choux-f2f85d.netlify.app"
+];
 
 // =======================================================
 // INITIALIZE SOCKET.IO
@@ -83,10 +80,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
 
     cors: {
-        origin: [
-            "http://127.0.0.1:5500",
-            "http://localhost:5500"
-        ],
+        origin: allowedOrigins,
 
         methods: [
             "GET",
@@ -99,13 +93,11 @@ const io = new Server(server, {
 
 });
 
-
 // =======================================================
 // MAKE SOCKET.IO AVAILABLE TO ROUTES
 // =======================================================
 
 app.set("io", io);
-
 
 // =======================================================
 // SOCKET.IO CONNECTION
@@ -118,7 +110,6 @@ io.on("connection", (socket) => {
         socket.id
     );
 
-
     socket.on("disconnect", () => {
 
         console.log(
@@ -130,17 +121,14 @@ io.on("connection", (socket) => {
 
 });
 
-
 // =======================================================
 // CORS
 // =======================================================
 
 app.use(
     cors({
-        origin: [
-            "http://127.0.0.1:5500",
-            "http://localhost:5500"
-        ],
+
+        origin: allowedOrigins,
 
         methods: [
             "GET",
@@ -155,16 +143,15 @@ app.use(
             "Content-Type",
             "Authorization"
         ]
+
     })
 );
-
 
 // =======================================================
 // JSON MIDDLEWARE
 // =======================================================
 
 app.use(express.json());
-
 
 // =======================================================
 // SERVE UPLOADED FILES
@@ -174,7 +161,6 @@ app.use(
     "/uploads",
     express.static("uploads")
 );
-
 
 // =======================================================
 // ROOT TEST ROUTE
@@ -188,13 +174,11 @@ app.get("/", (req, res) => {
 
 });
 
-
 // =======================================================
 // PATIENT ROUTES
 // =======================================================
 
 app.use("/api/patients", patientRoutes);
-
 
 // =======================================================
 // DOCTOR ROUTES
@@ -202,13 +186,11 @@ app.use("/api/patients", patientRoutes);
 
 app.use("/api/doctors", doctorRoutes);
 
-
 // =======================================================
 // RECEPTIONIST ROUTES
 // =======================================================
 
 app.use("/api/receptionists", receptionistRoutes);
-
 
 // =======================================================
 // DOCTOR SCHEDULE ROUTES
@@ -216,13 +198,11 @@ app.use("/api/receptionists", receptionistRoutes);
 
 app.use("/api/doctor-schedule", doctorScheduleRoutes);
 
-
 // =======================================================
 // LEAVE ROUTES
 // =======================================================
 
 app.use("/api/leaves", leaveRoutes);
-
 
 // =======================================================
 // APPOINTMENT ROUTES
@@ -230,13 +210,11 @@ app.use("/api/leaves", leaveRoutes);
 
 app.use("/api/appointments", appointmentRoutes);
 
-
 // =======================================================
 // PRESCRIPTION ROUTES
 // =======================================================
 
 app.use("/api/prescriptions", prescriptionRoutes);
-
 
 // =======================================================
 // NOTIFICATION ROUTES
@@ -244,13 +222,11 @@ app.use("/api/prescriptions", prescriptionRoutes);
 
 app.use("/api/notifications", notificationRoutes);
 
-
 // =======================================================
 // SERVER PORT
 // =======================================================
 
 const PORT = process.env.PORT || 5000;
-
 
 // =======================================================
 // START SERVER
@@ -260,44 +236,26 @@ const startServer = async () => {
 
     try {
 
-        // ==========================================
-        // CONNECT TO MONGODB
-        // ==========================================
-
         await connectDB();
 
-
-        // ==========================================
-        // START AUTOMATIC APPOINTMENT REMINDER
-        // SCHEDULER
-        // ==========================================
+        // START REMINDER SCHEDULER
 
         startReminderScheduler();
 
-
-        // ==========================================
         // VERIFY GMAIL CONNECTION
-        // ==========================================
 
         console.log("--------------------------------");
-
         console.log("Checking DermCare email service...");
 
         await verifyEmailConnection();
 
-
-        // ==========================================
         // START HTTP + SOCKET.IO SERVER
-        // ==========================================
 
         server.listen(PORT, () => {
 
             console.log("--------------------------------");
-
             console.log("DermCare Backend Started");
-
             console.log(`Server running on port ${PORT}`);
-
             console.log("Socket.IO real-time service started");
 
             console.log("Patient routes loaded");
@@ -310,7 +268,6 @@ const startServer = async () => {
             console.log("Notification routes loaded");
 
             console.log("Appointment reminder scheduler loaded");
-
             console.log("--------------------------------");
 
         });
@@ -325,7 +282,6 @@ const startServer = async () => {
     }
 
 };
-
 
 // =======================================================
 // RUN SERVER
