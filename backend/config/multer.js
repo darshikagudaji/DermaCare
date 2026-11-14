@@ -1,78 +1,37 @@
+
 // =======================================================
-// MULTER CONFIGURATION
+// DERMCARE - CLOUDINARY MULTER CONFIGURATION
 // =======================================================
 
 const multer = require("multer");
 const path = require("path");
-const fs = require("fs");
+
+const cloudinary = require("./cloudinary");
+
+const {
+    CloudinaryStorage
+} = require("multer-storage-cloudinary-v2");
 
 
 // =======================================================
-// UPLOAD DIRECTORY
+// CLOUDINARY STORAGE CONFIGURATION
 // =======================================================
 
-// Doctor images will be stored inside:
-// backend/uploads/doctors/
+const storage = new CloudinaryStorage({
 
-const uploadDirectory = path.join(
-    __dirname,
-    "../uploads/doctors"
-);
+    cloudinary: cloudinary,
 
+    params: {
+        folder: "dermacare/doctors",
 
-// =======================================================
-// CREATE DIRECTORY IF IT DOES NOT EXIST
-// =======================================================
-
-if (!fs.existsSync(uploadDirectory)) {
-
-    fs.mkdirSync(
-        uploadDirectory,
-        {
-            recursive: true
+        public_id: (req, file) => {
+            return (
+                "doctor-" +
+                Date.now() +
+                "-" +
+                Math.round(Math.random() * 1E9)
+            );
         }
-    );
-
-}
-
-
-// =======================================================
-// STORAGE CONFIGURATION
-// =======================================================
-
-const storage = multer.diskStorage({
-
-    // ---------------------------------------------------
-    // WHERE THE IMAGE WILL BE STORED
-    // ---------------------------------------------------
-
-    destination: (req, file, cb) => {
-
-        cb(
-            null,
-            uploadDirectory
-        );
-
-    },
-
-
-    // ---------------------------------------------------
-    // FILE NAME
-    // ---------------------------------------------------
-
-    filename: (req, file, cb) => {
-
-        const uniqueName =
-            Date.now() +
-            "-" +
-            Math.round(Math.random() * 1E9) +
-            path.extname(file.originalname);
-
-        cb(
-            null,
-            uniqueName
-        );
-
     }
 
 });
@@ -90,7 +49,6 @@ const fileFilter = (req, file, cb) => {
         "image/png",
         "image/webp"
     ];
-
 
     if (allowedTypes.includes(file.mimetype)) {
 
@@ -121,9 +79,7 @@ const uploadDoctorImage = multer({
     fileFilter: fileFilter,
 
     limits: {
-
         fileSize: 5 * 1024 * 1024
-
     }
 
 });

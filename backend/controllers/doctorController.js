@@ -411,9 +411,7 @@ const addDoctor = async (req, res) => {
         // CREATE IMAGE PATH
         // ===================================================
 
-        const doctorImage =
-            "uploads/doctors/" +
-            req.file.filename;
+        const doctorImage = req.file.path;
 
 
         // ===================================================
@@ -1475,10 +1473,8 @@ const updateDoctorProfile = async (req, res) => {
         // ===================================================
 
         if (req.file) {
-
-            doctor.DoctorImage =
-                "uploads/doctors/" +
-                req.file.filename;
+            
+            doctor.DoctorImage = req.file.path;
 
         }
 
