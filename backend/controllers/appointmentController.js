@@ -5,59 +5,18 @@
 
 
 // =======================================================
-// IMPORT MONGOOSE
+// IMPORT REQUIRED MODELS AND FUNCTIONS
 // =======================================================
 
 const mongoose = require("mongoose");
 
-
-// =======================================================
-// IMPORT APPOINTMENT MODEL
-// =======================================================
-
 const Appointment = require("../models/Appointment");
-
-
-// =======================================================
-// IMPORT DOCTOR MODEL
-// =======================================================
-
 const Doctor = require("../models/Doctor");
-
-
-// =======================================================
-// IMPORT LEAVE MODEL
-// =======================================================
-
 const Leave = require("../models/Leave");
-
-
-// =======================================================
-// IMPORT DOCTOR SCHEDULE MODEL
-// =======================================================
-
 const DoctorSchedule = require("../models/DoctorSchedule");
-
-
-// =======================================================
-// IMPORT PATIENT MODEL
-// =======================================================
-
 const Patient = require("../models/Patient");
 
-
-// =======================================================
-// IMPORT EMAIL SERVICE
-// =======================================================
-
-const {
-    sendEmail
-} = require("../config/email");
-
-
-// =======================================================
-// IMPORT NOTIFICATION CREATION FUNCTION
-// =======================================================
+const { sendEmail } = require("../config/email");
 
 const {
     createNotification
@@ -83,6 +42,37 @@ const WEEK_DAYS = [
     "Friday",
     "Saturday"
 ];
+
+
+// =======================================================
+// PATIENT LOGIN URL
+// =======================================================
+
+const PATIENT_LOGIN_URL =
+    "https://cosmic-choux-f2f85d.netlify.app/login";
+
+
+// =======================================================
+// HELPER: ESCAPE HTML EMAIL CONTENT
+// =======================================================
+
+const escapeHtml = (value) => {
+
+    return String(value ?? "").replace(/[&<>"']/g, (character) => {
+
+        const entities = {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        };
+
+        return entities[character];
+
+    });
+
+};
 
 
 // =======================================================
@@ -116,8 +106,6 @@ const emitAppointmentUpdate = (req, action, appointment) => {
 
     } catch (error) {
 
-        // SOCKET FAILURE MUST NOT AFFECT APPOINTMENT OPERATIONS
-
         console.error(
             "Real-time appointment event failed:",
             error.message
@@ -126,14 +114,6 @@ const emitAppointmentUpdate = (req, action, appointment) => {
     }
 
 };
-
-
-// =======================================================
-// PATIENT LOGIN URL
-// =======================================================
-
-const PATIENT_LOGIN_URL =
-    "http://127.0.0.1:5500/frontend/login.html";
 
 
 // =======================================================
@@ -152,6 +132,7 @@ const getDateRange = (date) => {
         startOfDay,
         endOfDay
     };
+
 };
 
 
@@ -174,6 +155,7 @@ const isValidDateOnly = (date) => {
         !Number.isNaN(parsedDate.getTime()) &&
         parsedDate.toISOString().slice(0, 10) === date
     );
+
 };
 
 
@@ -187,6 +169,7 @@ const isValidTime = (time) => {
         typeof time === "string" &&
         /^([01]\d|2[0-3]):[0-5]\d$/.test(time)
     );
+
 };
 
 
@@ -203,6 +186,7 @@ const timeToMinutes = (time) => {
     const [hours, minutes] = time.split(":").map(Number);
 
     return (hours * 60) + minutes;
+
 };
 
 
@@ -221,16 +205,18 @@ const minutesToTime = (minutes) => {
         ":" +
         String(remainingMinutes).padStart(2, "0")
     );
+
 };
 
 
 // =======================================================
-// HELPER: GET UTC DAY RANGE
+// HELPER: GET UTC DAY RANGE FOR DATE
 // =======================================================
 
 const getDateRangeForDate = (date) => {
 
     return getDateRange(date);
+
 };
 
 
@@ -247,6 +233,7 @@ const generateActiveSlotKey = (doctorId, date, time) => {
         : date;
 
     return `${doctor}_${dateOnly}_${time}`;
+
 };
 
 
@@ -257,6 +244,7 @@ const generateActiveSlotKey = (doctorId, date, time) => {
 const isDuplicateSlotError = (error) => {
 
     return error && error.code === 11000;
+
 };
 
 
@@ -280,6 +268,7 @@ const isDoctorOnLeave = async (doctorId, date) => {
     });
 
     return Boolean(leave);
+
 };
 
 
@@ -354,6 +343,7 @@ const getDoctorWorkingSchedule = async (doctorId, date) => {
         onlineEndMinutes,
         slotDuration
     };
+
 };
 
 
@@ -405,11 +395,12 @@ const generateDoctorSlots = (workingSchedule) => {
         onlineSlots,
         walkInSlots
     };
+
 };
 
 
 // =======================================================
-// HELPER: GET AVAILABLE SLOTS FOR A DOCTOR AND DATE
+// HELPER: GET AVAILABLE SLOTS FOR DOCTOR AND DATE
 // =======================================================
 
 const getAvailabilityForDate = async (doctorId, date) => {
@@ -500,6 +491,7 @@ const getAvailabilityForDate = async (doctorId, date) => {
         onlineDateAvailable: availableOnlineSlots.length > 0,
         walkInDateAvailable: availableWalkInSlots.length > 0
     };
+
 };
 
 
@@ -573,6 +565,7 @@ const getAvailableSlots = async (req, res) => {
         });
 
     }
+
 };
 
 
@@ -665,6 +658,7 @@ const getAvailableDates = async (req, res) => {
         });
 
     }
+
 };
 
 
@@ -707,8 +701,6 @@ const createAppointment = async (req, res) => {
                 message: "Invalid Doctor ID."
             });
         }
-
-        // GET DOCTOR INFORMATION
 
         const doctor = await Doctor.findById(DoctorID)
             .select("FullName");
@@ -857,7 +849,6 @@ const createAppointment = async (req, res) => {
 
         });
 
-        // SEND REAL-TIME UPDATE
         emitAppointmentUpdate(req, "created", appointment);
 
         return res.status(201).json({
@@ -883,6 +874,7 @@ const createAppointment = async (req, res) => {
         });
 
     }
+
 };
 
 
@@ -931,6 +923,7 @@ const getAllAppointments = async (req, res) => {
         });
 
     }
+
 };
 
 
@@ -1023,6 +1016,7 @@ const getDoctorAppointments = async (req, res) => {
         });
 
     }
+
 };
 
 
@@ -1099,6 +1093,7 @@ const getDoctorAppointmentsByDate = async (req, res) => {
         });
 
     }
+
 };
 
 
@@ -1181,6 +1176,7 @@ const getPatientAppointments = async (req, res) => {
         });
 
     }
+
 };
 
 
@@ -1228,7 +1224,6 @@ const markAppointmentArrived = async (req, res) => {
 
         await appointment.save();
 
-        // SEND REAL-TIME UPDATE
         emitAppointmentUpdate(req, "arrived", appointment);
 
         return res.status(200).json({
@@ -1247,6 +1242,7 @@ const markAppointmentArrived = async (req, res) => {
         });
 
     }
+
 };
 
 
@@ -1296,7 +1292,6 @@ const markAppointmentCompleted = async (req, res) => {
 
         await appointment.save();
 
-        // SEND REAL-TIME UPDATE
         emitAppointmentUpdate(req, "completed", appointment);
 
         return res.status(200).json({
@@ -1315,6 +1310,7 @@ const markAppointmentCompleted = async (req, res) => {
         });
 
     }
+
 };
 
 
@@ -1422,7 +1418,6 @@ const cancelAppointment = async (req, res) => {
 
         await appointment.save();
 
-        // SEND REAL-TIME UPDATE
         emitAppointmentUpdate(req, "cancelled", appointment);
 
 
@@ -1493,8 +1488,6 @@ const cancelAppointment = async (req, res) => {
 
         } catch (notificationError) {
 
-            // NOTIFICATION FAILURE MUST NOT UNDO CANCELLATION
-
             console.error(
                 "Appointment cancelled, but notification creation failed:",
                 notificationError.message
@@ -1505,11 +1498,12 @@ const cancelAppointment = async (req, res) => {
 
         // ===================================================
         // SEND CANCELLATION EMAIL TO PATIENT
+        // ONLY WHEN RECEPTIONIST CANCELS
         // ===================================================
 
         try {
 
-            if (patient && patient.Email) {
+            if (isReceptionist && patient && patient.Email) {
 
                 const doctorName =
                     appointment.DoctorName || "your doctor";
@@ -1525,36 +1519,34 @@ const cancelAppointment = async (req, res) => {
                         }
                     );
 
-                const cancellationReason =
-                    appointment.CancellationReason ||
-                    "No additional reason provided.";
+                const safePatientName = escapeHtml(patient.FullName);
+
+                const safeDoctorName = escapeHtml(doctorName);
+
+                const safeDate = escapeHtml(formattedDate);
+
+                const safeTime = escapeHtml(appointment.AppointmentTime);
 
                 await sendEmail({
 
                     to: patient.Email,
 
-                    subject: "DermCare - Appointment Cancelled",
-
-                    // PLAIN TEXT EMAIL
+                    subject: "Your DermCare Appointment Has Been Cancelled",
 
                     text:
-                        `Hello ${patient.FullName},\n\n` +
+                        `Dear ${patient.FullName},\n\n` +
 
-                        `Your appointment with ${doctorName} has been cancelled.\n\n` +
+                        `We regret to inform you that your appointment with Dr. ${doctorName} scheduled for ${formattedDate} at ${appointment.AppointmentTime} has been cancelled by the clinic.\n\n` +
 
-                        `Appointment Details:\n` +
-                        `Date: ${formattedDate}\n` +
-                        `Time: ${appointment.AppointmentTime}\n` +
-                        `Appointment Type: ${appointment.AppointmentType}\n\n` +
+                        `We apologize for any inconvenience this may cause.\n\n` +
 
-                        `Cancellation Reason: ${cancellationReason}\n\n` +
+                        `If you would like to schedule another appointment, please log in to your DermCare account and choose an available time slot.\n\n` +
 
-                        `To view your appointments, log in to DermCare:\n` +
-                        `${PATIENT_LOGIN_URL}\n\n` +
+                        `Login to DermCare:\n${PATIENT_LOGIN_URL}\n\n` +
 
-                        `Regards,\nDermCare Clinic`,
+                        `Thank you for your understanding.\n\n` +
 
-                    // HTML EMAIL WITH CLICKABLE LOGIN BUTTON
+                        `Regards,\nDermCare Clinic Team`,
 
                     html: `
                         <div style="
@@ -1572,37 +1564,23 @@ const cancelAppointment = async (req, res) => {
                                 DermCare Clinic
                             </h2>
 
-                            <p>Hello ${patient.FullName},</p>
+                            <p>Dear ${safePatientName},</p>
 
                             <p>
-                                Your appointment has been
-                                <strong>cancelled</strong>.
-                            </p>
-
-                            <h3>Appointment Details</h3>
-
-                            <p>
-                                <strong>Doctor:</strong>
-                                ${doctorName}<br>
-
-                                <strong>Date:</strong>
-                                ${formattedDate}<br>
-
-                                <strong>Time:</strong>
-                                ${appointment.AppointmentTime}<br>
-
-                                <strong>Appointment Type:</strong>
-                                ${appointment.AppointmentType}
+                                We regret to inform you that your appointment
+                                with Dr. ${safeDoctorName} scheduled for
+                                ${safeDate} at ${safeTime} has been
+                                <strong>cancelled by the clinic.</strong>
                             </p>
 
                             <p>
-                                <strong>Cancellation Reason:</strong><br>
-                                ${cancellationReason}
+                                We apologize for any inconvenience this may cause.
                             </p>
 
                             <p>
-                                You can log in to DermCare to view
-                                your updated appointment history.
+                                If you would like to schedule another appointment,
+                                please log in to your DermCare account and choose
+                                an available time slot.
                             </p>
 
                             <a href="${PATIENT_LOGIN_URL}"
@@ -1610,7 +1588,7 @@ const cancelAppointment = async (req, res) => {
                                    display: inline-block;
                                    padding: 12px 24px;
                                    background-color: #2563eb;
-                                   color: white;
+                                   color: #ffffff;
                                    text-decoration: none;
                                    border-radius: 6px;
                                    font-weight: bold;
@@ -1618,12 +1596,13 @@ const cancelAppointment = async (req, res) => {
                                 Login to DermCare
                             </a>
 
-                            <p style="
-                                margin-top: 25px;
-                                color: #666;
-                            ">
+                            <p style="margin-top: 25px;">
+                                Thank you for your understanding.
+                            </p>
+
+                            <p style="color: #666;">
                                 Regards,<br>
-                                <strong>DermCare Clinic</strong>
+                                <strong>DermCare Clinic Team</strong>
                             </p>
 
                         </div>
@@ -1632,8 +1611,14 @@ const cancelAppointment = async (req, res) => {
                 });
 
                 console.log(
-                    "Cancellation email sent to:",
+                    "Receptionist cancellation email sent to:",
                     patient.Email
+                );
+
+            } else if (!isReceptionist) {
+
+                console.log(
+                    "Patient cancelled the appointment. Clinic cancellation email skipped."
                 );
 
             } else {
@@ -1645,8 +1630,6 @@ const cancelAppointment = async (req, res) => {
             }
 
         } catch (emailError) {
-
-            // EMAIL FAILURE MUST NOT UNDO CANCELLATION
 
             console.error(
                 "Appointment cancelled, but cancellation email failed:",
@@ -1680,6 +1663,7 @@ const cancelAppointment = async (req, res) => {
         });
 
     }
+
 };
 
 
@@ -1942,10 +1926,11 @@ const rescheduleAppointment = async (req, res) => {
 
         appointment.ReminderNotificationSentForDate = "";
 
+        appointment.AppointmentDayReminderEmailSentForDate = "";
+
 
         await appointment.save();
 
-        // SEND REAL-TIME UPDATE
         emitAppointmentUpdate(req, "rescheduled", appointment);
 
 
@@ -2006,8 +1991,6 @@ const rescheduleAppointment = async (req, res) => {
 
         try {
 
-            // GET PATIENT EMAIL DETAILS
-
             const patient = await Patient.findById(
                 appointment.PatientID
             ).select("FullName Email");
@@ -2037,33 +2020,46 @@ const rescheduleAppointment = async (req, res) => {
                         timeZone: "Asia/Kolkata"
                     });
 
+                const safePatientName = escapeHtml(patient.FullName);
+
+                const safeDoctorName = escapeHtml(doctorName);
+
+                const safePreviousDate = escapeHtml(formattedPreviousDate);
+
+                const safePreviousTime = escapeHtml(previousTime);
+
+                const safeNewDate = escapeHtml(formattedNewDate);
+
+                const safeNewTime = escapeHtml(AppointmentTime);
+
                 await sendEmail({
 
                     to: patient.Email,
 
-                    subject: "DermCare - Appointment Rescheduled",
-
-                    // PLAIN TEXT EMAIL
+                    subject: "Your DermCare Appointment Has Been Rescheduled",
 
                     text:
-                        `Hello ${patient.FullName},\n\n` +
+                        `Dear ${patient.FullName},\n\n` +
 
-                        `Your appointment with ${doctorName} has been rescheduled.\n\n` +
+                        `Your appointment with Dr. ${doctorName} has been successfully rescheduled.\n\n` +
 
-                        `Previous Appointment:\n` +
-                        `Date: ${formattedPreviousDate}\n` +
-                        `Time: ${previousTime}\n\n` +
+                        `Updated Appointment Details:\n` +
 
-                        `Updated Appointment:\n` +
-                        `Date: ${formattedNewDate}\n` +
-                        `Time: ${AppointmentTime}\n\n` +
+                        `Previous Date: ${formattedPreviousDate}\n` +
+                        `Previous Time: ${previousTime}\n` +
 
-                        `To view your updated appointment, log in to DermCare:\n` +
-                        `${PATIENT_LOGIN_URL}\n\n` +
+                        `New Date: ${formattedNewDate}\n` +
+                        `New Time: ${AppointmentTime}\n\n` +
 
-                        `Regards,\nDermCare Clinic`,
+                        `Please make a note of your updated appointment date and time.\n\n` +
 
-                    // HTML EMAIL WITH CLICKABLE LOGIN BUTTON
+                        `You can log in to your DermCare account to view your updated appointment details.\n\n` +
+
+                        `Login to DermCare:\n${PATIENT_LOGIN_URL}\n\n` +
+
+                        `Thank you for choosing DermCare Clinic.\n\n` +
+
+                        `Regards,\nDermCare Clinic Team`,
 
                     html: `
                         <div style="
@@ -2074,43 +2070,45 @@ const rescheduleAppointment = async (req, res) => {
                             color: #333;
                             border: 1px solid #e5e5e5;
                             border-radius: 10px;
+                            line-height: 1.6;
                         ">
 
                             <h2 style="color: #2563eb;">
                                 DermCare Clinic
                             </h2>
 
-                            <p>Hello ${patient.FullName},</p>
+                            <p>Dear ${safePatientName},</p>
 
                             <p>
-                                Your appointment with
-                                <strong>${doctorName}</strong>
-                                has been rescheduled successfully.
+                                Your appointment with Dr.
+                                ${safeDoctorName} has been successfully
+                                rescheduled.
                             </p>
 
-                            <h3>Previous Appointment</h3>
+                            <h3>Updated Appointment Details:</h3>
 
                             <p>
-                                <strong>Date:</strong>
-                                ${formattedPreviousDate}<br>
+                                <strong>Previous Date:</strong>
+                                ${safePreviousDate}<br>
 
-                                <strong>Time:</strong>
-                                ${previousTime}
-                            </p>
+                                <strong>Previous Time:</strong>
+                                ${safePreviousTime}<br>
 
-                            <h3>Updated Appointment</h3>
+                                <strong>New Date:</strong>
+                                ${safeNewDate}<br>
 
-                            <p>
-                                <strong>Date:</strong>
-                                ${formattedNewDate}<br>
-
-                                <strong>Time:</strong>
-                                ${AppointmentTime}
+                                <strong>New Time:</strong>
+                                ${safeNewTime}
                             </p>
 
                             <p>
-                                Please log in to DermCare to view
-                                your updated appointment details.
+                                Please make a note of your updated
+                                appointment date and time.
+                            </p>
+
+                            <p>
+                                You can log in to your DermCare account
+                                to view your updated appointment details.
                             </p>
 
                             <a href="${PATIENT_LOGIN_URL}"
@@ -2118,7 +2116,7 @@ const rescheduleAppointment = async (req, res) => {
                                    display: inline-block;
                                    padding: 12px 24px;
                                    background-color: #2563eb;
-                                   color: white;
+                                   color: #ffffff;
                                    text-decoration: none;
                                    border-radius: 6px;
                                    font-weight: bold;
@@ -2126,12 +2124,13 @@ const rescheduleAppointment = async (req, res) => {
                                 Login to DermCare
                             </a>
 
-                            <p style="
-                                margin-top: 25px;
-                                color: #666;
-                            ">
+                            <p style="margin-top: 25px;">
+                                Thank you for choosing DermCare Clinic.
+                            </p>
+
+                            <p style="color: #666;">
                                 Regards,<br>
-                                <strong>DermCare Clinic</strong>
+                                <strong>DermCare Clinic Team</strong>
                             </p>
 
                         </div>
@@ -2147,14 +2146,12 @@ const rescheduleAppointment = async (req, res) => {
             } else {
 
                 console.log(
-                    "Patient email not found. Email skipped."
+                    "Patient email not found. Rescheduling email skipped."
                 );
 
             }
 
         } catch (emailError) {
-
-            // EMAIL FAILURE MUST NOT AFFECT RESCHEDULING
 
             console.error(
                 "Appointment rescheduled, but email sending failed:",

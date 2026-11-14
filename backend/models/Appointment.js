@@ -1,3 +1,4 @@
+
 // =======================================================
 // DERMCARE - APPOINTMENT MODEL
 // FILE: models/Appointment.js
@@ -25,16 +26,9 @@ const appointmentSchema =
             // ===================================================
 
             PatientID: {
-
-                type:
-                    mongoose.Schema.Types.ObjectId,
-
-                ref:
-                    "Patient",
-
-                required:
-                    true
-
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Patient",
+                required: true
             },
 
 
@@ -43,127 +37,64 @@ const appointmentSchema =
             // ===================================================
 
             DoctorID: {
-
-                type:
-                    mongoose.Schema.Types.ObjectId,
-
-                ref:
-                    "Doctor",
-
-                required:
-                    true
-
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Doctor",
+                required: true
             },
 
 
             // ===================================================
             // DOCTOR NAME
-            // STORED WITH APPOINTMENT
-            // ===================================================
-            //
-            // The doctor's name is stored separately so that
-            // historical appointments continue to show the
-            // doctor's name even if the Doctor document is
-            // deleted later.
-            //
             // ===================================================
 
             DoctorName: {
-
-                type:
-                    String,
-
-                default:
-                    "",
-
-                trim:
-                    true
-
+                type: String,
+                default: "",
+                trim: true
             },
 
 
             // ===================================================
             // REASON FOR VISIT
-            // ADDED: Patient's reason for booking appointment
             // ===================================================
 
             ReasonForVisit: {
-
-                type:
-                    String,
-
-                default:
-                    "",
-
-                trim:
-                    true
-
+                type: String,
+                default: "",
+                trim: true
             },
 
 
             // ===================================================
             // SYMPTOMS
-            // ADDED: Symptoms described by the patient
             // ===================================================
 
             Symptoms: {
-
-                type:
-                    String,
-
-                default:
-                    "",
-
-                trim:
-                    true
-
+                type: String,
+                default: "",
+                trim: true
             },
 
 
             // ===================================================
             // ALLERGIES
-            // ADDED: Patient's allergy selection
-            // ===================================================
-            //
-            // Example:
-            // No known allergies
-            // Medicine Allergy
-            // Food Allergy
-            // Skin/Product Allergy
-            // Other
-            //
             // ===================================================
 
             Allergies: {
-
-                type:
-                    String,
-
-                default:
-                    "No known allergies",
-
-                trim:
-                    true
-
+                type: String,
+                default: "No known allergies",
+                trim: true
             },
 
 
             // ===================================================
             // ALLERGY DETAILS
-            // ADDED: Additional allergy information
             // ===================================================
 
             AllergyDetails: {
-
-                type:
-                    String,
-
-                default:
-                    "",
-
-                trim:
-                    true
-
+                type: String,
+                default: "",
+                trim: true
             },
 
 
@@ -172,13 +103,8 @@ const appointmentSchema =
             // ===================================================
 
             AppointmentDate: {
-
-                type:
-                    Date,
-
-                required:
-                    true
-
+                type: Date,
+                required: true
             },
 
 
@@ -187,39 +113,22 @@ const appointmentSchema =
             // ===================================================
 
             AppointmentTime: {
-
-                type:
-                    String,
-
-                required:
-                    true
-
+                type: String,
+                required: true
             },
 
 
             // ===================================================
             // APPOINTMENT TYPE
             // ===================================================
-            //
-            // Online
-            // Walk-in
-            //
-            // ===================================================
 
             AppointmentType: {
-
-                type:
-                    String,
-
-                required:
-                    true,
-
-                enum:
-                    [
-                        "Online",
-                        "Walk-in"
-                    ]
-
+                type: String,
+                required: true,
+                enum: [
+                    "Online",
+                    "Walk-in"
+                ]
             },
 
 
@@ -228,106 +137,73 @@ const appointmentSchema =
             // ===================================================
 
             Status: {
-
-                type:
-                    String,
-
-                required:
-                    true,
-
-                enum:
-                    [
-                        "Booked",
-                        "Arrived",
-                        "Completed",
-                        "Cancelled"
-                    ],
-
-                default:
-                    "Booked"
-
+                type: String,
+                required: true,
+                enum: [
+                    "Booked",
+                    "Arrived",
+                    "Completed",
+                    "Cancelled"
+                ],
+                default: "Booked"
             },
 
 
             // ===================================================
             // ACTIVE SLOT KEY
-            // ADDED: Prevent simultaneous duplicate bookings
-            // ===================================================
-            //
-            // A unique key is stored while the appointment
-            // occupies a slot (Booked or Arrived).
-            //
-            // Cancelled and Completed appointments must set
-            // this field to null to release the slot.
-            //
             // ===================================================
 
             ActiveSlotKey: {
-
-                type:
-                    String,
-
-                default:
-                    null
-
+                type: String,
+                default: null
             },
 
 
             // ===================================================
             // CANCELLATION DETAILS
-            // ADDED: Store cancellation reason separately
             // ===================================================
 
             CancellationReason: {
-
-                type:
-                    String,
-
-                default:
-                    ""
-
+                type: String,
+                default: ""
             },
-
 
             CancelledBy: {
-
-                type:
-                    String,
-
-                default:
-                    ""
-
+                type: String,
+                default: ""
             },
-
 
             CancelledAt: {
-
-                type:
-                    Date,
-
-                default:
-                    null
-
+                type: Date,
+                default: null
             },
 
 
-            // ==========================================
-// REMINDER TRACKING
-// ==========================================
+            // ===================================================
+            // REMINDER TRACKING
+            // ===================================================
 
-ReminderEmailSentForDate: {
-    type: String,
-    default: ""
-},
+            // Tracks the day-before reminder email (9 AM IST)
+            ReminderEmailSentForDate: {
+                type: String,
+                default: ""
+            },
 
-ReminderNotificationSentForDate: {
-    type: String,
-    default: ""
-},
+            // Tracks the dashboard reminder notification
+            ReminderNotificationSentForDate: {
+                type: String,
+                default: ""
+            },
+
+            // NEW: Tracks the appointment-day reminder email (7 AM IST)
+            AppointmentDayReminderEmailSentForDate: {
+                type: String,
+                default: ""
+            },
+
 
             // ===================================================
             // RESCHEDULE HISTORY
-            // ADDED: Keep each reschedule action separately
             // ===================================================
 
             RescheduleHistory: [
@@ -335,79 +211,38 @@ ReminderNotificationSentForDate: {
                 {
 
                     PreviousDate: {
-
-                        type:
-                            Date,
-
-                        required:
-                            true
-
+                        type: Date,
+                        required: true
                     },
-
 
                     PreviousTime: {
-
-                        type:
-                            String,
-
-                        required:
-                            true
-
+                        type: String,
+                        required: true
                     },
-
 
                     NewDate: {
-
-                        type:
-                            Date,
-
-                        required:
-                            true
-
+                        type: Date,
+                        required: true
                     },
-
 
                     NewTime: {
-
-                        type:
-                            String,
-
-                        required:
-                            true
-
+                        type: String,
+                        required: true
                     },
-
 
                     Reason: {
-
-                        type:
-                            String,
-
-                        default:
-                            ""
-
+                        type: String,
+                        default: ""
                     },
-
 
                     RescheduledBy: {
-
-                        type:
-                            String,
-
-                        default:
-                            ""
-
+                        type: String,
+                        default: ""
                     },
 
-
                     RescheduledAt: {
-
-                        type:
-                            Date,
-
-                        default:
-                            Date.now
-
+                        type: Date,
+                        default: Date.now
                     }
 
                 }
@@ -422,36 +257,17 @@ ReminderNotificationSentForDate: {
         // =======================================================
 
         {
-
             timestamps: {
-
-                createdAt:
-                    "createdAt",
-
-                updatedAt:
-                    "updatedAt"
-
+                createdAt: "createdAt",
+                updatedAt: "updatedAt"
             }
-
         }
 
     );
 
 
 // =======================================================
-// IMPORTANT: PREVENT SIMULTANEOUS DUPLICATE BOOKINGS
-// =======================================================
-//
-// MongoDB unique index ensures that only one appointment
-// can occupy a doctor/date/time slot.
-//
-// ActiveSlotKey must be generated consistently by the
-// backend using DoctorID + AppointmentDate + AppointmentTime.
-//
-// Booked and Arrived appointments keep the key.
-// Cancelled and Completed appointments release the key
-// by setting ActiveSlotKey to null.
-//
+// PREVENT SIMULTANEOUS DUPLICATE BOOKINGS
 // =======================================================
 
 appointmentSchema.index(

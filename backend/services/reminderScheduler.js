@@ -20,15 +20,16 @@
  // CONSTANTS
  // =======================================================
 
- // Patient login page
+ // Deployed patient login page
  const PATIENT_LOGIN_URL =
-     "http://127.0.0.1:5500/frontend/login.html";
+     "https://cosmic-choux-f2f85d.netlify.app/login";
 
  // Indian Standard Time
  const TIME_ZONE = "Asia/Kolkata";
 
- // Reminder time: 9:00 AM
- const REMINDER_HOUR = 9;
+ // Reminder schedule
+ const DAY_BEFORE_REMINDER_HOUR = 9;
+ const APPOINTMENT_DAY_REMINDER_HOUR = 7;
 
 
  // =======================================================
@@ -113,12 +114,10 @@
 
  const getMongoDateRange = (date) => {
 
-     // Beginning of the appointment date
      const startDate = new Date(
          `${date}T00:00:00.000Z`
      );
 
-     // Beginning of the following date
      const endDate = new Date(startDate);
 
      endDate.setUTCDate(
@@ -153,7 +152,49 @@
 
 
  // =======================================================
- // SEND REMINDER EMAIL
+ // SAFELY ESCAPE VALUES FOR HTML EMAIL
+ // =======================================================
+
+ const escapeHtml = (value) => {
+
+     return String(value || "")
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+
+ };
+
+
+ // =======================================================
+ // COMMON EMAIL LAYOUT
+ // =======================================================
+
+ const createEmailButton = () => {
+
+     return `
+         <a href="${PATIENT_LOGIN_URL}"
+             style="
+                 display: inline-block;
+                 background: #1769aa;
+                 color: #ffffff;
+                 padding: 12px 24px;
+                 text-decoration: none;
+                 border-radius: 6px;
+                 font-weight: bold;
+                 margin-top: 12px;
+             ">
+             Login to DermCare
+         </a>
+     `;
+
+ };
+
+
+ // =======================================================
+ // SEND DAY-BEFORE APPOINTMENT REMINDER EMAIL
+ // Sent at 9:00 AM IST
  // =======================================================
 
  const sendAppointmentReminderEmail = async (
@@ -163,36 +204,42 @@
  ) => {
 
      const patientName =
-         patient.FullName || "Patient";
+         escapeHtml(patient.FullName || "Patient");
 
      const doctorName =
-         appointment.DoctorName || "your doctor";
+         escapeHtml(appointment.DoctorName || "your doctor");
 
      const formattedDate =
          formatAppointmentDate(appointmentDate);
 
+     const appointmentTime =
+         escapeHtml(appointment.AppointmentTime);
+
      const subject =
-         "DermCare - Appointment Reminder for Tomorrow";
+         "Reminder: Your DermCare Appointment Is Tomorrow";
 
 
      const text = `
- Hello ${patientName},
+Dear ${patient.FullName || "Patient"},
 
- This is a reminder that you have a dermatologist appointment tomorrow.
+This is a friendly reminder that you have an appointment scheduled for tomorrow with Dr. ${appointment.DoctorName || "your doctor"}.
 
- Doctor: ${doctorName}
- Date: ${formattedDate}
- Time: ${appointment.AppointmentTime}
+Appointment Details:
+Date: ${formattedDate}
+Time: ${appointment.AppointmentTime}
 
- Please remember your scheduled appointment.
+Please make sure to arrive on time for your appointment.
 
- You can log in to DermCare using the link below:
+You can log in to your DermCare account to review your appointment details.
 
- ${PATIENT_LOGIN_URL}
+Login to DermCare:
+${PATIENT_LOGIN_URL}
 
- Regards,
- DermCare Clinic
- `;
+We look forward to seeing you!
+
+Regards,
+DermCare Clinic Team
+`;
 
 
      const html = `
@@ -201,21 +248,22 @@
          max-width: 600px;
          margin: auto;
          padding: 25px;
-         color: #333;
+         color: #333333;
          border: 1px solid #e5e5e5;
          border-radius: 12px;
+         line-height: 1.6;
      ">
 
          <h2 style="color: #1769aa;">
-             DermCare Appointment Reminder
+             Reminder: Your DermCare Appointment Is Tomorrow
          </h2>
 
-         <p>Hello ${patientName},</p>
+         <p>Dear ${patientName},</p>
 
          <p>
-             This is a friendly reminder that you have a
-             dermatologist appointment
-             <strong>tomorrow</strong>.
+             This is a friendly reminder that you have an
+             appointment scheduled for tomorrow with
+             Dr. ${doctorName}.
          </p>
 
          <div style="
@@ -225,10 +273,7 @@
              margin: 20px 0;
          ">
 
-             <p>
-                 <strong>Doctor:</strong>
-                 ${doctorName}
-             </p>
+             <strong>Appointment Details:</strong>
 
              <p>
                  <strong>Date:</strong>
@@ -237,31 +282,29 @@
 
              <p>
                  <strong>Time:</strong>
-                 ${appointment.AppointmentTime}
+                 ${appointmentTime}
              </p>
 
          </div>
 
          <p>
-             Please remember your scheduled appointment.
+             Please make sure to arrive on time for your appointment.
          </p>
 
-         <a href="${PATIENT_LOGIN_URL}"
-             style="
-                 display: inline-block;
-                 background: #1769aa;
-                 color: white;
-                 padding: 12px 22px;
-                 text-decoration: none;
-                 border-radius: 6px;
-                 margin-top: 10px;
-             ">
-             Login to DermCare
-         </a>
+         <p>
+             You can log in to your DermCare account to review
+             your appointment details.
+         </p>
+
+         ${createEmailButton()}
 
          <p style="margin-top: 25px;">
+             We look forward to seeing you!
+         </p>
+
+         <p>
              Regards,<br>
-             <strong>DermCare Clinic</strong>
+             <strong>DermCare Clinic Team</strong>
          </p>
 
      </div>
@@ -271,11 +314,138 @@
      return await sendEmail({
 
          to: patient.Email,
-
          subject,
-
          text,
+         html
 
+     });
+
+ };
+
+
+ // =======================================================
+ // SEND APPOINTMENT-DAY REMINDER EMAIL
+ // Sent at 7:00 AM IST
+ // =======================================================
+
+ const sendAppointmentDayReminderEmail = async (
+     patient,
+     appointment,
+     appointmentDate
+ ) => {
+
+     const patientName =
+         escapeHtml(patient.FullName || "Patient");
+
+     const doctorName =
+         escapeHtml(appointment.DoctorName || "your doctor");
+
+     const formattedDate =
+         formatAppointmentDate(appointmentDate);
+
+     const appointmentTime =
+         escapeHtml(appointment.AppointmentTime);
+
+     const subject =
+         "Your DermCare Appointment Is Today";
+
+
+     const text = `
+Dear ${patient.FullName || "Patient"},
+
+This is a reminder that your appointment with Dr. ${appointment.DoctorName || "your doctor"} is scheduled for today.
+
+Appointment Details:
+Date: ${formattedDate}
+Time: ${appointment.AppointmentTime}
+
+We kindly request you to arrive on time.
+
+For appointment information, please log in to your DermCare account using the button below.
+
+Login to DermCare:
+${PATIENT_LOGIN_URL}
+
+Thank you for choosing DermCare Clinic.
+
+Regards,
+DermCare Clinic Team
+`;
+
+
+     const html = `
+     <div style="
+         font-family: Arial, sans-serif;
+         max-width: 600px;
+         margin: auto;
+         padding: 25px;
+         color: #333333;
+         border: 1px solid #e5e5e5;
+         border-radius: 12px;
+         line-height: 1.6;
+     ">
+
+         <h2 style="color: #1769aa;">
+             Your DermCare Appointment Is Today
+         </h2>
+
+         <p>Dear ${patientName},</p>
+
+         <p>
+             This is a reminder that your appointment with
+             Dr. ${doctorName} is scheduled for today.
+         </p>
+
+         <div style="
+             background: #f3f8fc;
+             padding: 18px;
+             border-radius: 8px;
+             margin: 20px 0;
+         ">
+
+             <strong>Appointment Details:</strong>
+
+             <p>
+                 <strong>Date:</strong>
+                 ${formattedDate}
+             </p>
+
+             <p>
+                 <strong>Time:</strong>
+                 ${appointmentTime}
+             </p>
+
+         </div>
+
+         <p>
+             We kindly request you to arrive on time.
+         </p>
+
+         <p>
+             For appointment information, please log in to
+             your DermCare account using the button below.
+         </p>
+
+         ${createEmailButton()}
+
+         <p style="margin-top: 25px;">
+             Thank you for choosing DermCare Clinic.
+         </p>
+
+         <p>
+             Regards,<br>
+             <strong>DermCare Clinic Team</strong>
+         </p>
+
+     </div>
+     `;
+
+
+     return await sendEmail({
+
+         to: patient.Email,
+         subject,
+         text,
          html
 
      });
@@ -308,11 +478,8 @@
          await Notification.findOne({
 
              PatientID: appointment.PatientID,
-
              AppointmentID: appointment._id,
-
              Type: "Reminder",
-
              ReminderForDate: appointmentDate
 
          });
@@ -359,9 +526,6 @@
 
      } catch (error) {
 
-         // Ignore duplicate-key errors
-         // caused by the unique reminder index.
-
          if (error.code === 11000) {
 
              console.log(
@@ -380,7 +544,36 @@
 
 
  // =======================================================
+ // GET ACTIVE APPOINTMENTS FOR A DATE
+ // =======================================================
+
+ const getActiveAppointmentsForDate = async (date) => {
+
+     const {
+         startDate,
+         endDate
+     } = getMongoDateRange(date);
+
+
+     return await Appointment.find({
+
+         AppointmentDate: {
+             $gte: startDate,
+             $lt: endDate
+         },
+
+         Status: {
+             $in: ["Booked", "Arrived"]
+         }
+
+     });
+
+ };
+
+
+ // =======================================================
  // PROCESS TOMORROW'S APPOINTMENTS
+ // DAY-BEFORE EMAIL AT 9:00 AM IST
  // =======================================================
 
  const processTomorrowAppointments = async () => {
@@ -390,62 +583,25 @@
 
 
      console.log(
-         "Checking DermCare reminders for:",
+         "Checking day-before DermCare reminders for:",
          tomorrowDate
      );
 
 
-     // ==========================================
-     // GET MONGODB DATE RANGE
-     // ==========================================
-
-     const {
-         startDate,
-         endDate
-     } = getMongoDateRange(tomorrowDate);
-
-
-     // ==========================================
-     // FIND ACTIVE APPOINTMENTS
-     // ==========================================
-
-     // AppointmentDate is stored as MongoDB Date
-     // so we search using a date range.
-
-     const appointments = await Appointment.find({
-
-         AppointmentDate: {
-
-             $gte: startDate,
-
-             $lt: endDate
-
-         },
-
-         Status: {
-
-             $in: ["Booked", "Arrived"]
-
-         }
-
-     });
+     const appointments =
+         await getActiveAppointmentsForDate(tomorrowDate);
 
 
      console.log(
-         "Appointments found for reminders:",
+         "Appointments found for day-before reminders:",
          appointments.length
      );
 
-
-     // ==========================================
-     // PROCESS EACH APPOINTMENT
-     // ==========================================
 
      for (const appointment of appointments) {
 
          try {
 
-             // Find patient details
              const patient = await Patient.findById(
                  appointment.PatientID
              ).select("FullName Email");
@@ -464,13 +620,12 @@
 
 
              // ======================================
-             // SEND EMAIL REMINDER
+             // SEND DAY-BEFORE EMAIL
              // ======================================
 
              if (
                  patient.Email &&
-                 appointment.ReminderEmailSentForDate !==
-                 tomorrowDate
+                 appointment.ReminderEmailSentForDate !== tomorrowDate
              ) {
 
                  try {
@@ -482,9 +637,6 @@
                      );
 
 
-                     // Mark email as sent only after
-                     // successful email delivery request.
-
                      appointment.ReminderEmailSentForDate =
                          tomorrowDate;
 
@@ -492,14 +644,14 @@
 
 
                      console.log(
-                         "Reminder email sent:",
+                         "Day-before reminder email sent:",
                          patient.Email
                      );
 
                  } catch (emailError) {
 
                      console.error(
-                         "Reminder email failed:",
+                         "Day-before reminder email failed:",
                          emailError.message
                      );
 
@@ -526,8 +678,6 @@
                      );
 
 
-                     // Mark notification as processed.
-
                      appointment.ReminderNotificationSentForDate =
                          tomorrowDate;
 
@@ -535,7 +685,7 @@
 
 
                      console.log(
-                         "Reminder notification processed for:",
+                         "Dashboard reminder notification processed for:",
                          patient.FullName
                      );
 
@@ -553,7 +703,111 @@
          } catch (error) {
 
              console.error(
-                 "Error processing appointment:",
+                 "Error processing day-before appointment:",
+                 appointment._id,
+                 error.message
+             );
+
+         }
+
+     }
+
+ };
+
+
+ // =======================================================
+ // PROCESS TODAY'S APPOINTMENTS
+ // APPOINTMENT-DAY EMAIL AT 7:00 AM IST
+ // =======================================================
+
+ const processTodayAppointments = async () => {
+
+     const todayDate =
+         getIndianDate();
+
+
+     console.log(
+         "Checking appointment-day DermCare reminders for:",
+         todayDate
+     );
+
+
+     const appointments =
+         await getActiveAppointmentsForDate(todayDate);
+
+
+     console.log(
+         "Appointments found for appointment-day reminders:",
+         appointments.length
+     );
+
+
+     for (const appointment of appointments) {
+
+         try {
+
+             const patient = await Patient.findById(
+                 appointment.PatientID
+             ).select("FullName Email");
+
+
+             if (!patient) {
+
+                 console.log(
+                     "Patient not found:",
+                     appointment._id
+                 );
+
+                 continue;
+
+             }
+
+
+             // ======================================
+             // SEND APPOINTMENT-DAY EMAIL
+             // ======================================
+
+             if (
+                 patient.Email &&
+                 appointment.AppointmentDayReminderEmailSentForDate !==
+                 todayDate
+             ) {
+
+                 try {
+
+                     await sendAppointmentDayReminderEmail(
+                         patient,
+                         appointment,
+                         todayDate
+                     );
+
+
+                     appointment.AppointmentDayReminderEmailSentForDate =
+                         todayDate;
+
+                     await appointment.save();
+
+
+                     console.log(
+                         "Appointment-day reminder email sent:",
+                         patient.Email
+                     );
+
+                 } catch (emailError) {
+
+                     console.error(
+                         "Appointment-day reminder email failed:",
+                         emailError.message
+                     );
+
+                 }
+
+             }
+
+         } catch (error) {
+
+             console.error(
+                 "Error processing appointment-day reminder:",
                  appointment._id,
                  error.message
              );
@@ -567,10 +821,10 @@
 
  // =======================================================
  // START REMINDER SCHEDULER
- // Checks every minute during the 9 AM IST hour
  // =======================================================
 
- let lastReminderRunDate = "";
+ let lastDayBeforeReminderRunDate = "";
+ let lastAppointmentDayReminderRunDate = "";
 
 
  const startReminderScheduler = () => {
@@ -582,14 +836,18 @@
      );
 
      console.log(
-         "Reminder time: 9:00 AM IST"
+         "Day-before reminder time: 9:00 AM IST"
+     );
+
+     console.log(
+         "Appointment-day reminder time: 7:00 AM IST"
      );
 
      console.log("--------------------------------");
 
 
      // ==========================================
-     // CHECK REMINDER TIME
+     // CHECK REMINDER TIMES
      // ==========================================
 
      const checkReminderTime = async () => {
@@ -601,16 +859,44 @@
          } = getIndianTime();
 
 
-         // Run once during the 9 AM hour.
-         // This also allows recovery if the backend
-         // starts a few minutes after 9:00 AM.
+         // ======================================
+         // 7 AM: APPOINTMENT-DAY REMINDER
+         // ======================================
 
          if (
-             hour === REMINDER_HOUR &&
-             lastReminderRunDate !== today
+             hour === APPOINTMENT_DAY_REMINDER_HOUR &&
+             lastAppointmentDayReminderRunDate !== today
          ) {
 
-             lastReminderRunDate = today;
+             lastAppointmentDayReminderRunDate = today;
+
+
+             try {
+
+                 await processTodayAppointments();
+
+             } catch (error) {
+
+                 console.error(
+                     "Appointment-day reminder scheduler error:",
+                     error.message
+                 );
+
+             }
+
+         }
+
+
+         // ======================================
+         // 9 AM: DAY-BEFORE REMINDER
+         // ======================================
+
+         if (
+             hour === DAY_BEFORE_REMINDER_HOUR &&
+             lastDayBeforeReminderRunDate !== today
+         ) {
+
+             lastDayBeforeReminderRunDate = today;
 
 
              try {
@@ -620,7 +906,7 @@
              } catch (error) {
 
                  console.error(
-                     "Reminder scheduler error:",
+                     "Day-before reminder scheduler error:",
                      error.message
                  );
 
@@ -661,6 +947,8 @@
 
      startReminderScheduler,
 
-     processTomorrowAppointments
+     processTomorrowAppointments,
+
+     processTodayAppointments
 
  };
